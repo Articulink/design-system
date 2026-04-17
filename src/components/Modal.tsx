@@ -129,13 +129,15 @@ export function Modal({
         tabIndex={-1}
         className={`
           w-full ${sizeStyles[size]}
+          max-h-[90vh]
+          flex flex-col
           bg-white rounded-2xl
           card-depth
           outline-none
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-mist">
+        <div className="flex items-center justify-between p-6 border-b border-mist flex-shrink-0">
           <div>
             <h2
               id="modal-title"
@@ -175,7 +177,7 @@ export function Modal({
         </div>
 
         {/* Content */}
-        <div className="p-6">{children}</div>
+        <div className="p-6 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );
