@@ -45,6 +45,18 @@
   --warning: #F59E0B;
   --error: #EF4444;
 
+  /* Status Badge Backgrounds (10% opacity variants) */
+  --info-bg: #EFF6FF;
+  --success-bg: #F0FDF4;
+  --warning-bg: #FFFBEB;
+  --error-bg: #FEF2F2;
+
+  /* Status Badge Text (darker for contrast) */
+  --info-text: #1D4ED8;
+  --success-text: #15803D;
+  --warning-text: #B45309;
+  --error-text: #B91C1C;
+
   /* Semantic Aliases */
   --primary: var(--tide);
   --primary-deep: var(--tide-deep);
@@ -93,6 +105,18 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
+
+  /* Status Badge Backgrounds */
+  --color-info-bg: var(--info-bg);
+  --color-success-bg: var(--success-bg);
+  --color-warning-bg: var(--warning-bg);
+  --color-error-bg: var(--error-bg);
+
+  /* Status Badge Text */
+  --color-info-text: var(--info-text);
+  --color-success-text: var(--success-text);
+  --color-warning-text: var(--warning-text);
+  --color-error-text: var(--error-text);
 
   /* Semantic */
   --color-primary: var(--primary);
@@ -513,4 +537,91 @@ select:focus-visible {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(3, 125, 228, 0.4);
+}
+
+/* ─── Animation Presets (for Animate component) ────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in { animation: fadeIn 300ms ease-out forwards; }
+.animate-fade-out { animation: fadeOut 300ms ease-out forwards; }
+.animate-slide-up { animation: slideUp 300ms ease-out forwards; }
+.animate-slide-down { animation: slideDown 300ms ease-out forwards; }
+.animate-slide-left { animation: slideLeft 300ms ease-out forwards; }
+.animate-slide-right { animation: slideRight 300ms ease-out forwards; }
+.animate-scale-in { animation: scaleIn 300ms ease-out forwards; }
+.animate-scale-out { animation: scaleOut 300ms ease-out forwards; }
+.animate-shake { animation: shake 500ms ease-in-out; }
+.animate-wiggle { animation: wiggle 300ms ease-in-out; }
+.animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Dark mode support */
+.dark {
+  --background: #012A4D;
+  --foreground: #F7FBFF;
+  --mist: #013F74;
+  --breeze: #01355E;
+}
+
+.dark body {
+  background: var(--background);
+  color: var(--foreground);
 }

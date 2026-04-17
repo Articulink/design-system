@@ -72,6 +72,38 @@ export function Modal({
     };
   }, [isOpen, handleKeyDown]);
 
+  // Focus trap - cycle Tab through focusable elements
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !modalRef.current) return;
+
+      const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab: if on first element, go to last
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement?.focus();
+        }
+      } else {
+        // Tab: if on last element, go to first
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
+  }, [isOpen]);
+
   // Handle backdrop click
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {

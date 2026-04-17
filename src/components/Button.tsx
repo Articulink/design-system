@@ -1,29 +1,49 @@
 'use client';
 
 import { forwardRef } from 'react';
+import Link from 'next/link';
 
 /**
  * Articulink Button Component
  *
  * Duolingo-style 3D press effect button with brand styling.
+ * Supports rendering as a button, Next.js Link, or external anchor.
  *
  * WCAG 2.1 Compliance:
  * - 2.4.7 Focus Visible: Clear focus indicators
  * - 1.4.3 Contrast: Sufficient color contrast
  * - 4.1.2 Name, Role, Value: Proper semantic HTML
+ *
+ * Usage:
+ *   <Button>Click me</Button>
+ *   <Button href="/dashboard">Go to Dashboard</Button>
+ *   <Button href="https://example.com" external>External Link</Button>
  */
 
 export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
   icon?: React.ReactNode;
   fullWidth?: boolean;
   children: React.ReactNode;
+  className?: string;
 }
+
+interface ButtonAsButton extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> {
+  href?: never;
+  external?: never;
+}
+
+interface ButtonAsLink extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps> {
+  href: string;
+  external?: boolean;
+}
+
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
@@ -44,52 +64,91 @@ const sizeStyles: Record<ButtonSize, string> = {
   lg: 'px-10 py-4 text-base rounded-2xl border-b-[5px]',
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
+function ButtonContent({ loading, icon, children }: { loading?: boolean; icon?: React.ReactNode; children: React.ReactNode }) {
+  if (loading) {
+    return (
+      <>
+        <LoadingSpinner />
+        <span className="sr-only">Loading</span>
+        {children}
+      </>
+    );
+  }
+  return (
+    <>
+      {icon && <span aria-hidden="true">{icon}</span>}
+      {children}
+    </>
+  );
+}
+
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  (props, ref) => {
+    const {
       variant = 'primary',
       size = 'md',
       loading = false,
       icon,
       fullWidth = false,
       children,
-      disabled,
       className = '',
-      ...props
-    },
-    ref
-  ) => {
+      ...rest
+    } = props;
+
+    const combinedClassName = `
+      inline-flex items-center justify-center gap-2
+      transition-all duration-100
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+      ${variantStyles[variant]}
+      ${sizeStyles[size]}
+      ${fullWidth ? 'w-full' : ''}
+      ${className}
+    `.trim();
+
+    // Render as link if href is provided
+    if ('href' in props && props.href) {
+      const { href, external, ...linkProps } = rest as ButtonAsLink;
+
+      if (external) {
+        return (
+          <a
+            ref={ref as React.Ref<HTMLAnchorElement>}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={combinedClassName}
+            {...linkProps}
+          >
+            <ButtonContent loading={loading} icon={icon}>{children}</ButtonContent>
+          </a>
+        );
+      }
+
+      return (
+        <Link
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          href={href}
+          className={combinedClassName}
+          {...linkProps}
+        >
+          <ButtonContent loading={loading} icon={icon}>{children}</ButtonContent>
+        </Link>
+      );
+    }
+
+    // Render as button
+    const { disabled, ...buttonProps } = rest as ButtonAsButton;
     const isDisabled = disabled || loading;
 
     return (
       <button
-        ref={ref}
+        ref={ref as React.Ref<HTMLButtonElement>}
         disabled={isDisabled}
-        className={`
-          inline-flex items-center justify-center gap-2
-          transition-all duration-100
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
-          disabled:opacity-50 disabled:cursor-not-allowed disabled:border-b-0
-          ${variantStyles[variant]}
-          ${sizeStyles[size]}
-          ${fullWidth ? 'w-full' : ''}
-          ${className}
-        `}
+        className={`${combinedClassName} ${isDisabled ? 'opacity-50 cursor-not-allowed border-b-0' : ''}`}
         aria-busy={loading}
-        {...props}
+        {...buttonProps}
       >
-        {loading ? (
-          <>
-            <LoadingSpinner />
-            <span className="sr-only">Loading</span>
-            {children}
-          </>
-        ) : (
-          <>
-            {icon && <span aria-hidden="true">{icon}</span>}
-            {children}
-          </>
-        )}
+        <ButtonContent loading={loading} icon={icon}>{children}</ButtonContent>
       </button>
     );
   }
