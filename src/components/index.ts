@@ -334,3 +334,7 @@ export type { ErrorBoundaryProps, ErrorBoundaryState, ErrorFallbackProps, Defaul
 // Animations
 export { Animate, FadeIn, SlideIn, ScaleIn, Stagger } from './Animate';
 export type { AnimateProps, AnimationPreset, FadeInProps, SlideInProps, SlideDirection, ScaleInProps, StaggerProps } from './Animate';
+
+// Maps
+export { USMap } from './USMap';
+export type { USMapProps, USMapDataPoint } from './USMap';
