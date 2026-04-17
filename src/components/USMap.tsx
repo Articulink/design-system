@@ -1,12 +1,15 @@
 'use client';
 
-import { forwardRef, useMemo, useState, useCallback } from 'react';
+import { forwardRef, useMemo, useState, useCallback, useEffect, useRef } from 'react';
+import { geoAlbersUsa, geoPath } from 'd3-geo';
+import { feature } from 'topojson-client';
+import type { Topology, GeometryCollection } from 'topojson-specification';
+import type { Feature, FeatureCollection, Geometry } from 'geojson';
 
 /**
  * Articulink USMap Component
  *
- * Interactive US state choropleth map for visualizing geographic data.
- * Uses Albers USA projection with properly positioned state paths.
+ * Interactive US state choropleth map using d3-geo for proper projections.
  */
 
 export interface USMapDataPoint {
@@ -31,79 +34,29 @@ export interface USMapProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
 
 const STATE_NAMES: Record<string, string> = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
-  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', FL: 'Florida', GA: 'Georgia',
-  HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa',
-  KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland',
-  MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri',
-  MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey',
-  NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio',
-  OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina',
-  SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont',
-  VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming',
-  DC: 'Washington D.C.',
+  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia',
+  FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois',
+  IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana',
+  ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota',
+  MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada',
+  NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York',
+  NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon',
+  PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota',
+  TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia',
+  WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming',
 };
 
-// State coordinates for a simplified grid-based US map
-// This creates a clean, recognizable layout without complex SVG paths
-const STATE_GRID: Record<string, { row: number; col: number; width?: number; height?: number }> = {
-  // Row 0
-  AK: { row: 0, col: 0 },
-  // Row 1
-  WA: { row: 1, col: 1 },
-  MT: { row: 1, col: 2 },
-  ND: { row: 1, col: 3 },
-  MN: { row: 1, col: 4 },
-  WI: { row: 1, col: 5 },
-  MI: { row: 1, col: 7 },
-  // Row 2
-  OR: { row: 2, col: 1 },
-  ID: { row: 2, col: 2 },
-  SD: { row: 2, col: 3 },
-  IA: { row: 2, col: 4 },
-  IL: { row: 2, col: 5 },
-  IN: { row: 2, col: 6 },
-  OH: { row: 2, col: 7 },
-  PA: { row: 2, col: 8 },
-  NY: { row: 2, col: 9 },
-  VT: { row: 1, col: 9 },
-  NH: { row: 1, col: 10 },
-  ME: { row: 0, col: 10 },
-  MA: { row: 2, col: 10 },
-  RI: { row: 3, col: 10 },
-  CT: { row: 3, col: 9 },
-  // Row 3
-  NV: { row: 3, col: 1 },
-  WY: { row: 3, col: 2 },
-  NE: { row: 3, col: 3 },
-  MO: { row: 3, col: 4 },
-  KY: { row: 3, col: 6 },
-  WV: { row: 3, col: 7 },
-  VA: { row: 3, col: 8 },
-  NJ: { row: 3, col: 8.5 },
-  MD: { row: 4, col: 8.5 },
-  DE: { row: 4, col: 9 },
-  // Row 4
-  CA: { row: 4, col: 0 },
-  UT: { row: 4, col: 1 },
-  CO: { row: 4, col: 2 },
-  KS: { row: 4, col: 3 },
-  AR: { row: 4, col: 4 },
-  TN: { row: 4, col: 5 },
-  NC: { row: 4, col: 7 },
-  SC: { row: 5, col: 7.5 },
-  // Row 5
-  AZ: { row: 5, col: 1 },
-  NM: { row: 5, col: 2 },
-  OK: { row: 5, col: 3 },
-  LA: { row: 5, col: 4 },
-  MS: { row: 5, col: 5 },
-  AL: { row: 5, col: 6 },
-  GA: { row: 5, col: 7 },
-  // Row 6
-  HI: { row: 6, col: 0 },
-  TX: { row: 6, col: 2, width: 1.5, height: 1.5 },
-  FL: { row: 6, col: 7 },
-  DC: { row: 4, col: 8 },
+// FIPS code to state abbreviation mapping
+const FIPS_TO_STATE: Record<string, string> = {
+  '01': 'AL', '02': 'AK', '04': 'AZ', '05': 'AR', '06': 'CA', '08': 'CO',
+  '09': 'CT', '10': 'DE', '11': 'DC', '12': 'FL', '13': 'GA', '15': 'HI',
+  '16': 'ID', '17': 'IL', '18': 'IN', '19': 'IA', '20': 'KS', '21': 'KY',
+  '22': 'LA', '23': 'ME', '24': 'MD', '25': 'MA', '26': 'MI', '27': 'MN',
+  '28': 'MS', '29': 'MO', '30': 'MT', '31': 'NE', '32': 'NV', '33': 'NH',
+  '34': 'NJ', '35': 'NM', '36': 'NY', '37': 'NC', '38': 'ND', '39': 'OH',
+  '40': 'OK', '41': 'OR', '42': 'PA', '44': 'RI', '45': 'SC', '46': 'SD',
+  '47': 'TN', '48': 'TX', '49': 'UT', '50': 'VT', '51': 'VA', '53': 'WA',
+  '54': 'WV', '55': 'WI', '56': 'WY',
 };
 
 const COLOR_SCALES: Record<string, string[]> = {
@@ -122,9 +75,10 @@ function getColorForValue(value: number, min: number, max: number, colorScale: s
   return colorScale[index];
 }
 
-const CELL_SIZE = 50;
-const CELL_GAP = 4;
-const PADDING = 20;
+interface StateFeature extends Feature<Geometry> {
+  id: string;
+  properties: Record<string, unknown>;
+}
 
 export const USMap = forwardRef<HTMLDivElement, USMapProps>(
   (
@@ -147,6 +101,26 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
   ) => {
     const [hoveredState, setHoveredState] = useState<string | null>(null);
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+    const [geoData, setGeoData] = useState<FeatureCollection | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // Load TopoJSON data
+    useEffect(() => {
+      const loadGeoData = async () => {
+        try {
+          const response = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+          const topology = await response.json() as Topology<{ states: GeometryCollection }>;
+          const states = feature(topology, topology.objects.states) as FeatureCollection;
+          setGeoData(states);
+        } catch (error) {
+          console.error('Failed to load US map data:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      loadGeoData();
+    }, []);
 
     const dataMap = useMemo(() => {
       const map = new Map<string, USMapDataPoint>();
@@ -164,6 +138,15 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
 
     const colors = COLOR_SCALES[colorScale] || COLOR_SCALES.blue;
 
+    // Set up projection and path generator
+    const width = 960;
+    const height = 600;
+    const projection = useMemo(() =>
+      geoAlbersUsa().scale(1280).translate([width / 2, height / 2]),
+      []
+    );
+    const pathGenerator = useMemo(() => geoPath().projection(projection), [projection]);
+
     const handleMouseMove = useCallback((e: React.MouseEvent) => {
       setTooltipPos({ x: e.clientX, y: e.clientY });
     }, []);
@@ -179,11 +162,24 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
 
     const hoveredData = hoveredState ? dataMap.get(hoveredState) : null;
 
-    // Calculate SVG dimensions
-    const maxCol = Math.max(...Object.values(STATE_GRID).map(s => s.col + (s.width || 1)));
-    const maxRow = Math.max(...Object.values(STATE_GRID).map(s => s.row + (s.height || 1)));
-    const svgWidth = maxCol * (CELL_SIZE + CELL_GAP) + PADDING * 2;
-    const svgHeight = maxRow * (CELL_SIZE + CELL_GAP) + PADDING * 2;
+    if (isLoading) {
+      return (
+        <div ref={ref} className={`relative ${className}`} {...props}>
+          {(title || subtitle) && (
+            <div className="mb-4">
+              {title && <h3 className="font-semibold text-abyss">{title}</h3>}
+              {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+            </div>
+          )}
+          <div
+            className="flex items-center justify-center bg-slate-50 rounded-lg"
+            style={{ minHeight }}
+          >
+            <div className="animate-pulse text-lagoon">Loading map...</div>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div ref={ref} className={`relative ${className}`} {...props}>
@@ -195,42 +191,43 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
         )}
 
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="flex-1" style={{ minHeight }}>
+          <div ref={containerRef} className="flex-1" style={{ minHeight }}>
             <svg
-              viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+              viewBox={`0 0 ${width} ${height}`}
               className="w-full h-full"
               onMouseMove={handleMouseMove}
-              style={{ maxHeight: minHeight }}
+              preserveAspectRatio="xMidYMid meet"
             >
-              {Object.entries(STATE_GRID).map(([stateCode, pos]) => {
-                const stateData = dataMap.get(stateCode);
-                const value = stateData?.value ?? 0;
-                const isSelected = selectedState === stateCode;
-                const isHighlighted = highlightStates.includes(stateCode);
-                const isHovered = hoveredState === stateCode;
+              <g>
+                {geoData?.features.map((feature) => {
+                  const stateFeature = feature as StateFeature;
+                  const fipsCode = String(stateFeature.id).padStart(2, '0');
+                  const stateCode = FIPS_TO_STATE[fipsCode];
 
-                let fill = emptyColor;
-                if (value > 0) {
-                  fill = getColorForValue(value, min, max, colors);
-                }
+                  if (!stateCode) return null;
 
-                const x = PADDING + pos.col * (CELL_SIZE + CELL_GAP);
-                const y = PADDING + pos.row * (CELL_SIZE + CELL_GAP);
-                const width = (pos.width || 1) * CELL_SIZE + ((pos.width || 1) - 1) * CELL_GAP;
-                const height = (pos.height || 1) * CELL_SIZE + ((pos.height || 1) - 1) * CELL_GAP;
+                  const stateData = dataMap.get(stateCode);
+                  const value = stateData?.value ?? 0;
+                  const isSelected = selectedState === stateCode;
+                  const isHighlighted = highlightStates.includes(stateCode);
+                  const isHovered = hoveredState === stateCode;
 
-                return (
-                  <g key={stateCode}>
-                    <rect
-                      x={x}
-                      y={y}
-                      width={width}
-                      height={height}
-                      rx={4}
+                  let fill = emptyColor;
+                  if (value > 0) {
+                    fill = getColorForValue(value, min, max, colors);
+                  }
+
+                  const path = pathGenerator(feature);
+                  if (!path) return null;
+
+                  return (
+                    <path
+                      key={stateCode}
+                      d={path}
                       fill={fill}
-                      stroke={isSelected || isHighlighted ? '#037DE4' : '#CBD5E1'}
-                      strokeWidth={isSelected ? 2.5 : isHighlighted ? 2 : 1}
-                      className={`transition-all duration-150 ${
+                      stroke={isSelected || isHighlighted ? '#037DE4' : '#94A3B8'}
+                      strokeWidth={isSelected ? 2 : isHighlighted ? 1.5 : 0.5}
+                      className={`transition-colors duration-150 ${
                         onStateClick ? 'cursor-pointer' : ''
                       }`}
                       style={{
@@ -240,34 +237,9 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
                       onMouseLeave={() => setHoveredState(null)}
                       onClick={() => handleStateClick(stateCode)}
                     />
-                    <text
-                      x={x + width / 2}
-                      y={y + height / 2}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      fontSize={12}
-                      fontWeight={500}
-                      fill={value > 0 && value > (max - min) / 2 ? '#FFFFFF' : '#334155'}
-                      className="pointer-events-none select-none"
-                    >
-                      {stateCode}
-                    </text>
-                    {value > 0 && (
-                      <text
-                        x={x + width / 2}
-                        y={y + height / 2 + 14}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        fontSize={10}
-                        fill={value > (max - min) / 2 ? '#E2E8F0' : '#64748B'}
-                        className="pointer-events-none select-none"
-                      >
-                        {value}
-                      </text>
-                    )}
-                  </g>
-                );
-              })}
+                  );
+                })}
+              </g>
             </svg>
           </div>
 
@@ -314,7 +286,7 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
               top: tooltipPos.y + 12,
             }}
           >
-            <div className="font-medium">{STATE_NAMES[hoveredState]}</div>
+            <div className="font-medium">{STATE_NAMES[hoveredState] || hoveredState}</div>
             {hoveredData ? (
               <div className="text-slate-300">
                 {hoveredData.label || `${hoveredData.value} ${hoveredData.value === 1 ? 'family' : 'families'}`}
