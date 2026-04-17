@@ -280,15 +280,16 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
 
         {showTooltip && hoveredState && (
           <div
-            className="fixed z-50 px-3 py-2 bg-abyss text-white text-sm rounded-lg shadow-lg pointer-events-none"
+            className="fixed z-50 px-4 py-3 bg-white text-abyss text-sm rounded-xl border border-slate-200 pointer-events-none"
             style={{
-              left: tooltipPos.x + 12,
-              top: tooltipPos.y + 12,
+              left: tooltipPos.x + 16,
+              top: tooltipPos.y + 16,
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1)',
             }}
           >
-            <div className="font-medium">{STATE_NAMES[hoveredState] || hoveredState}</div>
+            <div className="font-semibold text-abyss">{STATE_NAMES[hoveredState] || hoveredState}</div>
             {hoveredData ? (
-              <div className="text-slate-300">
+              <div className="text-lagoon font-medium">
                 {hoveredData.label || `${hoveredData.value} ${hoveredData.value === 1 ? 'family' : 'families'}`}
               </div>
             ) : (
