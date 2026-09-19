@@ -24,6 +24,9 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Token parity with @articulink/brand
+        run: npm run check:tokens
+
       - name: Unit tests
         run: npx vitest run
 

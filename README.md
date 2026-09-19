@@ -7,7 +7,7 @@ Centralized design system for all Articulink applications. **This is the single 
 1. **Always import shared components from this package** — never create local duplicates of Button, Input, Modal, Card, or Toast
 2. **Use semantic color tokens** for status indicators (success-bg, warning-bg, error-bg, info-bg)
 3. **Add new shared components here** when they're needed across multiple apps
-4. **Edit tokens in `src/tokens/index.css`** to change colors/styles globally — brand color values must stay in sync with [`@articulink/brand`](https://github.com/jordyhunsaker/articulink-brand)'s `tokens/tokens.json`, the brand's source of truth
+4. **Edit tokens in `src/tokens/index.css`** to change colors/styles globally — brand color values must stay in sync with [`@articulink/brand`](https://github.com/Articulink/brand)'s `tokens/tokens.json`, the brand's source of truth
 
 ## Installation
 
@@ -282,6 +282,7 @@ export type { YourComponentProps } from './YourComponent';
 ```bash
 npm install
 npm run typecheck   # tsc --noEmit
+npm run check:tokens # verify brand color parity with @articulink/brand
 npm test            # vitest unit tests
 npm run test:a11y   # accessibility tests
 npm run build       # emits ESM + type declarations to dist/
