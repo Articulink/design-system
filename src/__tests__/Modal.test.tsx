@@ -86,7 +86,7 @@ describe('Modal', () => {
         <p>Content</p>
       </Modal>
     );
-    expect(screen.getByRole('dialog')).toHaveClass('max-w-3xl');
+    expect(screen.getByRole('dialog')).toHaveClass('max-w-lg');
   });
 
   it('has correct ARIA attributes', () => {

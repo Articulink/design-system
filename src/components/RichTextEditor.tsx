@@ -1,15 +1,25 @@
 'use client';
 
 import { forwardRef, useCallback, useEffect, useRef, useState, ReactNode } from 'react';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import Link from '@tiptap/extension-link';
+import Image from '@tiptap/extension-image';
+import Placeholder from '@tiptap/extension-placeholder';
 
 /**
  * Articulink RichTextEditor Component
  *
  * WYSIWYG rich text editor using TipTap.
  *
- * IMPORTANT: This component requires TipTap packages as peer dependencies:
+ * IMPORTANT: this component is NOT exported from the package root, so apps
+ * that don't use it never bundle TipTap. Apps that do use it must install
+ * the TipTap peer dependencies and import from the dedicated entry point:
+ *
  *   npm install @tiptap/react @tiptap/starter-kit @tiptap/extension-link
  *              @tiptap/extension-image @tiptap/extension-placeholder
+ *
+ *   import { RichTextEditor } from '@articulink/design-system/rich-text-editor';
  *
  * Usage:
  *   <RichTextEditor
@@ -18,27 +28,6 @@ import { forwardRef, useCallback, useEffect, useRef, useState, ReactNode } from 
  *     placeholder="Start writing..."
  *   />
  */
-
-// We need to dynamically import TipTap to avoid SSR issues and allow graceful degradation
-let useEditor: typeof import('@tiptap/react').useEditor | undefined;
-let EditorContent: typeof import('@tiptap/react').EditorContent | undefined;
-let StarterKit: typeof import('@tiptap/starter-kit').default | undefined;
-let Link: typeof import('@tiptap/extension-link').default | undefined;
-let Image: typeof import('@tiptap/extension-image').default | undefined;
-let Placeholder: typeof import('@tiptap/extension-placeholder').default | undefined;
-
-// Try to import TipTap
-try {
-  const tiptapReact = require('@tiptap/react');
-  useEditor = tiptapReact.useEditor;
-  EditorContent = tiptapReact.EditorContent;
-  StarterKit = require('@tiptap/starter-kit').default;
-  Link = require('@tiptap/extension-link').default;
-  Image = require('@tiptap/extension-image').default;
-  Placeholder = require('@tiptap/extension-placeholder').default;
-} catch {
-  // TipTap not installed
-}
 
 export interface RichTextEditorProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   content: string;
@@ -78,24 +67,6 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
   ) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isUploadingImage, setIsUploadingImage] = useState(false);
-
-    // Check if TipTap is available
-    if (!useEditor || !EditorContent || !StarterKit) {
-      return (
-        <div
-          ref={ref}
-          className={`border border-mist rounded-lg p-4 bg-warning-bg ${className}`}
-          {...props}
-        >
-          <p className="text-warning-text text-sm">
-            RichTextEditor requires TipTap. Install with:
-          </p>
-          <code className="block mt-2 text-xs bg-white p-2 rounded">
-            npm install @tiptap/react @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-image @tiptap/extension-placeholder
-          </code>
-        </div>
-      );
-    }
 
     return (
       <RichTextEditorInner
@@ -144,19 +115,19 @@ const RichTextEditorInner = forwardRef<HTMLDivElement, RichTextEditorInnerProps>
     },
     ref
   ) => {
-    const editor = useEditor!({
+    const editor = useEditor({
       extensions: [
-        StarterKit!.configure({
+        StarterKit.configure({
           heading: { levels: [2, 3, 4] },
         }),
-        Link!.configure({
+        Link.configure({
           openOnClick: false,
           HTMLAttributes: { class: 'text-tide underline' },
         }),
-        Image!.configure({
+        Image.configure({
           HTMLAttributes: { class: 'max-w-full rounded-lg' },
         }),
-        Placeholder!.configure({ placeholder }),
+        Placeholder.configure({ placeholder }),
       ],
       content,
       editable: !readOnly,

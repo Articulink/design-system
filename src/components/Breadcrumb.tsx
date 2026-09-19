@@ -1,7 +1,7 @@
 'use client';
 
 import { forwardRef, Children, isValidElement, cloneElement } from 'react';
-import Link from 'next/link';
+import { useLinkComponent } from './LinkProvider';
 
 /**
  * Articulink Breadcrumb Component
@@ -93,6 +93,7 @@ export interface BreadcrumbItemProps extends React.HTMLAttributes<HTMLSpanElemen
 
 export const BreadcrumbItem = forwardRef<HTMLSpanElement, BreadcrumbItemProps>(
   ({ href, icon, isLast, children, className = '', ...props }, ref) => {
+    const LinkComponent = useLinkComponent();
     const content = (
       <>
         {icon && <span className="mr-1.5">{icon}</span>}
@@ -103,12 +104,12 @@ export const BreadcrumbItem = forwardRef<HTMLSpanElement, BreadcrumbItemProps>(
     if (href && !isLast) {
       return (
         <span ref={ref} className={className} {...props}>
-          <Link
+          <LinkComponent
             href={href}
             className="text-sm text-lagoon hover:text-tide transition-colors flex items-center"
           >
             {content}
-          </Link>
+          </LinkComponent>
         </span>
       );
     }

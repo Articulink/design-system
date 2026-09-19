@@ -2,6 +2,14 @@
 
 import { Component, forwardRef } from 'react';
 
+// Bundlers statically replace process.env.NODE_ENV; the typeof guard keeps
+// this safe in browsers without a process global (no Node types needed).
+declare const process: { env: Record<string, string | undefined> } | undefined;
+
+function isDevBuild(): boolean {
+  return typeof process !== 'undefined' && process?.env?.NODE_ENV === 'development';
+}
+
 /**
  * Articulink ErrorBoundary Component
  *
@@ -107,7 +115,7 @@ export const DefaultErrorFallback = forwardRef<HTMLDivElement, DefaultErrorFallb
       error,
       resetError,
       title = 'Something went wrong',
-      showError = process.env.NODE_ENV === 'development',
+      showError = isDevBuild(),
     },
     ref
   ) => {

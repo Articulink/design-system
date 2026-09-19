@@ -1,0 +1,45 @@
+name: Publish to GitHub Packages
+
+# Publishes @articulink/design-system to GitHub Packages (npm.pkg.github.com)
+# when a GitHub release is published, or manually via workflow_dispatch.
+# This repository lives in the Articulink org, which owns the @articulink
+# scope, so the workflow-provided GITHUB_TOKEN can publish directly.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: "@articulink"
+
+      - run: npm ci
+
+      - name: Verify tag matches package version
+        if: github.event_name == 'release'
+        run: |
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          TAG="${{ github.event.release.tag_name }}"
+          if [ "v${PKG_VERSION}" != "${TAG}" ] && [ "${PKG_VERSION}" != "${TAG}" ]; then
+            echo "::error::package.json version (${PKG_VERSION}) does not match release tag (${TAG})"
+            exit 1
+          fi
+
+      # prepublishOnly runs typecheck + build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}

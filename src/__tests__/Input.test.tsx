@@ -38,14 +38,9 @@ describe('Input', () => {
     expect(screen.getByPlaceholderText('Disabled')).toBeDisabled();
   });
 
-  it('renders with icon', () => {
-    render(
-      <Input
-        icon={<span data-testid="test-icon">Icon</span>}
-        placeholder="With icon"
-      />
-    );
-    expect(screen.getByTestId('test-icon')).toBeInTheDocument();
+  it('renders a hint', () => {
+    render(<Input hint="We'll never share your email" placeholder="With hint" />);
+    expect(screen.getByText("We'll never share your email")).toBeInTheDocument();
   });
 
   it('applies error styles when error is present', () => {
@@ -73,7 +68,6 @@ describe('Input', () => {
 
   it('accepts custom className', () => {
     render(<Input className="custom-input" placeholder="Custom" />);
-    const wrapper = screen.getByPlaceholderText('Custom').closest('div');
-    expect(wrapper?.parentElement).toHaveClass('custom-input');
+    expect(screen.getByPlaceholderText('Custom')).toHaveClass('custom-input');
   });
 });

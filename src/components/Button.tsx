@@ -1,13 +1,14 @@
 'use client';
 
 import { forwardRef } from 'react';
-import Link from 'next/link';
+import { useLinkComponent } from './LinkProvider';
 
 /**
  * Articulink Button Component
  *
  * Duolingo-style 3D press effect button with brand styling.
- * Supports rendering as a button, Next.js Link, or external anchor.
+ * Supports rendering as a button, an internal link (via the LinkProvider
+ * component, defaulting to <a>), or an external anchor.
  *
  * WCAG 2.1 Compliance:
  * - 2.4.7 Focus Visible: Clear focus indicators
@@ -84,6 +85,7 @@ function ButtonContent({ loading, icon, children }: { loading?: boolean; icon?: 
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (props, ref) => {
+    const LinkComponent = useLinkComponent();
     const {
       variant = 'primary',
       size = 'md',
@@ -125,14 +127,14 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       }
 
       return (
-        <Link
+        <LinkComponent
           ref={ref as React.Ref<HTMLAnchorElement>}
           href={href}
           className={combinedClassName}
           {...linkProps}
         >
           <ButtonContent loading={loading} icon={icon}>{children}</ButtonContent>
-        </Link>
+        </LinkComponent>
       );
     }
 

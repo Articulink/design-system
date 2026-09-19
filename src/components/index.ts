@@ -144,8 +144,12 @@ export { SnippetPicker } from './SnippetPicker';
 export type { SnippetPickerProps, SnippetCategory } from './SnippetPicker';
 
 // Rich Text
-export { RichTextEditor } from './RichTextEditor';
-export type { RichTextEditorProps } from './RichTextEditor';
+// RichTextEditor is intentionally NOT exported here: it requires the TipTap
+// peer dependencies. Import it from '@articulink/design-system/rich-text-editor'.
+
+// Routing
+export { LinkProvider, useLinkComponent } from './LinkProvider';
+export type { LinkProviderProps, LinkComponent, LinkLikeProps } from './LinkProvider';
 
 // Form Controls
 export { Checkbox, CheckboxGroup } from './Checkbox';

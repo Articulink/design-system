@@ -44,7 +44,7 @@ const arrowStyles: Record<TooltipPosition, string> = {
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   ({ content, position = 'top', delay = 200, children, className = '' }, ref) => {
     const [isVisible, setIsVisible] = useState(false);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const showTooltip = () => {
