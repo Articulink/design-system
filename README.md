@@ -57,37 +57,49 @@ All brand colors are available as Tailwind utilities:
 <div className="bg-breeze border-mist">Light background</div>
 ```
 
-## Design Tokens
+## Design Tokens (v11, October 2026)
 
-### Core Brand Colors
+Tokens mirror the **Articulink Brand** design system. The ocean names
+(tide, abyss, mist, sunshine…) were retired in v6; they still resolve, as
+aliases of the new tokens, so older code renders in the new palette. Don't use
+them in new code.
 
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `tide` | `#037DE4` | Primary actions, links, focus states |
-| `surf` | `#1E96FC` | Secondary blue, hover states |
-| `abyss` | `#012A4D` | Text, dark elements |
-| `cloud` | `#FFFFFF` | Backgrounds |
-| `sunshine` | `#FCDE1E` | Accent, highlights, CTAs |
-
-### Blue Scale (Ocean Journey)
+### Colour
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `breeze` | `#F7FBFF` | Lightest background |
-| `mist` | `#E4F2FE` | Borders, dividers |
-| `bubble` | `#AFD9FD` | Hover borders |
-| `lagoon` | `#013F74` | Secondary text |
-| `depths` | `#01355E` | Dark accents |
-| `trench` | `#001C33` | Darkest |
+| `blue-500` (`primary`) | `#037DE4` | The brand: logo, brand surfaces, icons, focus. White text on it only at 19px bold / 24px+ |
+| `blue-600` (`action`, `link`) | `#0268BF` | Buttons and text links (5.5:1 with white) |
+| `blue-700` (`action-hover`) / `blue-800` (`action-shadow`) | `#01539B` / `#014079` | Button hover / chunky bottom edge |
+| `navy` (`foreground`) | `#002D59` | Ink and the dark surface |
+| `surface-subtle` / `surface-tint` | `#F7FBFF` / `#E6F2FF` | Alternating section backgrounds, icon tiles |
+| `yellow` / `cyan` / `pink` | `#FEDE01` / `#00F0FD` / `#FF0095` | Signature accents (the mark's bars). Fills only, never text; text on them is `navy`. One yellow button per view |
+| `orange` / `green` / `violet` | `#FE7100` / `#01FF79` / `#C592FF` | Confetti and illustration ONLY. Never on UI |
+| `text-secondary` / `text-muted` | `#014079` / `#4E6A8C` | Secondary and muted text (4.5:1+ on white and tints) |
+| `border` / `border-control` | `#E6F2FF` / `#5E80A8` | Decorative borders / control borders (3:1) |
 
-### UI Feedback
+Every blue sits on one ramp, `blue-25`…`blue-950`; `slate-*` are its greyed
+tones. Chart colours: `chart-1`…`chart-7`, `chart-other`.
+
+Also: `space-1`…`space-20` (4px base), `radius-sm`…`radius-3xl`/`radius-full`,
+`shadow-card`, `shadow-card-lift`, `shadow-overlay`, `shadow-focus`,
+`duration-*`, `ease-*`, `bp-*` (480/768/1024/1440), `z-*`, and dark mode via
+`data-theme="dark"`.
+
+### Type
+
+Lexend for everything (400–700). `fonts.css` self-hosts it; apps on next/font
+set `--font-lexend` instead. `type.css` adds the type classes (`display-hero`,
+`heading-1`…, `body-lead`, `overline`, with `-m` twins below 768px).
+
+### Status colours
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `info` | `#3B82F6` | Information |
-| `success` | `#22C55E` | Success states |
-| `warning` | `#F59E0B` | Warnings |
-| `error` | `#EF4444` | Errors |
+| `success` / `success-text` | `#039343` / `#026A2E` | Success |
+| `warning` / `warning-text` | `#B17000` / `#774A01` | Warnings |
+| `error` / `error-text` | `#D73431` / `#A21A1B` | Errors |
+| `info` / `info-text` | `#0268BF` / `#01539B` | Information |
 
 ### Status Badges
 
@@ -116,13 +128,6 @@ Use these for consistent status indicators:
 | `warning-bg` | `warning-text` | Pending, in progress |
 | `error-bg` | `error-text` | Failed, rejected, cancelled |
 | `info-bg` | `info-text` | Informational, neutral |
-
-### Deep/Pressed States
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| `tide-deep` | `#0369c1` | Primary button pressed |
-| `sunshine-deep` | `#d4a90e` | Accent button pressed |
 
 ## Components
 

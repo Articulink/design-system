@@ -1,143 +1,364 @@
 /**
- * Articulink Design System - Design Tokens
+ * Articulink Design System - Design Tokens (v11, October 2026)
  *
- * Single source of truth for all brand colors, typography, and animations.
- * Import this file in your app's globals.css:
+ * Single source of truth for brand colour, type, spacing, radius, shadow and
+ * motion. Generated values come from the "Articulink Brand" design system
+ * (tokens.json); keep the two in sync.
  *
  *   @import "@articulink/design-system/tokens";
  *
- * Then use with Tailwind v4's @theme inline for color access.
+ * Optional extras:
+ *   @import "@articulink/design-system/src/tokens/fonts.css";   Lexend @font-face (skip if you use next/font)
+ *   @import "@articulink/design-system/src/styles/type.css";    .display-hero, .heading-1, .body-lead ...
+ *   @import "@articulink/design-system/src/styles/components.css"; .al-* components, .bg-shape-tile
+ *
+ * Fonts: Lexend everywhere. Apps using next/font set --font-lexend on <html>;
+ * everyone else imports fonts.css, which declares the "Lexend" family.
  */
 
 /* ─── Design Tokens (CSS Variables) ────────────────────────── */
 
+:root, [data-theme="light"] {
+  --white: #ffffff;
+  --navy: var(--blue-900);
+  --surface-subtle: var(--blue-25);
+  --surface-tint: var(--blue-50);
+  --pink: #ff0095;
+  --yellow: #fede01;
+  --yellow-deep: #d3a802;
+  --yellow-hover: #ffe978;
+  --cyan: #00f0fd;
+  --orange: #fe7100;
+  --green: #01ff79;
+  --violet: #c592ff;
+  --link-current: #0375d6;
+  --link-pupil: #141414;
+  --primary: var(--blue-500);
+  --primary-deep: var(--blue-600);
+  --secondary: var(--yellow);
+  --secondary-deep: var(--yellow-deep);
+  --action: var(--blue-600);
+  --action-hover: var(--blue-700);
+  --action-shadow: var(--blue-800);
+  --background: #ffffff;
+  --surface: #ffffff;
+  --foreground: var(--blue-900);
+  --text-secondary: var(--blue-800);
+  --text-muted: var(--slate-600);
+  --link: var(--blue-600);
+  --border: var(--blue-50);
+  --border-control: var(--slate-500);
+  --focus: var(--blue-500);
+  --info: var(--blue-600);
+  --info-bg: var(--blue-50);
+  --info-text: var(--blue-700);
+  --success: #039343;
+  --success-bg: #eefbf0;
+  --success-text: #026a2e;
+  --warning: #b17000;
+  --warning-bg: #fff5ea;
+  --warning-text: #774a01;
+  --error: #d73431;
+  --error-bg: #fff4f2;
+  --error-text: #a21a1b;
+  --blue-25: #f7fbff;
+  --blue-50: #e6f2ff;
+  --blue-100: #bcdcff;
+  --blue-200: #90c6ff;
+  --blue-300: #5fafff;
+  --blue-400: #1e96fc;
+  --blue-500: #037de4;
+  --blue-600: #0268bf;
+  --blue-700: #01539b;
+  --blue-800: #014079;
+  --blue-850: #013669;
+  --blue-900: #002d59;
+  --blue-950: #001b3a;
+  --slate-50: #ecf1f7;
+  --slate-100: #cddae9;
+  --slate-200: #aec3db;
+  --slate-300: #90adcd;
+  --slate-400: #7297be;
+  --slate-500: #5e80a8;
+  --slate-600: #4e6a8c;
+  --slate-700: #3e5571;
+  --slate-800: #2e4157;
+  --slate-850: #27384b;
+  --slate-900: #202e3f;
+  --slate-950: #121c28;
+  --chart-1: #037de4;
+  --chart-2: #a79204;
+  --chart-3: #05a2ac;
+  --chart-4: #f16a00;
+  --chart-5: #ff4ba0;
+  --chart-6: #b46cff;
+  --chart-7: #01a84d;
+  --chart-other: var(--slate-400);
+  --chart-grid: var(--blue-50);
+  --chart-target: var(--navy);
+  --shadow-card: 0 1px 2px #002d590a, 0 4px 8px #002d590f, 0 8px 16px #002d590a;
+  --shadow-card-lift: 0 4px 8px #002d5914, 0 12px 24px #002d591f, 0 24px 48px #002d5914;
+  --shadow-card-hover: 0 12px 28px #002d591a;
+  --shadow-overlay: 0 8px 16px #002d5914, 0 24px 56px #002d592e;
+  --shadow-focus: 0 0 0 4px #037de433;
+  --shadow-input-focus: 0 0 0 3px #037de41f;
+}
+
+[data-theme="dark"], .dark {
+  --navy: var(--blue-900);
+  --surface-subtle: var(--blue-850);
+  --surface-tint: var(--blue-800);
+  --primary: var(--blue-500);
+  --primary-deep: var(--blue-600);
+  --secondary: var(--yellow);
+  --secondary-deep: var(--yellow-deep);
+  --action: var(--blue-600);
+  --action-hover: var(--blue-700);
+  --action-shadow: var(--blue-800);
+  --background: var(--blue-900);
+  --surface: var(--blue-850);
+  --foreground: var(--blue-25);
+  --text-secondary: var(--blue-100);
+  --text-muted: var(--blue-100);
+  --link: var(--blue-100);
+  --border: var(--blue-800);
+  --border-control: var(--slate-400);
+  --focus: var(--blue-500);
+  --info: var(--blue-600);
+  --info-bg: var(--blue-850);
+  --info-text: var(--blue-100);
+  --success-bg: var(--blue-850);
+  --success-text: #96e7a7;
+  --warning-bg: var(--blue-850);
+  --warning-text: #ffc581;
+  --error-bg: var(--blue-850);
+  --error-text: #ffbfb7;
+  --chart-1: #2793ff;
+  --chart-2: #a79204;
+  --chart-3: #02a6af;
+  --chart-4: #e76602;
+  --chart-5: #ff2097;
+  --chart-6: #b163ff;
+  --chart-7: #04af51;
+  --chart-other: var(--slate-400);
+  --chart-grid: var(--blue-800);
+  --chart-target: var(--blue-25);
+}
+
 :root {
-  /* Core Brand Colors */
-  --tide: #037DE4;
-  --surf: #1E96FC;
-  --abyss: #012A4D;
-  --cloud: #FFFFFF;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --radius-sm: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+  --control-sm: 36px;
+  --control-md: 44px;
+  --control-lg: 56px;
+  --icon-sm: 16px;
+  --icon-md: 24px;
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+  --duration-celebrate: 800ms;
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1440px;
+  --z-sticky: 100;
+  --z-dropdown: 1000;
+  --z-overlay: 1100;
+  --z-dialog: 1200;
+  --z-toast: 1300;
+  --z-tooltip: 1400;
+  --font-display: var(--font-lexend, Lexend), system-ui, sans-serif;
+  --font-body: var(--font-lexend, Lexend), system-ui, sans-serif;
+  --text-display-hero: 700 64px/1.1 var(--font-display); /* One per page: marketing heroes and video title cards. */
+  --text-display-xl: 700 48px/1.15 var(--font-display); /* Closing CTAs and big moments. */
+  --text-heading-1: 700 36px/1.2 var(--font-display); /* Page and section titles. */
+  --text-heading-2: 700 28px/1.25 var(--font-display); /* Sub-sections, dashboard panel titles. */
+  --text-heading-3: 600 22px/1.3 var(--font-display); /* Card titles, modal titles. */
+  --text-kid-prompt: 600 40px/1.15 var(--font-display); /* Child-facing practice words and prompts only. Lexend’s single-storey a and g match how children learn to write them; slightly open spacing. */
+  --text-display-hero-m: 700 40px/1.15 var(--font-display); /* display-hero under 768px. */
+  --text-display-xl-m: 700 34px/1.2 var(--font-display); /* display-xl under 768px. */
+  --text-heading-1-m: 700 28px/1.25 var(--font-display); /* heading-1 under 768px. */
+  --text-heading-2-m: 700 24px/1.3 var(--font-display); /* heading-2 under 768px. */
+  --text-heading-3-m: 600 20px/1.35 var(--font-display); /* heading-3 under 768px. */
+  --text-kid-prompt-m: 600 32px/1.2 var(--font-display); /* kid-prompt under 768px. */
+  --text-subheading: 600 18px/1.45 var(--font-body); /* Heading-4 level: list group titles, card subtitles. 17px on mobile. */
+  --text-body-lead: 400 18px/1.6 var(--font-body); /* Intro paragraphs. 17px on mobile. */
+  --text-body: 400 16px/1.6 var(--font-body); /* Default paragraph and UI copy, desktop and mobile. Measure 60–70 characters (Lexend runs wide). */
+  --text-body-sm: 400 14px/1.45 var(--font-body); /* Table cells, card copy, dense clinician UI. */
+  --text-caption: 500 12px/1.4 var(--font-body); /* Fine print, timestamps, trust badges. Never smaller than 12px. */
+  --text-label: 600 14px/1.4 var(--font-body); /* Form labels, tab labels, nav items. */
+  --text-overline: 600 12px/1.35 var(--font-body); /* Eyebrows above headings, table headers. Uppercase via CSS. */
+  --text-button: 600 14px/1.2 var(--font-body); /* Button labels, uppercase. */
+  --text-button-lg: 600 16px/1.2 var(--font-body); /* Large buttons and child-facing buttons. */
+}
 
-  /* Secondary Accent Colors */
-  --sunshine: #FCDE1E;
-  --coral: #FC1E96;
-  --sunset: #FC6F1E;
-  --jellyfish: #C11EFC;
-  --kelp: #96FC1E;
-  --seafoam: #1EFCC8;
-
-  /* Blue Scale (Ocean Journey) */
-  --breeze: #F7FBFF;
-  --mist: #E4F2FE;
-  --bubble: #AFD9FD;
-  --lagoon: #013F74;
-  --depths: #01355E;
-  --trench: #001C33;
-
-  /* Pressed/Deep State Colors */
-  --tide-deep: #0369c1;
-  --sunshine-deep: #d4a90e;
-  --mist-deep: #c9dff5;
-
-  /* UI Feedback Colors */
-  --info: #3B82F6;
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
-
-  /* Status Badge Backgrounds (10% opacity variants) */
-  --info-bg: #EFF6FF;
-  --success-bg: #F0FDF4;
-  --warning-bg: #FFFBEB;
-  --error-bg: #FEF2F2;
-
-  /* Status Badge Text (darker for contrast) */
-  --info-text: #1D4ED8;
-  --success-text: #15803D;
-  --warning-text: #B45309;
-  --error-text: #B91C1C;
-
-  /* Semantic Aliases */
-  --primary: var(--tide);
-  --primary-deep: var(--tide-deep);
-  --secondary: var(--sunshine);
-  --secondary-deep: var(--sunshine-deep);
-  --background: var(--cloud);
-  --foreground: var(--abyss);
-  --text-secondary: var(--lagoon);
-  --text-muted: #5a7fa0;
-  --border: var(--mist);
+/*
+ * Legacy ocean names (retired in v6). They point at the new tokens so older
+ * code keeps rendering in the new palette. Do not use them in new code.
+ */
+:root {
+  --tide: var(--blue-500);
+  --surf: var(--blue-400);
+  --tide-deep: var(--blue-600);
+  --tide-dark: var(--blue-700);
+  --tide-shadow: var(--action-shadow);
+  --abyss: var(--navy);
+  --cloud: var(--white);
+  --lagoon: var(--blue-800);
+  --depths: var(--blue-850);
+  --trench: var(--blue-950);
+  --breeze: var(--surface-subtle);
+  --mist: var(--surface-tint);
+  --bubble: var(--blue-100);
+  --mist-deep: var(--slate-100);
+  --sunshine: var(--yellow);
+  --sunshine-deep: var(--yellow-deep);
+  --coral: var(--pink);
+  --seafoam: var(--cyan);
+  --sunset: var(--orange);
+  --kelp: var(--green);
+  --jellyfish: var(--violet);
 }
 
 /* ─── Tailwind v4 Theme Integration ────────────────────────── */
-/* Apps should include this in their @theme inline block */
 
 @theme inline {
-  /* Core Brand */
-  --color-tide: var(--tide);
-  --color-surf: var(--surf);
-  --color-abyss: var(--abyss);
-  --color-cloud: var(--cloud);
-
-  /* Secondary Accents */
-  --color-sunshine: var(--sunshine);
-  --color-coral: var(--coral);
-  --color-sunset: var(--sunset);
-  --color-jellyfish: var(--jellyfish);
-  --color-kelp: var(--kelp);
-  --color-seafoam: var(--seafoam);
-
-  /* Blue Scale */
-  --color-breeze: var(--breeze);
-  --color-mist: var(--mist);
-  --color-bubble: var(--bubble);
-  --color-lagoon: var(--lagoon);
-  --color-depths: var(--depths);
-  --color-trench: var(--trench);
-
-  /* Deep/Pressed States */
-  --color-tide-deep: var(--tide-deep);
-  --color-sunshine-deep: var(--sunshine-deep);
-  --color-mist-deep: var(--mist-deep);
-
-  /* UI Feedback */
-  --color-info: var(--info);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-
-  /* Status Badge Backgrounds */
-  --color-info-bg: var(--info-bg);
-  --color-success-bg: var(--success-bg);
-  --color-warning-bg: var(--warning-bg);
-  --color-error-bg: var(--error-bg);
-
-  /* Status Badge Text */
-  --color-info-text: var(--info-text);
-  --color-success-text: var(--success-text);
-  --color-warning-text: var(--warning-text);
-  --color-error-text: var(--error-text);
-
-  /* Semantic */
+  --color-white: var(--white);
+  --color-navy: var(--navy);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-tint: var(--surface-tint);
+  --color-pink: var(--pink);
+  --color-yellow: var(--yellow);
+  --color-yellow-deep: var(--yellow-deep);
+  --color-yellow-hover: var(--yellow-hover);
+  --color-cyan: var(--cyan);
+  --color-orange: var(--orange);
+  --color-green: var(--green);
+  --color-violet: var(--violet);
+  --color-link-current: var(--link-current);
+  --color-link-pupil: var(--link-pupil);
   --color-primary: var(--primary);
   --color-primary-deep: var(--primary-deep);
   --color-secondary: var(--secondary);
   --color-secondary-deep: var(--secondary-deep);
+  --color-action: var(--action);
+  --color-action-hover: var(--action-hover);
+  --color-action-shadow: var(--action-shadow);
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-link: var(--link);
+  --color-border: var(--border);
+  --color-border-control: var(--border-control);
+  --color-focus: var(--focus);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+  --color-info-text: var(--info-text);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-success-text: var(--success-text);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-text: var(--warning-text);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
+  --color-error-text: var(--error-text);
+  --color-blue-25: var(--blue-25);
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-300: var(--blue-300);
+  --color-blue-400: var(--blue-400);
+  --color-blue-500: var(--blue-500);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+  --color-blue-800: var(--blue-800);
+  --color-blue-850: var(--blue-850);
+  --color-blue-900: var(--blue-900);
+  --color-blue-950: var(--blue-950);
+  --color-slate-50: var(--slate-50);
+  --color-slate-100: var(--slate-100);
+  --color-slate-200: var(--slate-200);
+  --color-slate-300: var(--slate-300);
+  --color-slate-400: var(--slate-400);
+  --color-slate-500: var(--slate-500);
+  --color-slate-600: var(--slate-600);
+  --color-slate-700: var(--slate-700);
+  --color-slate-800: var(--slate-800);
+  --color-slate-850: var(--slate-850);
+  --color-slate-900: var(--slate-900);
+  --color-slate-950: var(--slate-950);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+  --color-chart-other: var(--chart-other);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-target: var(--chart-target);
+  --color-shadow-card: var(--shadow-card);
 
-  /* Legacy aliases (for gradual migration) */
-  --color-brand-blue: var(--surf);
-  --color-brand-yellow: var(--sunshine);
-  --color-brand-navy: var(--abyss);
-  --color-brand-light: var(--mist);
-  --color-bg-card: var(--cloud);
-  --color-border: var(--mist);
+  /* Legacy ocean names (deprecated) */
+  --color-tide: var(--tide);
+  --color-surf: var(--surf);
+  --color-tide-deep: var(--tide-deep);
+  --color-tide-dark: var(--tide-dark);
+  --color-tide-shadow: var(--tide-shadow);
+  --color-abyss: var(--abyss);
+  --color-cloud: var(--cloud);
+  --color-lagoon: var(--lagoon);
+  --color-depths: var(--depths);
+  --color-trench: var(--trench);
+  --color-breeze: var(--breeze);
+  --color-mist: var(--mist);
+  --color-bubble: var(--bubble);
+  --color-mist-deep: var(--mist-deep);
+  --color-sunshine: var(--sunshine);
+  --color-sunshine-deep: var(--sunshine-deep);
+  --color-coral: var(--coral);
+  --color-seafoam: var(--seafoam);
+  --color-sunset: var(--sunset);
+  --color-kelp: var(--kelp);
+  --color-jellyfish: var(--jellyfish);
+  --color-brand-blue: var(--blue-400);
+  --color-brand-yellow: var(--yellow);
+  --color-brand-navy: var(--navy);
+  --color-brand-light: var(--surface-tint);
+  --color-bg-card: var(--surface);
 
-  /* Typography */
-  --font-sans: var(--font-poppins);
-  --font-display: var(--font-nunito);
-  --font-handwrite: var(--font-caveat);
+  /* Typography: Lexend only (Nunito lives inside the logo artwork) */
+  --font-sans: var(--font-lexend, Lexend), system-ui, sans-serif;
+  --font-display: var(--font-lexend, Lexend), system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
 }
 
 /* ─── Base Typography ──────────────────────────────────────── */
@@ -145,37 +366,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-poppins, system-ui, sans-serif);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3 {
-  font-family: var(--font-nunito, var(--font-poppins, sans-serif));
-  color: var(--abyss);
+  font-family: var(--font-display);
+  color: var(--foreground);
+  text-wrap: balance;
 }
 
 /* ─── Focus States (WCAG 2.4.7) ────────────────────────────── */
 
 *:focus-visible {
-  outline: 2px solid var(--tide);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
 button:focus-visible,
 a:focus-visible,
 [role="button"]:focus-visible {
-  outline: 2px solid var(--tide);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(3, 125, 228, 0.2);
+  box-shadow: var(--shadow-focus);
 }
 
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: none;
-  border-color: var(--tide);
-  box-shadow: 0 0 0 3px rgba(3, 125, 228, 0.12);
+  border-color: var(--focus);
+  box-shadow: var(--shadow-input-focus);
 }
 
 /* ─── Screen Reader Utilities ──────────────────────────────── */
@@ -207,173 +429,41 @@ select:focus-visible {
 /* ─── Card Depth Effects ───────────────────────────────────── */
 
 .card-depth {
-  box-shadow:
-    0 1px 2px rgba(1, 42, 77, 0.04),
-    0 4px 8px rgba(1, 42, 77, 0.06),
-    0 8px 16px rgba(1, 42, 77, 0.04);
+  box-shadow: var(--shadow-card);
 }
 
 .card-depth-hover:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 4px 8px rgba(1, 42, 77, 0.08),
-    0 12px 24px rgba(1, 42, 77, 0.12),
-    0 24px 48px rgba(1, 42, 77, 0.08);
+  box-shadow: var(--shadow-card-lift);
 }
 
-/* ─── Button 3D Press Effect ───────────────────────────────── */
+/* ─── Buttons ──────────────────────────────────────────────── */
+/* Chunky 4px bottom edge that compresses 2px when pressed. */
 
-.btn-3d {
-  transition: all 0.1s ease;
-}
+.btn-primary,.btn-accent,.btn-secondary,.btn-tertiary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:var(--control-md);box-sizing:border-box;padding:0 var(--space-8);border-radius:var(--radius-2xl);font-family:var(--font-body);font-size:14px;line-height:1.2;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background-color .15s,border-color .15s,transform .15s;white-space:nowrap}
+.btn-primary{color:#fff;background:var(--action);border:none;border-bottom:4px solid var(--action-shadow)}
+.btn-primary:hover{background:var(--action-hover)}
+.btn-accent{color:var(--navy);background:var(--yellow);border:none;border-bottom:4px solid var(--yellow-deep)}
+.btn-accent:hover{background:var(--yellow-hover)}
+.btn-secondary{color:var(--blue-600);background:var(--surface);border:2px solid var(--surface-tint);border-bottom-width:4px}
+.btn-secondary:hover{background:var(--surface-subtle);border-color:var(--blue-100)}
+.btn-ghost{color:var(--blue-600);background:transparent;border:2px solid var(--surface-tint);border-bottom-width:4px}
+.btn-ghost:hover{background:var(--surface-subtle);border-color:var(--blue-100)}
+.btn-tertiary{color:var(--link);background:transparent;border:none;padding:0 var(--space-3);text-transform:none;letter-spacing:0;font-size:15px;font-weight:600}
+.btn-tertiary:hover{background:var(--surface-tint)}
+.btn-primary:active,.btn-accent:active,.btn-secondary:active,.btn-ghost:active{border-bottom-width:2px;transform:translateY(2px)}
+.btn-primary:focus-visible,.btn-accent:focus-visible,.btn-secondary:focus-visible,.btn-ghost:focus-visible,.btn-tertiary:focus-visible{outline:2px solid var(--focus);outline-offset:2px;box-shadow:var(--shadow-focus)}
+.btn-sm{min-height:var(--control-sm);padding:0 var(--space-5);border-radius:var(--radius-xl);font-size:12px;border-bottom-width:3px}
+.btn-lg{min-height:var(--control-lg);padding:0 var(--space-10);font-size:16px;border-bottom-width:5px}
+.btn-full{width:100%}
+.btn-icon{padding:0;width:var(--control-md)}
+.btn-icon.btn-sm{width:var(--control-sm)}
+.btn-primary[disabled],.btn-accent[disabled],.btn-secondary[disabled],.btn-ghost[disabled],.btn-tertiary[disabled],[aria-disabled="true"].btn-primary{opacity:.45;cursor:not-allowed;transform:none}
+.btn-primary .al-spinner,.btn-accent .al-spinner{width:16px;height:16px;border-width:2px;border-color:currentColor;border-right-color:transparent}
 
-.btn-3d:active {
-  transform: translateY(2px);
-  border-bottom-width: 0;
-}
-
-/* ─── CSS-Only Button Classes ──────────────────────────────── */
-/* For use in non-React contexts (emails, static HTML) */
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: white;
-  background: var(--tide);
-  border: none;
-  border-bottom: 4px solid var(--tide-deep);
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-decoration: none;
-}
-
-.btn-primary:hover {
-  background: var(--surf);
-  border-bottom-color: var(--tide);
-}
-
-.btn-primary:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
-  padding-bottom: calc(0.75rem + 2px);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--tide);
-  background: white;
-  border: 2px solid var(--mist);
-  border-bottom: 4px solid var(--mist);
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-decoration: none;
-}
-
-.btn-secondary:hover {
-  background: var(--breeze);
-  border-color: var(--bubble);
-  border-bottom-color: var(--bubble);
-}
-
-.btn-secondary:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
-  padding-bottom: calc(0.75rem + 2px);
-}
-
-.btn-accent {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--abyss);
-  background: var(--sunshine);
-  border: none;
-  border-bottom: 4px solid var(--sunshine-deep);
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-decoration: none;
-}
-
-.btn-accent:hover {
-  filter: brightness(1.05);
-}
-
-.btn-accent:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
-  padding-bottom: calc(0.75rem + 2px);
-}
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--tide);
-  background: transparent;
-  border: 2px solid var(--mist);
-  border-bottom: 4px solid var(--mist);
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-decoration: none;
-}
-
-.btn-ghost:hover {
-  background: var(--breeze);
-  border-color: var(--bubble);
-  border-bottom-color: var(--bubble);
-}
-
-.btn-ghost:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
-  padding-bottom: calc(0.75rem + 2px);
-}
-
-/* Button sizes */
-.btn-sm {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.75rem;
-  border-bottom-width: 3px;
-  border-radius: 0.75rem;
-}
-
-.btn-lg {
-  padding: 1rem 2.5rem;
-  font-size: 1rem;
-  border-bottom-width: 5px;
-  border-radius: 1rem;
-}
+/* Legacy helper */
+.btn-3d { transition: all 0.1s ease; }
+.btn-3d:active { transform: translateY(2px); border-bottom-width: 0; }
 
 /* ─── Form Inputs ──────────────────────────────────────────── */
 
@@ -381,17 +471,17 @@ select:focus-visible {
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  color: var(--abyss);
-  background: white;
-  border: 2px solid var(--mist);
+  color: var(--foreground);
+  background: var(--surface);
+  border: 2px solid var(--border-control);
   border-radius: 0.75rem;
   transition: all 0.15s ease;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: var(--tide);
-  box-shadow: 0 0 0 3px rgba(3, 125, 228, 0.12);
+  border-color: var(--focus);
+  box-shadow: var(--shadow-input-focus);
 }
 
 .form-input::placeholder {
@@ -613,15 +703,3 @@ select:focus-visible {
 .animate-wiggle { animation: wiggle 300ms ease-in-out; }
 .animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
 
-/* Dark mode support */
-.dark {
-  --background: #012A4D;
-  --foreground: #F7FBFF;
-  --mist: #013F74;
-  --breeze: #01355E;
-}
-
-.dark body {
-  background: var(--background);
-  color: var(--foreground);
-}

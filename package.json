@@ -1,6 +1,6 @@
 {
   "name": "@articulink/design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -28,6 +28,19 @@
     "./utils": {
       "types": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    },
+    "./src/*": "./src/*",
+    "./components.css": {
+      "style": "./src/styles/components.css",
+      "default": "./src/styles/components.css"
+    },
+    "./type.css": {
+      "style": "./src/styles/type.css",
+      "default": "./src/styles/type.css"
+    },
+    "./fonts.css": {
+      "style": "./src/tokens/fonts.css",
+      "default": "./src/tokens/fonts.css"
     }
   },
   "files": [
