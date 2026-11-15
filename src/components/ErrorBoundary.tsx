@@ -137,7 +137,7 @@ export const DefaultErrorFallback = forwardRef<HTMLDivElement, DefaultErrorFallb
           <div className="mb-4 p-3 bg-white rounded-lg max-w-lg w-full">
             <p className="text-sm text-error font-mono break-all">{error.message}</p>
             {error.stack && (
-              <pre className="mt-2 text-xs text-lagoon overflow-auto max-h-32">
+              <pre className="mt-2 text-xs text-blue-800 overflow-auto max-h-32">
                 {error.stack}
               </pre>
             )}

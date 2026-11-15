@@ -52,17 +52,16 @@ function MyComponent() {
 All brand colors are available as Tailwind utilities:
 
 ```tsx
-<div className="bg-tide text-white">Primary blue</div>
-<div className="bg-sunshine text-abyss">Accent yellow</div>
-<div className="bg-breeze border-mist">Light background</div>
+<div className="bg-primary text-white">Brand blue</div>
+<div className="bg-yellow text-navy">Accent yellow</div>
+<div className="bg-surface-subtle border-border">Light background</div>
 ```
 
-## Design Tokens (v11, October 2026)
+## Design Tokens (v14, November 2026)
 
 Tokens mirror the **Articulink Brand** design system. The ocean names
-(tide, abyss, mist, sunshine…) were retired in v6; they still resolve, as
-aliases of the new tokens, so older code renders in the new palette. Don't use
-them in new code.
+(tide, abyss, mist, sunshine…), retired in v6, were removed in 0.4.0; the
+table in the changelog maps each to its token.
 
 ### Colour
 

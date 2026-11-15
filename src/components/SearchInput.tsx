@@ -128,7 +128,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     return (
       <div className={`relative ${className}`}>
         {/* Search icon */}
-        <div className={`absolute ${styles.icon} top-1/2 -translate-y-1/2 text-lagoon pointer-events-none`}>
+        <div className={`absolute ${styles.icon} top-1/2 -translate-y-1/2 text-blue-800 pointer-events-none`}>
           {loading ? (
             <svg className="animate-spin" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -153,12 +153,12 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           className={`
             w-full
             ${styles.input}
-            bg-white text-abyss
-            border-2 border-mist rounded-xl
-            placeholder:text-lagoon/50
+            bg-white text-navy
+            border-2 border-surface-tint rounded-xl
+            placeholder:text-blue-800/50
             transition-all duration-150
-            focus:outline-none focus:border-tide focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
-            disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-breeze
+            focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
+            disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-surface-subtle
           `}
           {...props}
         />
@@ -170,7 +170,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             onClick={handleClear}
             className={`
               absolute ${styles.clear} top-1/2 -translate-y-1/2
-              text-lagoon hover:text-abyss
+              text-blue-800 hover:text-navy
               transition-colors
               focus:outline-none
             `}

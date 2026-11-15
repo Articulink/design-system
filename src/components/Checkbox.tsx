@@ -89,13 +89,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               rounded border-2 transition-all duration-150
               flex items-center justify-center
               ${isChecked || indeterminate
-                ? 'bg-tide border-tide'
-                : 'bg-white border-mist'
+                ? 'bg-blue-500 border-blue-500'
+                : 'bg-white border-surface-tint'
               }
               ${error ? 'border-error' : ''}
               ${disabled
                 ? 'opacity-50 cursor-not-allowed'
-                : 'cursor-pointer hover:border-tide peer-focus-visible:ring-2 peer-focus-visible:ring-tide peer-focus-visible:ring-offset-2'
+                : 'cursor-pointer hover:border-blue-500 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2'
               }
             `}
             onClick={() => {
@@ -136,7 +136,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               <label
                 htmlFor={id}
                 className={`
-                  block font-medium text-abyss ${styles.text}
+                  block font-medium text-navy ${styles.text}
                   ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                 `}
               >
@@ -144,7 +144,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               </label>
             )}
             {description && (
-              <p className={`text-lagoon ${styles.desc} mt-0.5`}>{description}</p>
+              <p className={`text-blue-800 ${styles.desc} mt-0.5`}>{description}</p>
             )}
             {error && <p className="text-error text-sm mt-1">{error}</p>}
           </div>
@@ -200,7 +200,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     return (
       <div ref={ref} className={className} role="group" aria-label={label} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-2">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-2">{label}</label>
         )}
         <CheckboxGroupContext.Provider value={{ value, onChange: handleChange }}>
           <div

@@ -146,7 +146,7 @@ export const TreeItem = forwardRef<HTMLDivElement, TreeItemProps>(
           className={`
             flex items-center gap-2 px-2 py-1.5 rounded-lg cursor-pointer
             transition-colors
-            ${isSelected ? 'bg-info-bg text-tide' : 'text-abyss hover:bg-mist'}
+            ${isSelected ? 'bg-info-bg text-blue-500' : 'text-navy hover:bg-surface-tint'}
             ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
             ${className}
           `}
@@ -166,7 +166,7 @@ export const TreeItem = forwardRef<HTMLDivElement, TreeItemProps>(
               tabIndex={-1}
             >
               <svg
-                className={`w-3 h-3 text-lagoon transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+                className={`w-3 h-3 text-blue-800 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -188,7 +188,7 @@ export const TreeItem = forwardRef<HTMLDivElement, TreeItemProps>(
 
         {/* Children */}
         {hasChildren && isExpanded && (
-          <div className="pl-4 border-l border-mist ml-2 mt-1" role="group">
+          <div className="pl-4 border-l border-surface-tint ml-2 mt-1" role="group">
             {children}
           </div>
         )}

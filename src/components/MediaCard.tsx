@@ -92,9 +92,9 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
         className={`
           group relative
           bg-white rounded-xl overflow-hidden
-          border border-mist
+          border border-surface-tint
           transition-all duration-200
-          hover:shadow-md hover:border-tide/30
+          hover:shadow-md hover:border-blue-500/30
           ${onClick ? 'cursor-pointer' : ''}
           ${statusStyles[status]}
           ${className}
@@ -106,9 +106,9 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
         {...props}
       >
         {/* Thumbnail */}
-        <div className="relative aspect-video bg-mist">
+        <div className="relative aspect-video bg-surface-tint">
           {showPlaceholder ? (
-            <div className="absolute inset-0 flex items-center justify-center text-lagoon/50">
+            <div className="absolute inset-0 flex items-center justify-center text-blue-800/50">
               {typeIcons[type]}
             </div>
           ) : (
@@ -122,8 +122,8 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 
           {/* Play overlay for video/audio */}
           {(type === 'video' || type === 'audio') && onClick && (
-            <div className="absolute inset-0 flex items-center justify-center bg-abyss/0 group-hover:bg-abyss/30 transition-colors">
-              <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-tide opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+            <div className="absolute inset-0 flex items-center justify-center bg-navy/0 group-hover:bg-navy/30 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
                 {typeIcons.video}
               </div>
             </div>
@@ -131,7 +131,7 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 
           {/* Duration badge */}
           {duration !== undefined && (
-            <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-abyss/80 text-white text-xs font-medium rounded">
+            <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-navy/80 text-white text-xs font-medium rounded">
               {formatDuration(duration)}
             </div>
           )}
@@ -145,7 +145,7 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 
           {/* Processing indicator */}
           {status === 'processing' && (
-            <div className="absolute inset-0 flex items-center justify-center bg-abyss/50">
+            <div className="absolute inset-0 flex items-center justify-center bg-navy/50">
               <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin" />
             </div>
           )}
@@ -164,11 +164,11 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
 
         {/* Content */}
         <div className="p-3">
-          <h4 className="text-sm font-medium text-abyss truncate">
+          <h4 className="text-sm font-medium text-navy truncate">
             {title}
           </h4>
           {metadata && (
-            <p className="text-xs text-lagoon mt-0.5 truncate">
+            <p className="text-xs text-blue-800 mt-0.5 truncate">
               {metadata}
             </p>
           )}
@@ -184,7 +184,7 @@ export const MediaCard = forwardRef<HTMLDivElement, MediaCardProps>(
             className="
               absolute top-2 right-2
               w-7 h-7 rounded-full
-              bg-abyss/60 hover:bg-error
+              bg-navy/60 hover:bg-error
               text-white
               flex items-center justify-center
               opacity-0 group-hover:opacity-100

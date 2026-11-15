@@ -31,10 +31,10 @@ const sizeClasses: Record<SpinnerSize, string> = {
 };
 
 const variantClasses: Record<SpinnerVariant, string> = {
-  default: 'border-mist border-t-tide',
-  primary: 'border-tide/30 border-t-tide',
+  default: 'border-surface-tint border-t-blue-500',
+  primary: 'border-blue-500/30 border-t-blue-500',
   light: 'border-white/30 border-t-white',
-  dark: 'border-abyss/30 border-t-abyss',
+  dark: 'border-navy/30 border-t-navy',
 };
 
 export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(

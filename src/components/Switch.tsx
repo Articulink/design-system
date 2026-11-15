@@ -62,8 +62,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             ${styles.track}
             rounded-full
             transition-colors duration-200 ease-in-out
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
-            ${checked ? 'bg-tide' : 'bg-mist'}
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+            ${checked ? 'bg-blue-500' : 'bg-surface-tint'}
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           `}
         >
@@ -97,7 +97,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 id={`${switchId}-label`}
                 htmlFor={switchId}
                 className={`
-                  block text-sm font-medium text-abyss
+                  block text-sm font-medium text-navy
                   ${disabled ? 'opacity-50' : 'cursor-pointer'}
                 `}
               >
@@ -107,7 +107,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             {description && (
               <p
                 id={`${switchId}-description`}
-                className={`text-sm text-lagoon ${disabled ? 'opacity-50' : ''}`}
+                className={`text-sm text-blue-800 ${disabled ? 'opacity-50' : ''}`}
               >
                 {description}
               </p>

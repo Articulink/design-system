@@ -179,7 +179,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-1.5">{label}</label>
         )}
 
         <div ref={containerRef} className="relative">
@@ -193,18 +193,18 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
               w-full flex items-center gap-2 px-4 py-2.5
               bg-white border-2 rounded-xl text-left
               transition-all duration-150
-              ${error ? 'border-error' : isOpen ? 'border-tide' : 'border-mist'}
-              ${disabled ? 'opacity-50 cursor-not-allowed bg-breeze' : 'cursor-pointer hover:border-bubble'}
-              focus:outline-none focus:border-tide focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
+              ${error ? 'border-error' : isOpen ? 'border-blue-500' : 'border-surface-tint'}
+              ${disabled ? 'opacity-50 cursor-not-allowed bg-surface-subtle' : 'cursor-pointer hover:border-blue-100'}
+              focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
             `}
           >
             {selectedOption ? (
-              <span className="flex-1 truncate text-abyss">
+              <span className="flex-1 truncate text-navy">
                 {selectedOption.icon && <span className="mr-2">{selectedOption.icon}</span>}
                 {selectedOption.label}
               </span>
             ) : (
-              <span className="flex-1 text-lagoon/50">{placeholder}</span>
+              <span className="flex-1 text-blue-800/50">{placeholder}</span>
             )}
 
             {/* Clear button */}
@@ -212,9 +212,9 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
               <button
                 type="button"
                 onClick={handleClear}
-                className="p-1 hover:bg-mist rounded transition-colors"
+                className="p-1 hover:bg-surface-tint rounded transition-colors"
               >
-                <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -222,7 +222,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
 
             {/* Chevron */}
             <svg
-              className={`w-5 h-5 text-lagoon transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-blue-800 transition-transform ${isOpen ? 'rotate-180' : ''}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -234,9 +234,9 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
 
           {/* Dropdown */}
           {isOpen && (
-            <div className="absolute z-50 w-full mt-1 bg-white border border-mist rounded-xl shadow-lg overflow-hidden">
+            <div className="absolute z-50 w-full mt-1 bg-white border border-surface-tint rounded-xl shadow-lg overflow-hidden">
               {/* Search input */}
-              <div className="p-2 border-b border-mist">
+              <div className="p-2 border-b border-surface-tint">
                 <input
                   ref={inputRef}
                   type="text"
@@ -244,7 +244,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder={searchPlaceholder}
-                  className="w-full px-3 py-2 bg-mist/50 rounded-lg text-sm text-abyss placeholder:text-lagoon/50 focus:outline-none focus:ring-2 focus:ring-tide/20"
+                  className="w-full px-3 py-2 bg-surface-tint/50 rounded-lg text-sm text-navy placeholder:text-blue-800/50 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   autoFocus
                 />
               </div>
@@ -256,9 +256,9 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                 role="listbox"
               >
                 {loading ? (
-                  <li className="px-4 py-3 text-center text-lagoon">
+                  <li className="px-4 py-3 text-center text-blue-800">
                     <div className="inline-flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-tide border-t-transparent rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
                       Loading...
                     </div>
                   </li>
@@ -271,8 +271,8 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                       className={`
                         px-4 py-2.5 cursor-pointer
                         ${option.disabled ? 'opacity-50 cursor-not-allowed' : ''}
-                        ${index === highlightedIndex ? 'bg-info-bg' : 'hover:bg-mist/50'}
-                        ${option.value === value ? 'text-tide font-medium' : 'text-abyss'}
+                        ${index === highlightedIndex ? 'bg-info-bg' : 'hover:bg-surface-tint/50'}
+                        ${option.value === value ? 'text-blue-500 font-medium' : 'text-navy'}
                       `}
                       onClick={() => !option.disabled && handleSelect(option.value)}
                       onMouseEnter={() => setHighlightedIndex(index)}
@@ -282,11 +282,11 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                         <div className="flex-1 min-w-0">
                           <p className="truncate">{option.label}</p>
                           {option.description && (
-                            <p className="text-xs text-lagoon truncate">{option.description}</p>
+                            <p className="text-xs text-blue-800 truncate">{option.description}</p>
                           )}
                         </div>
                         {option.value === value && (
-                          <svg className="w-5 h-5 text-tide flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                         )}
@@ -295,13 +295,13 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                   ))
                 ) : creatable && query ? (
                   <li
-                    className="px-4 py-2.5 cursor-pointer hover:bg-mist/50 text-tide"
+                    className="px-4 py-2.5 cursor-pointer hover:bg-surface-tint/50 text-blue-500"
                     onClick={handleCreate}
                   >
                     Create "{query}"
                   </li>
                 ) : (
-                  <li className="px-4 py-3 text-center text-lagoon text-sm">
+                  <li className="px-4 py-3 text-center text-blue-800 text-sm">
                     {emptyMessage}
                   </li>
                 )}

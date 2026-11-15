@@ -178,7 +178,7 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-1.5">{label}</label>
         )}
 
         <div ref={containerRef} className="relative">
@@ -188,8 +188,8 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
               flex flex-wrap gap-2 p-2 min-h-[42px]
               bg-white border-2 rounded-xl
               transition-all duration-150
-              ${error || validationError ? 'border-error' : isFocused ? 'border-tide' : 'border-mist'}
-              ${disabled ? 'opacity-50 bg-breeze cursor-not-allowed' : 'cursor-text hover:border-bubble'}
+              ${error || validationError ? 'border-error' : isFocused ? 'border-blue-500' : 'border-surface-tint'}
+              ${disabled ? 'opacity-50 bg-surface-subtle cursor-not-allowed' : 'cursor-text hover:border-blue-100'}
             `}
           >
             {/* Tags */}
@@ -199,7 +199,7 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
               ) : (
                 <span
                   key={`${tag}-${index}`}
-                  className="inline-flex items-center gap-1 px-2 py-1 bg-info-bg text-tide text-sm rounded-lg"
+                  className="inline-flex items-center gap-1 px-2 py-1 bg-info-bg text-blue-500 text-sm rounded-lg"
                 >
                   {tag}
                   {!disabled && (
@@ -209,7 +209,7 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
                         e.stopPropagation();
                         removeTag(index);
                       }}
-                      className="hover:bg-tide/20 rounded p-0.5 transition-colors"
+                      className="hover:bg-blue-500/20 rounded p-0.5 transition-colors"
                     >
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -235,14 +235,14 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
                 onBlur={() => setIsFocused(false)}
                 disabled={disabled}
                 placeholder={value.length === 0 ? placeholder : ''}
-                className="flex-1 min-w-[120px] px-1 py-1 text-abyss placeholder:text-lagoon/50 bg-transparent focus:outline-none"
+                className="flex-1 min-w-[120px] px-1 py-1 text-navy placeholder:text-blue-800/50 bg-transparent focus:outline-none"
               />
             )}
           </div>
 
           {/* Suggestions dropdown */}
           {showSuggestions && filteredSuggestions.length > 0 && inputValue && (
-            <div className="absolute z-50 w-full mt-1 max-h-48 overflow-y-auto bg-white border border-mist rounded-xl shadow-lg py-1">
+            <div className="absolute z-50 w-full mt-1 max-h-48 overflow-y-auto bg-white border border-surface-tint rounded-xl shadow-lg py-1">
               {filteredSuggestions.map((suggestion, index) => (
                 <button
                   key={suggestion}
@@ -251,7 +251,7 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
                   onMouseEnter={() => setHighlightedIndex(index)}
                   className={`
                     w-full px-4 py-2 text-left text-sm
-                    ${index === highlightedIndex ? 'bg-info-bg text-tide' : 'text-abyss hover:bg-mist/50'}
+                    ${index === highlightedIndex ? 'bg-info-bg text-blue-500' : 'text-navy hover:bg-surface-tint/50'}
                   `}
                 >
                   {suggestion}
@@ -268,7 +268,7 @@ export const TagInput = forwardRef<HTMLDivElement, TagInputProps>(
 
         {/* Tag count hint */}
         {maxTags && (
-          <p className="text-lagoon text-xs mt-1">
+          <p className="text-blue-800 text-xs mt-1">
             {value.length} / {maxTags} tags
           </p>
         )}

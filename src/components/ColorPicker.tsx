@@ -130,7 +130,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">
+          <label className="block text-sm font-semibold text-navy mb-1.5">
             {label}
           </label>
         )}
@@ -142,14 +142,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
               flex items-center gap-2 p-2 pr-3
               border-2 rounded-xl bg-white
               transition-all duration-150
-              ${error ? 'border-error' : isOpen ? 'border-tide' : 'border-mist'}
-              ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-bubble'}
+              ${error ? 'border-error' : isOpen ? 'border-blue-500' : 'border-surface-tint'}
+              ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-blue-100'}
             `}
             onClick={() => !disabled && setIsOpen(!isOpen)}
           >
             {/* Color swatch */}
             <div
-              className="w-8 h-8 rounded-lg border border-mist shadow-inner"
+              className="w-8 h-8 rounded-lg border border-surface-tint shadow-inner"
               style={{ backgroundColor: value }}
             />
 
@@ -162,11 +162,11 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
                 onBlur={handleInputBlur}
                 onClick={(e) => e.stopPropagation()}
                 disabled={disabled}
-                className="flex-1 text-sm font-mono text-abyss bg-transparent focus:outline-none uppercase"
+                className="flex-1 text-sm font-mono text-navy bg-transparent focus:outline-none uppercase"
                 maxLength={7}
               />
             ) : (
-              <span className="flex-1 text-sm font-mono text-abyss uppercase">
+              <span className="flex-1 text-sm font-mono text-navy uppercase">
                 {value}
               </span>
             )}
@@ -189,10 +189,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
                 openNativePicker();
               }}
               disabled={disabled}
-              className="p-1 hover:bg-mist rounded transition-colors"
+              className="p-1 hover:bg-surface-tint rounded transition-colors"
             >
               <svg
-                className="w-4 h-4 text-lagoon"
+                className="w-4 h-4 text-blue-800"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -209,7 +209,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
           {/* Preset dropdown */}
           {isOpen && presets.length > 0 && (
-            <div className="absolute z-50 mt-1 left-0 right-0 p-3 bg-white border border-mist rounded-xl shadow-lg">
+            <div className="absolute z-50 mt-1 left-0 right-0 p-3 bg-white border border-surface-tint rounded-xl shadow-lg">
               <div className="grid grid-cols-6 gap-2">
                 {presets.map((color) => (
                   <button
@@ -220,8 +220,8 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
                       w-8 h-8 rounded-lg border-2 transition-all
                       hover:scale-110
                       ${value.toUpperCase() === color.toUpperCase()
-                        ? 'border-abyss ring-2 ring-tide ring-offset-1'
-                        : 'border-transparent hover:border-mist'
+                        ? 'border-navy ring-2 ring-blue-500 ring-offset-1'
+                        : 'border-transparent hover:border-surface-tint'
                       }
                     `}
                     style={{ backgroundColor: color }}

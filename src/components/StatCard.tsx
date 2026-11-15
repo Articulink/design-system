@@ -32,12 +32,12 @@ export interface StatCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const variantStyles: Record<StatCardVariant, { icon: string; accent: string }> = {
   default: {
-    icon: 'bg-mist text-lagoon',
-    accent: 'text-abyss',
+    icon: 'bg-surface-tint text-blue-800',
+    accent: 'text-navy',
   },
   primary: {
-    icon: 'bg-info-bg text-tide',
-    accent: 'text-tide',
+    icon: 'bg-info-bg text-blue-500',
+    accent: 'text-blue-500',
   },
   success: {
     icon: 'bg-success-bg text-success',
@@ -56,7 +56,7 @@ const variantStyles: Record<StatCardVariant, { icon: string; accent: string }> =
 const trendColors = {
   up: 'text-success',
   down: 'text-error',
-  neutral: 'text-lagoon',
+  neutral: 'text-blue-800',
 };
 
 export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
@@ -79,7 +79,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
       <div
         ref={ref}
         className={`
-          bg-white rounded-xl border border-mist p-5
+          bg-white rounded-xl border border-surface-tint p-5
           transition-shadow duration-200
           hover:shadow-md
           ${className}
@@ -88,12 +88,12 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
       >
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-lagoon truncate">
+            <p className="text-sm font-medium text-blue-800 truncate">
               {label}
             </p>
 
             {loading ? (
-              <div className="mt-2 h-8 w-24 bg-mist rounded animate-pulse" />
+              <div className="mt-2 h-8 w-24 bg-surface-tint rounded animate-pulse" />
             ) : (
               <p className={`mt-1 text-2xl font-bold ${styles.accent} truncate`}>
                 {typeof value === 'number' ? value.toLocaleString() : value}
@@ -122,7 +122,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
                   {trend.value}%
                 </span>
                 {trend.label && (
-                  <span className="text-lagoon font-normal">{trend.label}</span>
+                  <span className="text-blue-800 font-normal">{trend.label}</span>
                 )}
               </div>
             )}

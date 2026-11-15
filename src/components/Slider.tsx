@@ -188,9 +188,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
         {/* Label and value display */}
         {(label || showValue) && (
           <div className="flex items-center justify-between mb-2">
-            {label && <label className={`font-medium text-abyss ${styles.label}`}>{label}</label>}
+            {label && <label className={`font-medium text-navy ${styles.label}`}>{label}</label>}
             {showValue && (
-              <span className={`text-lagoon ${styles.label}`}>
+              <span className={`text-blue-800 ${styles.label}`}>
                 {isRange
                   ? `${formatValue(startValue)} - ${formatValue(endValue)}`
                   : formatValue(endValue)}
@@ -203,7 +203,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
         <div
           ref={trackRef}
           className={`
-            relative w-full bg-mist rounded-full
+            relative w-full bg-surface-tint rounded-full
             ${styles.track}
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           `}
@@ -211,7 +211,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
         >
           {/* Filled track */}
           <div
-            className="absolute h-full bg-tide rounded-full"
+            className="absolute h-full bg-blue-500 rounded-full"
             style={{
               left: isRange ? `${getPercent(startValue)}%` : '0%',
               width: isRange
@@ -232,11 +232,11 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
               className={`
                 absolute top-1/2 -translate-y-1/2 -translate-x-1/2
                 ${styles.thumb}
-                bg-white border-2 border-tide rounded-full shadow
+                bg-white border-2 border-blue-500 rounded-full shadow
                 ${disabled ? 'cursor-not-allowed' : 'cursor-grab active:cursor-grabbing'}
-                focus:outline-none focus:ring-2 focus:ring-tide focus:ring-offset-2
+                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                 transition-shadow
-                ${isDragging === 'start' ? 'ring-2 ring-tide ring-offset-2' : ''}
+                ${isDragging === 'start' ? 'ring-2 ring-blue-500 ring-offset-2' : ''}
               `}
               style={{ left: `${getPercent(startValue)}%` }}
               onMouseDown={handleMouseDown('start')}
@@ -255,11 +255,11 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
             className={`
               absolute top-1/2 -translate-y-1/2 -translate-x-1/2
               ${styles.thumb}
-              bg-white border-2 border-tide rounded-full shadow
+              bg-white border-2 border-blue-500 rounded-full shadow
               ${disabled ? 'cursor-not-allowed' : 'cursor-grab active:cursor-grabbing'}
-              focus:outline-none focus:ring-2 focus:ring-tide focus:ring-offset-2
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
               transition-shadow
-              ${isDragging === 'end' ? 'ring-2 ring-tide ring-offset-2' : ''}
+              ${isDragging === 'end' ? 'ring-2 ring-blue-500 ring-offset-2' : ''}
             `}
             style={{ left: `${getPercent(endValue)}%` }}
             onMouseDown={handleMouseDown('end')}
@@ -273,7 +273,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
             {ticks.map((tick, i) => (
               <div
                 key={i}
-                className="absolute text-xs text-lagoon -translate-x-1/2"
+                className="absolute text-xs text-blue-800 -translate-x-1/2"
                 style={{ left: `${getPercent(tick)}%` }}
               >
                 {formatValue(tick)}

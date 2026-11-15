@@ -38,12 +38,12 @@ const sizeClasses: Record<ToggleSize, string> = {
 
 const variantClasses: Record<ToggleVariant, { base: string; pressed: string }> = {
   default: {
-    base: 'hover:bg-mist',
-    pressed: 'bg-mist text-tide',
+    base: 'hover:bg-surface-tint',
+    pressed: 'bg-surface-tint text-blue-500',
   },
   outline: {
-    base: 'border border-mist hover:bg-mist hover:border-bubble',
-    pressed: 'bg-info-bg border-tide text-tide',
+    base: 'border border-surface-tint hover:bg-surface-tint hover:border-blue-100',
+    pressed: 'bg-info-bg border-blue-500 text-blue-500',
   },
 };
 
@@ -88,7 +88,7 @@ export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>(
         className={`
           inline-flex items-center justify-center rounded-lg
           font-medium transition-colors
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
           ${sizeClasses[size]}
           ${pressed ? styles.pressed : styles.base}
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
@@ -221,7 +221,7 @@ export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProp
         className={`
           inline-flex items-center justify-center rounded-lg
           font-medium transition-colors
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
           ${sizeClasses[size]}
           ${isPressed ? styles.pressed : styles.base}
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}

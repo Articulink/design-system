@@ -47,10 +47,10 @@ const variantStyles: Record<CalloutVariant, { bg: string; border: string; icon: 
     title: 'text-error-text',
   },
   tip: {
-    bg: 'bg-breeze',
-    border: 'border-tide',
-    icon: 'text-tide',
-    title: 'text-tide',
+    bg: 'bg-surface-subtle',
+    border: 'border-blue-500',
+    icon: 'text-blue-500',
+    title: 'text-blue-500',
   },
 };
 
@@ -105,7 +105,7 @@ export const Callout = forwardRef<HTMLDivElement, CalloutProps>(
           {title && (
             <p className={`font-semibold mb-1 ${styles.title}`}>{title}</p>
           )}
-          <div className="text-sm text-abyss">{children}</div>
+          <div className="text-sm text-navy">{children}</div>
         </div>
       </div>
     );

@@ -145,7 +145,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
               aria-label="Previous slide"
             >
               <svg
-                className="w-5 h-5 text-abyss"
+                className="w-5 h-5 text-navy"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -169,7 +169,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
               aria-label="Next slide"
             >
               <svg
-                className="w-5 h-5 text-abyss"
+                className="w-5 h-5 text-navy"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

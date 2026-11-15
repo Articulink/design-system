@@ -90,9 +90,9 @@ export const ImageGallery = forwardRef<HTMLDivElement, ImageGalleryProps>(
               type="button"
               onClick={() => openLightbox(index)}
               className={`
-                relative overflow-hidden rounded-lg bg-mist
+                relative overflow-hidden rounded-lg bg-surface-tint
                 hover:opacity-90 transition-opacity
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
                 ${aspectClasses[aspectRatio]}
               `}
             >
@@ -166,7 +166,7 @@ export const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
     return (
       <div
         ref={ref}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-abyss/95"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-navy/95"
         onClick={onClose}
       >
         {/* Close button */}
@@ -304,7 +304,7 @@ export const SimpleLightbox = forwardRef<HTMLDivElement, SimpleLightboxProps>(
     return (
       <div
         ref={ref}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-abyss/95"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-navy/95"
         onClick={onClose}
       >
         <button

@@ -12,7 +12,7 @@
  *    import { Button, Input, Card, Modal } from '@articulink/design-system';
  *
  * 3. Use Tailwind color classes:
- *    bg-tide, text-abyss, border-mist, etc.
+ *    bg-blue-500, text-navy, border-surface-tint, etc.
  */
 
 // Re-export all components

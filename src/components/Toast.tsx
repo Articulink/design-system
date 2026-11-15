@@ -50,8 +50,8 @@ export function useToast() {
 const toastStyles: Record<ToastType, string> = {
   success: 'bg-success text-white',
   error: 'bg-error text-white',
-  warning: 'bg-warning text-abyss',
-  info: 'bg-tide text-white',
+  warning: 'bg-warning text-navy',
+  info: 'bg-blue-500 text-white',
 };
 
 const toastIcons: Record<ToastType, ReactNode> = {

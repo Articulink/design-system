@@ -36,7 +36,7 @@ export interface ConfirmDialogProps {
 
 const variantStyles: Record<ConfirmDialogVariant, { button: string; icon: string }> = {
   primary: {
-    button: 'bg-tide hover:bg-surf text-white',
+    button: 'bg-blue-500 hover:bg-blue-400 text-white',
     icon: 'bg-info-bg text-info',
   },
   danger: {
@@ -125,7 +125,7 @@ export function ConfirmDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-abyss/50 backdrop-blur-sm animate-fade-in-up"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/50 backdrop-blur-sm animate-fade-in-up"
       style={{ animationDuration: '0.2s' }}
       onClick={handleBackdropClick}
       role="presentation"
@@ -145,11 +145,11 @@ export function ConfirmDialog({
               {displayIcon}
             </div>
           )}
-          <h3 id="confirm-dialog-title" className="text-lg font-semibold text-abyss mb-2">
+          <h3 id="confirm-dialog-title" className="text-lg font-semibold text-navy mb-2">
             {title}
           </h3>
           {description && (
-            <p id="confirm-dialog-description" className="text-sm text-lagoon mb-6">
+            <p id="confirm-dialog-description" className="text-sm text-blue-800 mb-6">
               {description}
             </p>
           )}
@@ -160,12 +160,12 @@ export function ConfirmDialog({
               disabled={loading}
               className="
                 px-6 py-2.5
-                text-sm font-semibold text-abyss
-                bg-white border-2 border-mist
+                text-sm font-semibold text-navy
+                bg-white border-2 border-surface-tint
                 rounded-xl
                 transition-all duration-150
-                hover:border-lagoon
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+                hover:border-blue-800
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
                 disabled:opacity-50 disabled:cursor-not-allowed
               "
             >
@@ -180,7 +180,7 @@ export function ConfirmDialog({
                 text-sm font-semibold
                 rounded-xl
                 transition-all duration-150
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
                 disabled:opacity-50 disabled:cursor-not-allowed
                 ${styles.button}
               `}

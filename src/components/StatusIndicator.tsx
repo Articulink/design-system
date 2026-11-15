@@ -40,9 +40,9 @@ const statusStyles: Record<StatusIndicatorStatus, { dot: string; text: string; b
     bg: 'bg-success-bg',
   },
   offline: {
-    dot: 'bg-lagoon',
-    text: 'text-lagoon',
-    bg: 'bg-mist',
+    dot: 'bg-blue-800',
+    text: 'text-blue-800',
+    bg: 'bg-surface-tint',
   },
   syncing: {
     dot: 'bg-info',
@@ -70,9 +70,9 @@ const statusStyles: Record<StatusIndicatorStatus, { dot: string; text: string; b
     bg: 'bg-warning-bg',
   },
   idle: {
-    dot: 'bg-lagoon',
-    text: 'text-lagoon',
-    bg: 'bg-breeze',
+    dot: 'bg-blue-800',
+    text: 'text-blue-800',
+    bg: 'bg-surface-subtle',
   },
 };
 

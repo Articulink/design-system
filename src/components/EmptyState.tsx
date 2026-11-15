@@ -37,11 +37,11 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
       const buttonClasses = `
         inline-flex items-center justify-center gap-2
         px-6 py-3
-        bg-tide text-white font-semibold
+        bg-blue-500 text-white font-semibold
         rounded-xl
         transition-all duration-150
-        hover:bg-surf
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+        hover:bg-blue-400
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
       `;
 
       if (action.href) {
@@ -71,15 +71,15 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
         {...props}
       >
         {icon && (
-          <div className="w-16 h-16 mb-4 rounded-2xl bg-mist flex items-center justify-center text-lagoon">
+          <div className="w-16 h-16 mb-4 rounded-2xl bg-surface-tint flex items-center justify-center text-blue-800">
             {icon}
           </div>
         )}
-        <h3 className="text-lg font-semibold text-abyss mb-1">
+        <h3 className="text-lg font-semibold text-navy mb-1">
           {title}
         </h3>
         {description && (
-          <p className="text-sm text-lagoon max-w-sm mb-6">
+          <p className="text-sm text-blue-800 max-w-sm mb-6">
             {description}
           </p>
         )}

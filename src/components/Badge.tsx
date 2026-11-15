@@ -29,7 +29,7 @@ const variantStyles: Record<BadgeVariant, string> = {
   warning: 'bg-warning-bg text-warning-text',
   error: 'bg-error-bg text-error-text',
   info: 'bg-info-bg text-info-text',
-  neutral: 'bg-mist text-lagoon',
+  neutral: 'bg-surface-tint text-blue-800',
 };
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -37,7 +37,7 @@ const dotColors: Record<BadgeVariant, string> = {
   warning: 'bg-warning',
   error: 'bg-error',
   info: 'bg-info',
-  neutral: 'bg-lagoon',
+  neutral: 'bg-blue-800',
 };
 
 const sizeStyles: Record<BadgeSize, string> = {

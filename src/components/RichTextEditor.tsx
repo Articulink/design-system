@@ -84,7 +84,7 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
       return (
         <div
           ref={ref}
-          className={`border border-mist rounded-lg p-4 bg-warning-bg ${className}`}
+          className={`border border-surface-tint rounded-lg p-4 bg-warning-bg ${className}`}
           {...props}
         >
           <p className="text-warning-text text-sm">
@@ -151,7 +151,7 @@ const RichTextEditorInner = forwardRef<HTMLDivElement, RichTextEditorInnerProps>
         }),
         Link!.configure({
           openOnClick: false,
-          HTMLAttributes: { class: 'text-tide underline' },
+          HTMLAttributes: { class: 'text-blue-500 underline' },
         }),
         Image!.configure({
           HTMLAttributes: { class: 'max-w-full rounded-lg' },
@@ -229,7 +229,7 @@ const RichTextEditorInner = forwardRef<HTMLDivElement, RichTextEditorInnerProps>
     }
 
     return (
-      <div ref={ref} className={`border border-mist rounded-lg overflow-hidden ${className}`} {...props}>
+      <div ref={ref} className={`border border-surface-tint rounded-lg overflow-hidden ${className}`} {...props}>
         {/* Hidden file input */}
         <input
           ref={fileInputRef}
@@ -241,7 +241,7 @@ const RichTextEditorInner = forwardRef<HTMLDivElement, RichTextEditorInnerProps>
 
         {/* Toolbar */}
         {!readOnly && (
-          <div className="flex flex-wrap items-center gap-1 p-2 border-b border-mist bg-breeze">
+          <div className="flex flex-wrap items-center gap-1 p-2 border-b border-surface-tint bg-surface-subtle">
             {toolbar!.includes('bold') && (
               <ToolbarButton
                 onClick={() => editor.chain().focus().toggleBold().run()}
@@ -328,7 +328,7 @@ const RichTextEditorInner = forwardRef<HTMLDivElement, RichTextEditorInnerProps>
                 title="Image"
               >
                 {isUploadingImage ? (
-                  <div className="w-4 h-4 border-2 border-lagoon border-t-transparent rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-blue-800 border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <ImageIcon />
                 )}
@@ -388,7 +388,7 @@ function ToolbarButton({
       title={title}
       className={`
         p-2 rounded text-sm font-medium transition-colors
-        ${isActive ? 'bg-breeze text-tide' : 'text-lagoon hover:bg-mist hover:text-abyss'}
+        ${isActive ? 'bg-surface-subtle text-blue-500' : 'text-blue-800 hover:bg-surface-tint hover:text-navy'}
         ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
       `}
     >
@@ -398,7 +398,7 @@ function ToolbarButton({
 }
 
 function Divider() {
-  return <div className="w-px h-6 bg-mist mx-1" />;
+  return <div className="w-px h-6 bg-surface-tint mx-1" />;
 }
 
 // Icons

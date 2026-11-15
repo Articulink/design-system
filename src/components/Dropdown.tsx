@@ -181,7 +181,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           absolute z-50 mt-2
           min-w-[180px] py-1
           bg-white rounded-xl
-          border border-mist
+          border border-surface-tint
           shadow-lg
           animate-in fade-in-0 zoom-in-95 duration-150
           ${alignStyles}
@@ -226,10 +226,10 @@ export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
           transition-colors duration-100
           focus:outline-none
           ${disabled
-            ? 'opacity-50 cursor-not-allowed text-lagoon'
+            ? 'opacity-50 cursor-not-allowed text-blue-800'
             : destructive
               ? 'text-error hover:bg-error-bg focus:bg-error-bg'
-              : 'text-abyss hover:bg-breeze focus:bg-breeze'
+              : 'text-navy hover:bg-surface-subtle focus:bg-surface-subtle'
           }
           ${className}
         `}
@@ -252,7 +252,7 @@ export const DropdownDivider = forwardRef<HTMLDivElement, DropdownDividerProps>(
       <div
         ref={ref}
         role="separator"
-        className={`my-1 h-px bg-mist ${className}`}
+        className={`my-1 h-px bg-surface-tint ${className}`}
         {...props}
       />
     );

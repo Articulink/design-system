@@ -68,7 +68,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
         {...props}
       >
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-2">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-2">{label}</label>
         )}
         <RadioGroupContext.Provider value={{ value, onChange, name, disabled, size }}>
           <div
@@ -136,10 +136,10 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
               ${styles.box}
               rounded-full border-2 transition-all duration-150
               flex items-center justify-center
-              ${isChecked ? 'border-tide' : 'border-mist'}
+              ${isChecked ? 'border-blue-500' : 'border-surface-tint'}
               ${disabled
                 ? 'opacity-50 cursor-not-allowed'
-                : 'cursor-pointer hover:border-tide peer-focus-visible:ring-2 peer-focus-visible:ring-tide peer-focus-visible:ring-offset-2'
+                : 'cursor-pointer hover:border-blue-500 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2'
               }
             `}
             onClick={() => {
@@ -149,7 +149,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             }}
           >
             {isChecked && (
-              <div className={`${styles.dot} rounded-full bg-tide`} />
+              <div className={`${styles.dot} rounded-full bg-blue-500`} />
             )}
           </div>
         </div>
@@ -160,7 +160,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
               <label
                 htmlFor={id}
                 className={`
-                  block font-medium text-abyss ${styles.text}
+                  block font-medium text-navy ${styles.text}
                   ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                 `}
               >
@@ -168,7 +168,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
               </label>
             )}
             {description && (
-              <p className={`text-lagoon ${styles.desc} mt-0.5`}>{description}</p>
+              <p className={`text-blue-800 ${styles.desc} mt-0.5`}>{description}</p>
             )}
           </div>
         )}
@@ -221,35 +221,35 @@ export const RadioCard = forwardRef<HTMLInputElement, RadioCardProps>(
           className={`
             block p-4 rounded-xl border-2 transition-all duration-150
             ${isChecked
-              ? 'border-tide bg-info-bg'
-              : 'border-mist bg-white hover:border-bubble'
+              ? 'border-blue-500 bg-info-bg'
+              : 'border-surface-tint bg-white hover:border-blue-100'
             }
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-            peer-focus-visible:ring-2 peer-focus-visible:ring-tide peer-focus-visible:ring-offset-2
+            peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2
           `}
         >
           <div className="flex items-start gap-3">
             {icon && (
-              <div className={`flex-shrink-0 ${isChecked ? 'text-tide' : 'text-lagoon'}`}>
+              <div className={`flex-shrink-0 ${isChecked ? 'text-blue-500' : 'text-blue-800'}`}>
                 {icon}
               </div>
             )}
             <div className="flex-1 min-w-0">
-              <p className={`font-medium ${isChecked ? 'text-tide' : 'text-abyss'}`}>
+              <p className={`font-medium ${isChecked ? 'text-blue-500' : 'text-navy'}`}>
                 {label}
               </p>
               {description && (
-                <p className="text-sm text-lagoon mt-0.5">{description}</p>
+                <p className="text-sm text-blue-800 mt-0.5">{description}</p>
               )}
             </div>
             <div
               className={`
                 flex-shrink-0 w-5 h-5 rounded-full border-2
                 flex items-center justify-center
-                ${isChecked ? 'border-tide' : 'border-mist'}
+                ${isChecked ? 'border-blue-500' : 'border-surface-tint'}
               `}
             >
-              {isChecked && <div className="w-2 h-2 rounded-full bg-tide" />}
+              {isChecked && <div className="w-2 h-2 rounded-full bg-blue-500" />}
             </div>
           </div>
         </label>

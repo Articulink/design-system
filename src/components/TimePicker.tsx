@@ -182,7 +182,7 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-1.5">{label}</label>
         )}
 
         <div ref={containerRef} className="relative">
@@ -195,36 +195,36 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(
               w-full flex items-center gap-2 px-4 py-2.5
               bg-white border-2 rounded-xl text-left
               transition-all duration-150
-              ${error ? 'border-error' : isOpen ? 'border-tide' : 'border-mist'}
-              ${disabled ? 'opacity-50 cursor-not-allowed bg-breeze' : 'cursor-pointer hover:border-bubble'}
-              focus:outline-none focus:border-tide focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
+              ${error ? 'border-error' : isOpen ? 'border-blue-500' : 'border-surface-tint'}
+              ${disabled ? 'opacity-50 cursor-not-allowed bg-surface-subtle' : 'cursor-pointer hover:border-blue-100'}
+              focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
             `}
           >
             {/* Clock icon */}
-            <svg className="w-5 h-5 text-lagoon flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-5 h-5 text-blue-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
 
             {value ? (
-              <span className="flex-1 truncate text-abyss">{value}</span>
+              <span className="flex-1 truncate text-navy">{value}</span>
             ) : (
-              <span className="flex-1 text-lagoon/50">{placeholder}</span>
+              <span className="flex-1 text-blue-800/50">{placeholder}</span>
             )}
 
             {clearable && value && !disabled && (
               <button
                 type="button"
                 onClick={handleClear}
-                className="p-1 hover:bg-mist rounded transition-colors"
+                className="p-1 hover:bg-surface-tint rounded transition-colors"
               >
-                <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             )}
 
             <svg
-              className={`w-5 h-5 text-lagoon transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-blue-800 transition-transform ${isOpen ? 'rotate-180' : ''}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -238,7 +238,7 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(
           {isOpen && (
             <div
               ref={listRef}
-              className="absolute z-50 w-full mt-1 max-h-60 overflow-y-auto bg-white border border-mist rounded-xl shadow-lg py-1"
+              className="absolute z-50 w-full mt-1 max-h-60 overflow-y-auto bg-white border border-surface-tint rounded-xl shadow-lg py-1"
             >
               {options.map((time, index) => (
                 <button
@@ -248,8 +248,8 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(
                   onMouseEnter={() => setHighlightedIndex(index)}
                   className={`
                     w-full px-4 py-2 text-left text-sm
-                    ${index === highlightedIndex ? 'bg-info-bg' : 'hover:bg-mist/50'}
-                    ${time === value ? 'text-tide font-medium' : 'text-abyss'}
+                    ${index === highlightedIndex ? 'bg-info-bg' : 'hover:bg-surface-tint/50'}
+                    ${time === value ? 'text-blue-500 font-medium' : 'text-navy'}
                   `}
                 >
                   {time}

@@ -220,7 +220,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
           absolute z-50
           ${sidePositionClasses[side]}
           ${alignClasses[side][align]}
-          bg-white rounded-xl border border-mist shadow-lg
+          bg-white rounded-xl border border-surface-tint shadow-lg
           animate-in fade-in-0 zoom-in-95
           ${className}
         `}
@@ -245,7 +245,7 @@ export interface PopoverHeaderProps extends React.HTMLAttributes<HTMLDivElement>
 export const PopoverHeader = forwardRef<HTMLDivElement, PopoverHeaderProps>(
   ({ children, className = '', ...props }, ref) => {
     return (
-      <div ref={ref} className={`px-4 py-3 border-b border-mist ${className}`} {...props}>
+      <div ref={ref} className={`px-4 py-3 border-b border-surface-tint ${className}`} {...props}>
         {children}
       </div>
     );
@@ -283,7 +283,7 @@ export interface PopoverFooterProps extends React.HTMLAttributes<HTMLDivElement>
 export const PopoverFooter = forwardRef<HTMLDivElement, PopoverFooterProps>(
   ({ children, className = '', ...props }, ref) => {
     return (
-      <div ref={ref} className={`px-4 py-3 border-t border-mist bg-breeze rounded-b-xl ${className}`} {...props}>
+      <div ref={ref} className={`px-4 py-3 border-t border-surface-tint bg-surface-subtle rounded-b-xl ${className}`} {...props}>
         {children}
       </div>
     );
@@ -318,7 +318,7 @@ export const PopoverClose = forwardRef<HTMLButtonElement, PopoverCloseProps>(
         ref={ref}
         type="button"
         onClick={handleClick}
-        className={`p-1 text-lagoon hover:text-abyss hover:bg-mist rounded transition-colors ${className}`}
+        className={`p-1 text-blue-800 hover:text-navy hover:bg-surface-tint rounded transition-colors ${className}`}
         {...props}
       >
         {children || (

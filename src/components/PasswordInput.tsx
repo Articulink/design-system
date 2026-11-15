@@ -43,7 +43,7 @@ function calculateStrength(password: string): StrengthLevel {
 }
 
 const strengthColors: Record<StrengthLevel, string> = {
-  0: 'bg-mist',
+  0: 'bg-surface-tint',
   1: 'bg-error',
   2: 'bg-warning',
   3: 'bg-info',
@@ -51,7 +51,7 @@ const strengthColors: Record<StrengthLevel, string> = {
 };
 
 const strengthTextColors: Record<StrengthLevel, string> = {
-  0: 'text-lagoon',
+  0: 'text-blue-800',
   1: 'text-error',
   2: 'text-warning-text',
   3: 'text-info-text',
@@ -86,7 +86,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
     return (
       <div className={className}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">
+          <label className="block text-sm font-semibold text-navy mb-1.5">
             {label}
           </label>
         )}
@@ -99,15 +99,15 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             ${error
               ? 'border-error'
               : isFocused
-                ? 'border-tide shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
-                : 'border-mist hover:border-bubble'
+                ? 'border-blue-500 shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
+                : 'border-surface-tint hover:border-blue-100'
             }
-            ${disabled ? 'opacity-50 bg-breeze' : ''}
+            ${disabled ? 'opacity-50 bg-surface-subtle' : ''}
           `}
         >
           {/* Lock icon */}
           <svg
-            className="w-5 h-5 text-lagoon flex-shrink-0"
+            className="w-5 h-5 text-blue-800 flex-shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -128,7 +128,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             disabled={disabled}
-            className="flex-1 min-w-0 text-abyss placeholder:text-lagoon/50 bg-transparent focus:outline-none"
+            className="flex-1 min-w-0 text-navy placeholder:text-blue-800/50 bg-transparent focus:outline-none"
             {...props}
           />
 
@@ -137,7 +137,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
-            className="p-1 text-lagoon hover:text-abyss transition-colors rounded"
+            className="p-1 text-blue-800 hover:text-navy transition-colors rounded"
             tabIndex={-1}
           >
             {showPassword ? (
@@ -161,7 +161,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
                 <div
                   key={level}
                   className={`h-1 flex-1 rounded-full transition-colors ${
-                    strength >= level ? strengthColors[strength] : 'bg-mist'
+                    strength >= level ? strengthColors[strength] : 'bg-surface-tint'
                   }`}
                 />
               ))}
@@ -176,7 +176,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 
         {/* Hint or error */}
         {(hint || error) && !showStrength && (
-          <p className={`text-sm mt-1.5 ${error ? 'text-error' : 'text-lagoon'}`}>
+          <p className={`text-sm mt-1.5 ${error ? 'text-error' : 'text-blue-800'}`}>
             {error || hint}
           </p>
         )}

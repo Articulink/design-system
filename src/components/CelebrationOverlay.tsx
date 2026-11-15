@@ -48,8 +48,8 @@ const confettiColors = [
   'bg-info',
   'bg-warning',
   'bg-warning/80',
-  'bg-tide',
-  'bg-surf',
+  'bg-blue-500',
+  'bg-blue-400',
 ];
 
 const variantConfig: Record<CelebrationVariant, { gradient: string; iconBg: string }> = {
@@ -58,12 +58,12 @@ const variantConfig: Record<CelebrationVariant, { gradient: string; iconBg: stri
     iconBg: 'from-success/80 to-success',
   },
   achievement: {
-    gradient: 'from-sunshine to-warning',
-    iconBg: 'from-sunshine to-warning',
+    gradient: 'from-yellow to-warning',
+    iconBg: 'from-yellow to-warning',
   },
   milestone: {
-    gradient: 'from-tide to-surf',
-    iconBg: 'from-tide to-surf',
+    gradient: 'from-blue-500 to-blue-400',
+    iconBg: 'from-blue-500 to-blue-400',
   },
   streak: {
     gradient: 'from-warning to-error/70',
@@ -196,8 +196,8 @@ export const CelebrationOverlay = forwardRef<HTMLDivElement, CelebrationOverlayP
             </div>
 
             {/* Sparkles */}
-            <Sparkle className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 w-6 h-6 text-sunshine" delay={0} />
-            <Sparkle className="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 text-tide" delay={0.3} />
+            <Sparkle className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 w-6 h-6 text-yellow" delay={0} />
+            <Sparkle className="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 text-blue-500" delay={0.3} />
             <Sparkle className="absolute top-1/2 -right-2 -translate-y-1/2 w-4 h-4 text-success" delay={0.6} />
           </div>
 
@@ -210,8 +210,8 @@ export const CelebrationOverlay = forwardRef<HTMLDivElement, CelebrationOverlayP
           >
             {title}
           </h2>
-          {subtitle && <p className="text-xl font-semibold text-abyss mb-2">{subtitle}</p>}
-          {message && <p className="text-lagoon mb-6">{message}</p>}
+          {subtitle && <p className="text-xl font-semibold text-navy mb-2">{subtitle}</p>}
+          {message && <p className="text-blue-800 mb-6">{message}</p>}
 
           {/* Action button */}
           <button
@@ -227,7 +227,7 @@ export const CelebrationOverlay = forwardRef<HTMLDivElement, CelebrationOverlayP
           </button>
 
           {/* Dismiss hint */}
-          <p className="text-xs text-lagoon/70 mt-3">Click anywhere to close</p>
+          <p className="text-xs text-blue-800/70 mt-3">Click anywhere to close</p>
         </div>
       </div>
     );

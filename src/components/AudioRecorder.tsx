@@ -215,13 +215,13 @@ export const AudioRecorder = forwardRef<HTMLDivElement, AudioRecorderProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-1.5">{label}</label>
         )}
 
         <div
           className={`
             p-4 rounded-xl border-2
-            ${error ? 'border-error' : isRecording ? 'border-error bg-error-bg' : 'border-mist bg-breeze'}
+            ${error ? 'border-error' : isRecording ? 'border-error bg-error-bg' : 'border-surface-tint bg-surface-subtle'}
             ${disabled ? 'opacity-50' : ''}
           `}
         >
@@ -236,18 +236,18 @@ export const AudioRecorder = forwardRef<HTMLDivElement, AudioRecorderProps>(
                 />
               ))}
               {audioLevels.length === 0 && (
-                <div className="text-lagoon text-sm">Initializing...</div>
+                <div className="text-blue-800 text-sm">Initializing...</div>
               )}
             </div>
           )}
 
           {/* Duration display */}
           <div className="text-center mb-4">
-            <span className={`text-2xl font-mono ${isRecording ? 'text-error' : 'text-abyss'}`}>
+            <span className={`text-2xl font-mono ${isRecording ? 'text-error' : 'text-navy'}`}>
               {formatTime(duration)}
             </span>
             {maxDuration && (
-              <span className="text-lagoon text-sm ml-2">/ {formatTime(maxDuration)}</span>
+              <span className="text-blue-800 text-sm ml-2">/ {formatTime(maxDuration)}</span>
             )}
           </div>
 
@@ -272,7 +272,7 @@ export const AudioRecorder = forwardRef<HTMLDivElement, AudioRecorderProps>(
                 <button
                   type="button"
                   onClick={pauseRecording}
-                  className="p-3 bg-white text-lagoon rounded-full hover:bg-mist transition-colors"
+                  className="p-3 bg-white text-blue-800 rounded-full hover:bg-surface-tint transition-colors"
                 >
                   {isPaused ? (
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -302,7 +302,7 @@ export const AudioRecorder = forwardRef<HTMLDivElement, AudioRecorderProps>(
                 <button
                   type="button"
                   onClick={playRecording}
-                  className="flex items-center gap-2 px-6 py-3 bg-tide text-white rounded-full font-medium hover:bg-tide/90 transition-colors"
+                  className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-500/90 transition-colors"
                 >
                   {isPlaying ? (
                     <>
@@ -325,7 +325,7 @@ export const AudioRecorder = forwardRef<HTMLDivElement, AudioRecorderProps>(
                   type="button"
                   onClick={startRecording}
                   disabled={disabled}
-                  className="p-3 bg-mist text-lagoon rounded-full hover:bg-bubble transition-colors disabled:opacity-50"
+                  className="p-3 bg-surface-tint text-blue-800 rounded-full hover:bg-blue-100 transition-colors disabled:opacity-50"
                   title="Re-record"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -335,7 +335,7 @@ export const AudioRecorder = forwardRef<HTMLDivElement, AudioRecorderProps>(
                 <button
                   type="button"
                   onClick={clearRecording}
-                  className="p-3 bg-mist text-lagoon rounded-full hover:bg-error-bg hover:text-error transition-colors"
+                  className="p-3 bg-surface-tint text-blue-800 rounded-full hover:bg-error-bg hover:text-error transition-colors"
                   title="Delete"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -33,8 +33,8 @@ const sizeConfig: Record<ProgressRingSize, { size: number; textSize: string; lab
 };
 
 const variantColors: Record<ProgressRingVariant, string> = {
-  default: 'stroke-tide',
-  primary: 'stroke-tide',
+  default: 'stroke-blue-500',
+  primary: 'stroke-blue-500',
   success: 'stroke-success',
   warning: 'stroke-warning',
   error: 'stroke-error',
@@ -82,7 +82,7 @@ export const ProgressRing = forwardRef<HTMLDivElement, ProgressRingProps>(
         >
           {/* Background circle */}
           <circle
-            className="stroke-mist"
+            className="stroke-surface-tint"
             fill="none"
             strokeWidth={stroke}
             r={radius}
@@ -107,12 +107,12 @@ export const ProgressRing = forwardRef<HTMLDivElement, ProgressRingProps>(
         {(showValue || label) && (
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             {showValue && (
-              <span className={`font-bold text-abyss ${config.textSize}`}>
+              <span className={`font-bold text-navy ${config.textSize}`}>
                 {Math.round(normalizedValue)}%
               </span>
             )}
             {label && (
-              <span className={`text-lagoon ${config.labelSize} mt-0.5`}>
+              <span className={`text-blue-800 ${config.labelSize} mt-0.5`}>
                 {label}
               </span>
             )}
@@ -143,8 +143,8 @@ const barSizes = {
 };
 
 const barVariantColors: Record<ProgressRingVariant, string> = {
-  default: 'bg-tide',
-  primary: 'bg-tide',
+  default: 'bg-blue-500',
+  primary: 'bg-blue-500',
   success: 'bg-success',
   warning: 'bg-warning',
   error: 'bg-error',
@@ -169,12 +169,12 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       <div ref={ref} className={className} {...props}>
         {(label || showValue) && (
           <div className="flex justify-between items-center mb-1.5">
-            {label && <span className="text-sm font-medium text-abyss">{label}</span>}
-            {showValue && <span className="text-sm text-lagoon">{Math.round(normalizedValue)}%</span>}
+            {label && <span className="text-sm font-medium text-navy">{label}</span>}
+            {showValue && <span className="text-sm text-blue-800">{Math.round(normalizedValue)}%</span>}
           </div>
         )}
         <div
-          className={`w-full bg-mist rounded-full overflow-hidden ${barSizes[size]}`}
+          className={`w-full bg-surface-tint rounded-full overflow-hidden ${barSizes[size]}`}
           role="progressbar"
           aria-valuenow={normalizedValue}
           aria-valuemin={0}

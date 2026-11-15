@@ -75,7 +75,7 @@ export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
         role="tablist"
         className={`
           flex items-center gap-1
-          p-1 bg-mist rounded-xl
+          p-1 bg-surface-tint rounded-xl
           ${className}
         `}
         {...props}
@@ -148,10 +148,10 @@ export const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
           text-sm font-medium
           rounded-lg
           transition-all duration-150
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
           ${isSelected
-            ? 'bg-white text-abyss shadow-sm'
-            : 'text-lagoon hover:text-abyss'
+            ? 'bg-white text-navy shadow-sm'
+            : 'text-blue-800 hover:text-navy'
           }
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           ${className}

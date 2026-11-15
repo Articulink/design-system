@@ -42,7 +42,7 @@ export interface WeekScheduleProps extends React.HTMLAttributes<HTMLDivElement> 
 
 const DEFAULT_DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const DEFAULT_COLORS = [
-  '#037DE4', // tide
+  '#037DE4', // blue-500
   '#22C55E', // success
   '#F59E0B', // warning
   '#8B5CF6', // purple
@@ -116,17 +116,17 @@ export const WeekSchedule = forwardRef<HTMLDivElement, WeekScheduleProps>(
     };
 
     return (
-      <div ref={ref} className={`bg-white rounded-xl border border-mist overflow-hidden ${className}`} {...props}>
+      <div ref={ref} className={`bg-white rounded-xl border border-surface-tint overflow-hidden ${className}`} {...props}>
         {/* Header */}
-        <div className="grid border-b border-mist" style={{ gridTemplateColumns: `64px repeat(${visibleDays.length}, 1fr)` }}>
+        <div className="grid border-b border-surface-tint" style={{ gridTemplateColumns: `64px repeat(${visibleDays.length}, 1fr)` }}>
           {/* Time column header */}
-          <div className="p-2 border-r border-mist bg-breeze" />
+          <div className="p-2 border-r border-surface-tint bg-surface-subtle" />
 
           {/* Day headers */}
           {visibleDays.map((day) => (
             <div
               key={day}
-              className="p-2 text-center font-medium text-abyss border-r border-mist last:border-r-0 bg-breeze"
+              className="p-2 text-center font-medium text-navy border-r border-surface-tint last:border-r-0 bg-surface-subtle"
             >
               {dayLabels[day]}
             </div>
@@ -140,11 +140,11 @@ export const WeekSchedule = forwardRef<HTMLDivElement, WeekScheduleProps>(
             style={{ gridTemplateColumns: `64px repeat(${visibleDays.length}, 1fr)` }}
           >
             {/* Time column */}
-            <div className="border-r border-mist">
+            <div className="border-r border-surface-tint">
               {hours.map((hour) => (
                 <div
                   key={hour}
-                  className="flex items-start justify-end pr-2 text-xs text-lagoon border-b border-mist"
+                  className="flex items-start justify-end pr-2 text-xs text-blue-800 border-b border-surface-tint"
                   style={{ height: hourHeight }}
                 >
                   <span className="-mt-2">{formatHour(hour)}</span>
@@ -154,14 +154,14 @@ export const WeekSchedule = forwardRef<HTMLDivElement, WeekScheduleProps>(
 
             {/* Day columns */}
             {visibleDays.map((day) => (
-              <div key={day} className="relative border-r border-mist last:border-r-0">
+              <div key={day} className="relative border-r border-surface-tint last:border-r-0">
                 {/* Hour slots */}
                 {hours.map((hour) => (
                   <div
                     key={hour}
                     className={`
-                      border-b border-mist
-                      ${onSlotClick ? 'cursor-pointer hover:bg-mist/50 transition-colors' : ''}
+                      border-b border-surface-tint
+                      ${onSlotClick ? 'cursor-pointer hover:bg-surface-tint/50 transition-colors' : ''}
                     `}
                     style={{ height: hourHeight }}
                     onClick={() => onSlotClick?.(day, hour)}

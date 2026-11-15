@@ -33,12 +33,12 @@ export interface PieChartProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const DEFAULT_COLORS = [
-  '#037DE4', // tide
+  '#037DE4', // blue-500
   '#22C55E', // success
   '#F59E0B', // warning
   '#EF4444', // error
   '#8B5CF6', // purple
-  '#1E96FC', // surf
+  '#1E96FC', // light blue
   '#EC4899', // pink
   '#14B8A6', // teal
 ];
@@ -138,8 +138,8 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
       <div ref={ref} className={`flex flex-col items-center ${className}`} {...props}>
         {(title || subtitle) && (
           <div className="mb-4 text-center">
-            {title && <h3 className="font-semibold text-abyss">{title}</h3>}
-            {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+            {title && <h3 className="font-semibold text-navy">{title}</h3>}
+            {subtitle && <p className="text-sm text-blue-800">{subtitle}</p>}
           </div>
         )}
 
@@ -229,7 +229,7 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
                     y={center - (centerLabel ? 8 : 0)}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="fill-abyss text-2xl font-bold"
+                    className="fill-navy text-2xl font-bold"
                   >
                     {centerValue}
                   </text>
@@ -240,7 +240,7 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
                     y={center + (centerValue ? 12 : 0)}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="fill-lagoon text-sm"
+                    className="fill-blue-800 text-sm"
                   >
                     {centerLabel}
                   </text>
@@ -265,9 +265,9 @@ export const PieChart = forwardRef<HTMLDivElement, PieChartProps>(
                     className="w-3 h-3 rounded-sm flex-shrink-0"
                     style={{ backgroundColor: segment.color }}
                   />
-                  <span className="text-sm text-abyss">{segment.label}</span>
+                  <span className="text-sm text-navy">{segment.label}</span>
                   {showPercentages && (
-                    <span className="text-sm text-lagoon ml-auto">
+                    <span className="text-sm text-blue-800 ml-auto">
                       {Math.round(segment.percentage)}%
                     </span>
                   )}

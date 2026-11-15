@@ -49,7 +49,7 @@ const lineColors: Record<string, string> = {
   warning: 'var(--warning)',
   error: 'var(--error)',
   info: 'var(--info)',
-  muted: 'var(--mist)',
+  muted: 'var(--surface-tint)',
 };
 
 const lineTextColors: Record<string, string> = {
@@ -57,7 +57,7 @@ const lineTextColors: Record<string, string> = {
   warning: 'fill-warning',
   error: 'fill-error',
   info: 'fill-info',
-  muted: 'fill-lagoon',
+  muted: 'fill-blue-800',
 };
 
 export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
@@ -72,7 +72,7 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
       showDots = true,
       showGrid = true,
       referenceLines = [],
-      lineColor = 'var(--tide)',
+      lineColor = 'var(--blue-500)',
       formatX,
       formatY = (v) => `${v}`,
       emptyMessage = 'No data available',
@@ -135,10 +135,10 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
       return (
         <div
           ref={ref}
-          className={`bg-mist/50 rounded-xl p-6 text-center ${className}`}
+          className={`bg-surface-tint/50 rounded-xl p-6 text-center ${className}`}
           {...props}
         >
-          <p className="text-lagoon text-sm">{emptyMessage}</p>
+          <p className="text-blue-800 text-sm">{emptyMessage}</p>
         </div>
       );
     }
@@ -146,14 +146,14 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
     return (
       <div
         ref={ref}
-        className={`bg-white rounded-xl border border-mist p-4 ${className}`}
+        className={`bg-white rounded-xl border border-surface-tint p-4 ${className}`}
         {...props}
       >
         {/* Header */}
         {(title || subtitle) && (
           <div className="mb-4">
-            {title && <h4 className="font-semibold text-abyss">{title}</h4>}
-            {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+            {title && <h4 className="font-semibold text-navy">{title}</h4>}
+            {subtitle && <p className="text-sm text-blue-800">{subtitle}</p>}
           </div>
         )}
 
@@ -170,14 +170,14 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
                     y1={y}
                     x2={width - padding.right}
                     y2={y}
-                    stroke="var(--mist)"
+                    stroke="var(--surface-tint)"
                     strokeDasharray="4,4"
                   />
                   <text
                     x={padding.left - 8}
                     y={y + 4}
                     textAnchor="end"
-                    className="fill-lagoon text-[10px]"
+                    className="fill-blue-800 text-[10px]"
                   >
                     {formatY(tick)}
                   </text>
@@ -241,7 +241,7 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
                 x={padding.left}
                 y={height - 10}
                 textAnchor="start"
-                className="fill-lagoon text-[10px]"
+                className="fill-blue-800 text-[10px]"
               >
                 {formatX ? formatX(data[0].x) : String(data[0].x)}
               </text>
@@ -250,7 +250,7 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
                   x={width - padding.right}
                   y={height - 10}
                   textAnchor="end"
-                  className="fill-lagoon text-[10px]"
+                  className="fill-blue-800 text-[10px]"
                 >
                   {formatX ? formatX(data[data.length - 1].x) : String(data[data.length - 1].x)}
                 </text>
@@ -265,7 +265,7 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
               y={height / 2}
               textAnchor="middle"
               transform={`rotate(-90, 12, ${height / 2})`}
-              className="fill-lagoon text-[10px]"
+              className="fill-blue-800 text-[10px]"
             >
               {yLabel}
             </text>
@@ -275,7 +275,7 @@ export const LineChart = forwardRef<HTMLDivElement, LineChartProps>(
               x={width / 2}
               y={height - 2}
               textAnchor="middle"
-              className="fill-lagoon text-[10px]"
+              className="fill-blue-800 text-[10px]"
             >
               {xLabel}
             </text>

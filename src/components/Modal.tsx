@@ -115,7 +115,7 @@ export function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-abyss/50 backdrop-blur-sm animate-fade-in-up"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/50 backdrop-blur-sm animate-fade-in-up"
       style={{ animationDuration: '0.2s' }}
       onClick={handleBackdropClick}
       role="presentation"
@@ -137,18 +137,18 @@ export function Modal({
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-mist flex-shrink-0">
+        <div className="flex items-center justify-between p-6 border-b border-surface-tint flex-shrink-0">
           <div>
             <h2
               id="modal-title"
-              className="text-xl font-bold text-abyss"
+              className="text-xl font-bold text-navy"
             >
               {title}
             </h2>
             {description && (
               <p
                 id="modal-description"
-                className="mt-1 text-sm text-lagoon"
+                className="mt-1 text-sm text-blue-800"
               >
                 {description}
               </p>
@@ -156,7 +156,7 @@ export function Modal({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-lagoon hover:bg-breeze hover:text-abyss transition-colors"
+            className="p-2 rounded-lg text-blue-800 hover:bg-surface-subtle hover:text-navy transition-colors"
             aria-label="Close modal"
           >
             <svg

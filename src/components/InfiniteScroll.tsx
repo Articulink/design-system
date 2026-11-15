@@ -79,7 +79,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
     const defaultLoadingComponent = (
       <div className="flex items-center justify-center py-4">
         <svg
-          className="w-6 h-6 text-tide animate-spin"
+          className="w-6 h-6 text-blue-500 animate-spin"
           fill="none"
           viewBox="0 0 24 24"
         >
@@ -97,12 +97,12 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           />
         </svg>
-        <span className="ml-2 text-lagoon">Loading...</span>
+        <span className="ml-2 text-blue-800">Loading...</span>
       </div>
     );
 
     const defaultEndComponent = (
-      <div className="flex items-center justify-center py-4 text-lagoon text-sm">
+      <div className="flex items-center justify-center py-4 text-blue-800 text-sm">
         No more items to load
       </div>
     );

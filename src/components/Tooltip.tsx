@@ -35,10 +35,10 @@ const positionStyles: Record<TooltipPosition, string> = {
 };
 
 const arrowStyles: Record<TooltipPosition, string> = {
-  top: 'top-full left-1/2 -translate-x-1/2 border-t-abyss border-x-transparent border-b-transparent',
-  bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-abyss border-x-transparent border-t-transparent',
-  left: 'left-full top-1/2 -translate-y-1/2 border-l-abyss border-y-transparent border-r-transparent',
-  right: 'right-full top-1/2 -translate-y-1/2 border-r-abyss border-y-transparent border-l-transparent',
+  top: 'top-full left-1/2 -translate-x-1/2 border-t-navy border-x-transparent border-b-transparent',
+  bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-navy border-x-transparent border-t-transparent',
+  left: 'left-full top-1/2 -translate-y-1/2 border-l-navy border-y-transparent border-r-transparent',
+  right: 'right-full top-1/2 -translate-y-1/2 border-r-navy border-y-transparent border-l-transparent',
 };
 
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
@@ -86,7 +86,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               absolute z-50
               px-3 py-1.5
               text-xs font-medium text-white
-              bg-abyss rounded-lg
+              bg-navy rounded-lg
               whitespace-nowrap
               pointer-events-none
               animate-in fade-in-0 zoom-in-95 duration-150

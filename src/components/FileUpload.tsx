@@ -155,7 +155,7 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">
+          <label className="block text-sm font-semibold text-navy mb-1.5">
             {label}
           </label>
         )}
@@ -169,8 +169,8 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
             relative border-2 border-dashed rounded-xl
             transition-all duration-200
             ${isDragging
-              ? 'border-tide bg-info-bg'
-              : 'border-mist hover:border-tide hover:bg-breeze'
+              ? 'border-blue-500 bg-info-bg'
+              : 'border-surface-tint hover:border-blue-500 hover:bg-surface-subtle'
             }
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             ${isUploading ? 'pointer-events-none' : ''}
@@ -193,7 +193,7 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
                 className="w-full h-full object-cover rounded-xl"
               />
               {isUploading && (
-                <div className="absolute inset-0 bg-abyss/50 flex items-center justify-center rounded-xl">
+                <div className="absolute inset-0 bg-navy/50 flex items-center justify-center rounded-xl">
                   <div className="text-white text-center">
                     <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-2" />
                     <p className="text-sm font-medium">{progress}%</p>
@@ -212,11 +212,11 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
             <div className="px-6 py-10 text-center">
               {isUploading ? (
                 <>
-                  <div className="w-12 h-12 border-4 border-tide border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                  <p className="text-sm font-medium text-abyss">Uploading... {progress}%</p>
-                  <div className="mt-3 w-full max-w-xs mx-auto bg-mist rounded-full h-2">
+                  <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                  <p className="text-sm font-medium text-navy">Uploading... {progress}%</p>
+                  <div className="mt-3 w-full max-w-xs mx-auto bg-surface-tint rounded-full h-2">
                     <div
-                      className="bg-tide h-2 rounded-full transition-all duration-300"
+                      className="bg-blue-500 h-2 rounded-full transition-all duration-300"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
@@ -224,7 +224,7 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
               ) : (
                 <>
                   <svg
-                    className="mx-auto h-12 w-12 text-lagoon"
+                    className="mx-auto h-12 w-12 text-blue-800"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -236,15 +236,15 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
                       d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
                     />
                   </svg>
-                  <p className="mt-4 text-sm text-abyss">
-                    <span className="font-semibold text-tide">Click to upload</span>
+                  <p className="mt-4 text-sm text-navy">
+                    <span className="font-semibold text-blue-500">Click to upload</span>
                     {' '}or drag and drop
                   </p>
-                  <p className="mt-1 text-xs text-lagoon">
+                  <p className="mt-1 text-xs text-blue-800">
                     {hint || getAcceptDescription(accept)}
                   </p>
                   {selectedFile && !isUploading && (
-                    <p className="mt-2 text-sm text-lagoon">
+                    <p className="mt-2 text-sm text-blue-800">
                       Selected: {selectedFile.name} ({formatFileSize(selectedFile.size)})
                     </p>
                   )}

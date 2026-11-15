@@ -128,7 +128,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-medium text-navy mb-1.5">{label}</label>
         )}
 
         <div ref={containerRef} className="relative">
@@ -136,8 +136,8 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
             className={`
               flex rounded-xl border bg-white overflow-hidden
               transition-colors
-              ${error ? 'border-error' : 'border-mist focus-within:border-tide'}
-              ${disabled ? 'bg-breeze cursor-not-allowed' : ''}
+              ${error ? 'border-error' : 'border-surface-tint focus-within:border-blue-500'}
+              ${disabled ? 'bg-surface-subtle cursor-not-allowed' : ''}
               ${className}
             `}
           >
@@ -146,12 +146,12 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
               type="button"
               onClick={() => !disabled && setIsOpen(!isOpen)}
               disabled={disabled}
-              className="flex items-center gap-1 px-3 py-2.5 border-r border-mist hover:bg-mist/50 transition-colors"
+              className="flex items-center gap-1 px-3 py-2.5 border-r border-surface-tint hover:bg-surface-tint/50 transition-colors"
             >
               <span className="text-lg">{getFlagEmoji(selectedCountry.code)}</span>
-              <span className="text-sm text-lagoon">{selectedCountry.dialCode}</span>
+              <span className="text-sm text-blue-800">{selectedCountry.dialCode}</span>
               <svg
-                className={`w-4 h-4 text-lagoon transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 text-blue-800 transition-transform ${isOpen ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -168,14 +168,14 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
               value={formattedValue}
               onChange={handleInputChange}
               disabled={disabled}
-              className="flex-1 px-3 py-2.5 outline-none text-abyss placeholder:text-lagoon/50 disabled:cursor-not-allowed"
+              className="flex-1 px-3 py-2.5 outline-none text-navy placeholder:text-blue-800/50 disabled:cursor-not-allowed"
               {...props}
             />
           </div>
 
           {/* Country dropdown */}
           {isOpen && (
-            <div className="absolute left-0 top-full mt-1 w-64 max-h-60 bg-white border border-mist rounded-xl shadow-lg overflow-y-auto z-50">
+            <div className="absolute left-0 top-full mt-1 w-64 max-h-60 bg-white border border-surface-tint rounded-xl shadow-lg overflow-y-auto z-50">
               {countries.map((country) => (
                 <button
                   key={country.code}
@@ -183,13 +183,13 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
                   onClick={() => handleCountrySelect(country)}
                   className={`
                     w-full flex items-center gap-3 px-3 py-2 text-left
-                    hover:bg-mist transition-colors
+                    hover:bg-surface-tint transition-colors
                     ${selectedCountry.code === country.code ? 'bg-info-bg' : ''}
                   `}
                 >
                   <span className="text-lg">{getFlagEmoji(country.code)}</span>
-                  <span className="flex-1 text-sm text-abyss truncate">{country.name}</span>
-                  <span className="text-sm text-lagoon">{country.dialCode}</span>
+                  <span className="flex-1 text-sm text-navy truncate">{country.name}</span>
+                  <span className="text-sm text-blue-800">{country.dialCode}</span>
                 </button>
               ))}
             </div>
@@ -197,7 +197,7 @@ export const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
         </div>
 
         {(error || hint) && (
-          <p className={`mt-1.5 text-sm ${error ? 'text-error' : 'text-lagoon'}`}>
+          <p className={`mt-1.5 text-sm ${error ? 'text-error' : 'text-blue-800'}`}>
             {error || hint}
           </p>
         )}

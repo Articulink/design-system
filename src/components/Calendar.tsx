@@ -216,7 +216,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       <div ref={ref} className={`inline-block ${className}`} {...props}>
         <div className={`flex gap-4 ${numberOfMonths > 1 ? 'flex-wrap' : ''}`}>
           {monthViews.map((view, viewIndex) => (
-            <div key={`${view.year}-${view.month}`} className="bg-white rounded-xl border border-mist p-4">
+            <div key={`${view.year}-${view.month}`} className="bg-white rounded-xl border border-surface-tint p-4">
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
                 {viewIndex === 0 && (
@@ -224,27 +224,27 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     <button
                       type="button"
                       onClick={() => navigateYear(-1)}
-                      className="p-1.5 hover:bg-mist rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-surface-tint rounded-lg transition-colors"
                       aria-label="Previous year"
                     >
-                      <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                       </svg>
                     </button>
                     <button
                       type="button"
                       onClick={() => navigateMonth(-1)}
-                      className="p-1.5 hover:bg-mist rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-surface-tint rounded-lg transition-colors"
                       aria-label="Previous month"
                     >
-                      <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
                   </div>
                 )}
 
-                <h2 className="font-semibold text-abyss flex-1 text-center">
+                <h2 className="font-semibold text-navy flex-1 text-center">
                   {MONTHS[view.month]} {view.year}
                 </h2>
 
@@ -253,20 +253,20 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     <button
                       type="button"
                       onClick={() => navigateMonth(1)}
-                      className="p-1.5 hover:bg-mist rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-surface-tint rounded-lg transition-colors"
                       aria-label="Next month"
                     >
-                      <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
                     <button
                       type="button"
                       onClick={() => navigateYear(1)}
-                      className="p-1.5 hover:bg-mist rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-surface-tint rounded-lg transition-colors"
                       aria-label="Next year"
                     >
-                      <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -279,7 +279,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 {orderedDays.map((day) => (
                   <div
                     key={day}
-                    className="h-8 flex items-center justify-center text-xs font-medium text-lagoon"
+                    className="h-8 flex items-center justify-center text-xs font-medium text-blue-800"
                   >
                     {day}
                   </div>
@@ -309,12 +309,12 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                       className={`
                         h-9 w-9 flex items-center justify-center text-sm rounded-lg
                         transition-colors
-                        ${!isCurrentMonth ? 'text-lagoon/40' : ''}
-                        ${isDisabled ? 'opacity-30 cursor-not-allowed' : 'hover:bg-mist cursor-pointer'}
-                        ${isSelected ? 'bg-tide text-white hover:bg-tide' : ''}
+                        ${!isCurrentMonth ? 'text-blue-800/40' : ''}
+                        ${isDisabled ? 'opacity-30 cursor-not-allowed' : 'hover:bg-surface-tint cursor-pointer'}
+                        ${isSelected ? 'bg-blue-500 text-white hover:bg-blue-500' : ''}
                         ${inRange && !isSelected ? 'bg-info-bg' : ''}
-                        ${isHighlighted && !isSelected ? 'ring-2 ring-tide ring-inset' : ''}
-                        ${isToday && !isSelected ? 'font-bold text-tide' : ''}
+                        ${isHighlighted && !isSelected ? 'ring-2 ring-blue-500 ring-inset' : ''}
+                        ${isToday && !isSelected ? 'font-bold text-blue-500' : ''}
                       `}
                     >
                       {date.getDate()}

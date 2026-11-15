@@ -181,17 +181,17 @@ export const NavigationMenuTrigger = forwardRef<HTMLButtonElement, NavigationMen
         data-state={isOpen ? 'open' : 'closed'}
         className={`
           group inline-flex items-center gap-1 px-4 py-2
-          text-sm font-medium text-abyss
+          text-sm font-medium text-navy
           rounded-lg transition-colors
-          hover:bg-mist focus:outline-none focus-visible:ring-2 focus-visible:ring-tide
-          ${isOpen ? 'bg-mist' : ''}
+          hover:bg-surface-tint focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+          ${isOpen ? 'bg-surface-tint' : ''}
           ${className}
         `}
         {...props}
       >
         {children}
         <svg
-          className={`w-4 h-4 text-lagoon transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-blue-800 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -245,7 +245,7 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
         className={`
           absolute top-full left-0 mt-1 z-50
           min-w-[200px] p-2
-          bg-white rounded-xl border border-mist shadow-lg
+          bg-white rounded-xl border border-surface-tint shadow-lg
           animate-in fade-in-0 slide-in-from-top-2
           ${className}
         `}
@@ -282,8 +282,8 @@ export const NavigationMenuLink = forwardRef<HTMLAnchorElement, NavigationMenuLi
             block px-3 py-2 text-sm rounded-lg
             transition-colors
             ${active
-              ? 'bg-info-bg text-tide font-medium'
-              : 'text-abyss hover:bg-mist'
+              ? 'bg-info-bg text-blue-500 font-medium'
+              : 'text-navy hover:bg-surface-tint'
             }
             ${className}
           `}
@@ -302,8 +302,8 @@ export const NavigationMenuLink = forwardRef<HTMLAnchorElement, NavigationMenuLi
           inline-flex items-center px-4 py-2
           text-sm font-medium rounded-lg
           transition-colors
-          hover:bg-mist focus:outline-none focus-visible:ring-2 focus-visible:ring-tide
-          ${active ? 'text-tide' : 'text-abyss'}
+          hover:bg-surface-tint focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+          ${active ? 'text-blue-500' : 'text-navy'}
           ${className}
         `}
         {...props}
@@ -336,7 +336,7 @@ export const NavigationMenuIndicator = forwardRef<HTMLDivElement, NavigationMenu
       <div
         ref={ref}
         className={`
-          absolute bottom-0 left-0 h-0.5 bg-tide
+          absolute bottom-0 left-0 h-0.5 bg-blue-500
           transition-all duration-200
           ${className}
         `}

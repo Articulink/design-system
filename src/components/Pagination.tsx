@@ -78,11 +78,11 @@ export function Pagination({
     text-sm font-medium
     rounded-xl
     transition-all duration-150
-    focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+    focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
   `;
 
-  const activeStyles = 'bg-tide text-white shadow-md';
-  const inactiveStyles = 'bg-white text-abyss border-2 border-mist hover:border-tide hover:text-tide';
+  const activeStyles = 'bg-blue-500 text-white shadow-md';
+  const inactiveStyles = 'bg-white text-navy border-2 border-surface-tint hover:border-blue-500 hover:text-blue-500';
   const disabledStyles = 'opacity-50 cursor-not-allowed';
 
   return (
@@ -108,7 +108,7 @@ export function Pagination({
           return (
             <span
               key={`ellipsis-${index}`}
-              className="px-2 text-lagoon"
+              className="px-2 text-blue-800"
               aria-hidden="true"
             >
               ...
