@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.1 · November 15, 2026
+
+- **`Button` (React):** the primary variant uses the `action` colours
+  (blue-600, as `.btn-primary` does), not white on blue-500 (4.4:1, under
+  AA); secondary and ghost text is `action` too.
+- **`Input` (React):** the `icon` prop (in the props the story and tests
+  used, but never implemented, so it leaked onto the `<input>`) now draws a
+  decorative icon inside the field, on the left.
+- **Tests pass again:** `next` is a dev dependency (and a peer: `Button` and
+  `Breadcrumb` import `next/link`); stale class expectations in the Button,
+  Input and Modal tests corrected; the axe tests run in jsdom with the
+  vitest-axe matchers registered.
+
 ## 0.4.0 · November 15, 2026
 
 - **Breaking: the ocean colour names are gone.** The aliases retired in v6

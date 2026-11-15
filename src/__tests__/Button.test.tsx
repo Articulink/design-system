@@ -30,19 +30,21 @@ describe('Button', () => {
   });
 
   it('shows loading spinner when loading', () => {
-    render(<Button loading>Loading</Button>);
-    expect(screen.getByText('Loading')).toBeInTheDocument();
+    render(<Button loading>Save</Button>);
+    expect(screen.getByText('Loading')).toHaveClass('sr-only');
     // Check for spinner (svg element)
     const button = screen.getByRole('button');
     expect(button.querySelector('svg')).toBeInTheDocument();
+    expect(button).toHaveAttribute('aria-busy', 'true');
+    expect(button).toBeDisabled();
   });
 
   it('applies variant classes correctly', () => {
     const { rerender } = render(<Button variant="primary">Primary</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-blue-500');
+    expect(screen.getByRole('button')).toHaveClass('bg-action');
 
     rerender(<Button variant="secondary">Secondary</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-surface-tint');
+    expect(screen.getByRole('button')).toHaveClass('bg-white');
 
     rerender(<Button variant="danger">Danger</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-error');
@@ -50,10 +52,10 @@ describe('Button', () => {
 
   it('applies size classes correctly', () => {
     const { rerender } = render(<Button size="sm">Small</Button>);
-    expect(screen.getByRole('button')).toHaveClass('px-3');
+    expect(screen.getByRole('button')).toHaveClass('px-5');
 
     rerender(<Button size="lg">Large</Button>);
-    expect(screen.getByRole('button')).toHaveClass('px-6');
+    expect(screen.getByRole('button')).toHaveClass('px-10');
   });
 
   it('renders as anchor when href is provided', () => {

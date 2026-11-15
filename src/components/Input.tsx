@@ -12,10 +12,12 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   label?: string;
   error?: string;
   hint?: string;
+  /** A decorative icon shown inside the field, on the left. */
+  icon?: React.ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, hint, id, className = '', ...props }, ref) => {
+  ({ label, error, hint, icon, id, className = '', ...props }, ref) => {
     const inputId = id || `input-${Math.random().toString(36).slice(2, 9)}`;
     const hasError = !!error;
 
@@ -30,6 +32,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {props.required && <span className="text-error ml-0.5">*</span>}
           </label>
         )}
+        <div className="relative">
+        {icon && (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 flex text-blue-800"
+          >
+            {icon}
+          </span>
+        )}
         <input
           ref={ref}
           id={inputId}
@@ -38,7 +49,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             hasError ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined
           }
           className={`
-            w-full px-4 py-3 text-base
+            w-full ${icon ? 'pl-12 pr-4' : 'px-4'} py-3 text-base
             bg-white text-navy
             border-2 rounded-xl
             transition-all duration-150
@@ -54,6 +65,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           `}
           {...props}
         />
+        </div>
         {error && (
           <p
             id={`${inputId}-error`}
