@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 · November 15, 2026
+
+- **Confetti: one size.** `.bg-shape-tile` now draws the one-size tile from
+  the Articulink Brand design system v13: every shape the same size
+  (mixed sizes read as fake depth), balanced so each kind paints the same
+  area, spread evenly, 83 shapes. It is the same tile as articulink.com's
+  `public/images/confetti-tile.svg` and `@articulink/brand` v2, from the
+  same seeded generator (`scripts/generate-confetti-tile.mjs` in those repos).
+
 ## 0.2.0 · October 31, 2026
 
 Brings the package to the Articulink Brand design system v11.
