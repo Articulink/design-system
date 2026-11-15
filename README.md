@@ -68,7 +68,8 @@ them in new code.
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `blue-500` (`primary`) | `#037DE4` | The brand: logo, brand surfaces, icons, focus. White text on it only at 19px bold / 24px+ |
+| `blue-600` (`primary`, `action`) | `#0268BF` | The brand (v14): logo, brand surfaces, the confetti field, buttons, links. White text at any size (5.6:1) |
+| `blue-500` | `#037DE4` | The ramp's centre: focus rings, Link's head, `chart-1`. White text on it only at 19px bold / 24px+ |
 | `blue-600` (`action`, `link`) | `#0268BF` | Buttons and text links (5.5:1 with white) |
 | `blue-700` (`action-hover`) / `blue-800` (`action-shadow`) | `#01539B` / `#014079` | Button hover / chunky bottom edge |
 | `navy` (`foreground`) | `#002D59` | Ink and the dark surface |

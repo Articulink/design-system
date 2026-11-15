@@ -33,8 +33,8 @@
   --violet: #c592ff;
   --link-current: #0375d6;
   --link-pupil: #141414;
-  --primary: var(--blue-500);
-  --primary-deep: var(--blue-600);
+  --primary: var(--blue-600);
+  --primary-deep: var(--blue-700);
   --secondary: var(--yellow);
   --secondary-deep: var(--yellow-deep);
   --action: var(--blue-600);
@@ -108,8 +108,8 @@
   --navy: var(--blue-900);
   --surface-subtle: var(--blue-850);
   --surface-tint: var(--blue-800);
-  --primary: var(--blue-500);
-  --primary-deep: var(--blue-600);
+  --primary: var(--blue-600);
+  --primary-deep: var(--blue-700);
   --secondary: var(--yellow);
   --secondary-deep: var(--yellow-deep);
   --action: var(--blue-600);
