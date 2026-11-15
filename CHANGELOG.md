@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- **CI:** GitHub Actions runs the unit and accessibility tests on every
+  pull request and push to `main` (`.github/workflows/ci.yml`), from a
+  committed `package-lock.json` (`npm ci`). The lockfile is for this repo's
+  own tests; consumers still pin the package by commit.
+
 ## 0.4.1 · November 15, 2026
 
 - **`Button` (React):** the primary variant uses the `action` colours
