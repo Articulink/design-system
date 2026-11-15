@@ -122,7 +122,7 @@ function SortableListInner<T>(
             className={`
               transition-all duration-200
               ${isDragging ? 'opacity-50 scale-95' : ''}
-              ${isOver ? 'ring-2 ring-tide ring-offset-2' : ''}
+              ${isOver ? 'ring-2 ring-blue-500 ring-offset-2' : ''}
               ${disabled ? 'cursor-default' : handle ? 'cursor-default' : 'cursor-grab'}
             `}
           >
@@ -155,7 +155,7 @@ export const SortableHandle = forwardRef<HTMLDivElement, SortableHandleProps>(
       >
         {children || (
           <svg
-            className="w-5 h-5 text-lagoon"
+            className="w-5 h-5 text-blue-800"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

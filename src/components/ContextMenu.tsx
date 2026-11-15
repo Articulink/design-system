@@ -200,7 +200,7 @@ export const ContextMenuContent = forwardRef<HTMLDivElement, ContextMenuContentP
         ref={menuRef}
         className={`
           fixed z-50 min-w-[160px]
-          bg-white rounded-xl border border-mist shadow-lg
+          bg-white rounded-xl border border-surface-tint shadow-lg
           py-1 overflow-hidden
           animate-in fade-in-0 zoom-in-95
           ${className}
@@ -249,7 +249,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
           transition-colors
           ${destructive
             ? 'text-error hover:bg-error-bg'
-            : 'text-abyss hover:bg-mist/50'
+            : 'text-navy hover:bg-surface-tint/50'
           }
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           ${className}
@@ -259,7 +259,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
         {icon && <span className="flex-shrink-0 w-4 h-4">{icon}</span>}
         <span className="flex-1">{children}</span>
         {shortcut && (
-          <span className="text-xs text-lagoon ml-auto">{shortcut}</span>
+          <span className="text-xs text-blue-800 ml-auto">{shortcut}</span>
         )}
       </button>
     );
@@ -278,7 +278,7 @@ export const ContextMenuSeparator = forwardRef<HTMLDivElement, ContextMenuSepara
     return (
       <div
         ref={ref}
-        className={`my-1 h-px bg-mist ${className}`}
+        className={`my-1 h-px bg-surface-tint ${className}`}
         role="separator"
         {...props}
       />
@@ -300,7 +300,7 @@ export const ContextMenuLabel = forwardRef<HTMLDivElement, ContextMenuLabelProps
     return (
       <div
         ref={ref}
-        className={`px-3 py-1.5 text-xs font-semibold text-lagoon uppercase tracking-wider ${className}`}
+        className={`px-3 py-1.5 text-xs font-semibold text-blue-800 uppercase tracking-wider ${className}`}
         {...props}
       >
         {children}

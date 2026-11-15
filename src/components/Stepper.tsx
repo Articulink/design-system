@@ -99,14 +99,14 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                     w-8 h-8 rounded-full
                     text-sm font-semibold
                     transition-all duration-200
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
                     ${isCompleted
                       ? 'bg-success text-white'
                       : isCurrent
-                        ? 'bg-tide text-white'
-                        : 'bg-mist text-lagoon'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-surface-tint text-blue-800'
                     }
-                    ${isClickable ? 'cursor-pointer hover:ring-2 hover:ring-tide/30' : 'cursor-default'}
+                    ${isClickable ? 'cursor-pointer hover:ring-2 hover:ring-blue-500/30' : 'cursor-default'}
                   `}
                   aria-current={isCurrent ? 'step' : undefined}
                 >
@@ -125,13 +125,13 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                     <p
                       className={`
                         text-sm font-medium
-                        ${isCurrent ? 'text-abyss' : isCompleted ? 'text-success-text' : 'text-lagoon'}
+                        ${isCurrent ? 'text-navy' : isCompleted ? 'text-success-text' : 'text-blue-800'}
                       `}
                     >
                       {step.label}
                     </p>
                     {step.description && (
-                      <p className="text-xs text-lagoon mt-0.5">
+                      <p className="text-xs text-blue-800 mt-0.5">
                         {step.description}
                       </p>
                     )}
@@ -147,7 +147,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
                       ? 'flex-1 h-0.5 mx-2'
                       : 'w-0.5 h-8 ml-4 my-1'
                     }
-                    ${isCompleted ? 'bg-success' : 'bg-mist'}
+                    ${isCompleted ? 'bg-success' : 'bg-surface-tint'}
                     transition-colors duration-200
                   `}
                 />

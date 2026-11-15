@@ -29,8 +29,8 @@ const ModalTemplate = (args: any) => {
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <div className="p-6">
-          <h2 className="text-xl font-semibold text-abyss mb-4">Modal Title</h2>
-          <p className="text-lagoon mb-6">
+          <h2 className="text-xl font-semibold text-navy mb-4">Modal Title</h2>
+          <p className="text-blue-800 mb-6">
             This is the modal content. You can put any content here, including forms,
             images, or other components.
           </p>
@@ -80,18 +80,18 @@ export const WithForm: Story = {
           <div className="p-6">
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-abyss mb-1">Name</label>
+                <label className="block text-sm font-medium text-navy mb-1">Name</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border border-mist rounded-lg"
+                  className="w-full px-3 py-2 border border-surface-tint rounded-lg"
                   placeholder="John Doe"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-abyss mb-1">Email</label>
+                <label className="block text-sm font-medium text-navy mb-1">Email</label>
                 <input
                   type="email"
-                  className="w-full px-3 py-2 border border-mist rounded-lg"
+                  className="w-full px-3 py-2 border border-surface-tint rounded-lg"
                   placeholder="john@example.com"
                 />
               </div>

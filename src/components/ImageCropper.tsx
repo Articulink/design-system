@@ -240,7 +240,7 @@ export const ImageCropper = forwardRef<HTMLDivElement, ImageCropperProps>(
         {/* Cropper area */}
         <div
           ref={containerRef}
-          className="relative w-full h-64 bg-abyss overflow-hidden cursor-move"
+          className="relative w-full h-64 bg-navy overflow-hidden cursor-move"
           onMouseDown={handleMouseDown}
         >
           {/* Image */}
@@ -296,7 +296,7 @@ export const ImageCropper = forwardRef<HTMLDivElement, ImageCropperProps>(
           {/* Zoom slider */}
           <div className="flex-1 flex items-center gap-2">
             <svg
-              className="w-4 h-4 text-lagoon"
+              className="w-4 h-4 text-blue-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -311,10 +311,10 @@ export const ImageCropper = forwardRef<HTMLDivElement, ImageCropperProps>(
               step={0.1}
               value={zoom}
               onChange={handleZoomChange}
-              className="flex-1 h-1 bg-mist rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-tide"
+              className="flex-1 h-1 bg-surface-tint rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-500"
             />
             <svg
-              className="w-4 h-4 text-lagoon"
+              className="w-4 h-4 text-blue-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -329,7 +329,7 @@ export const ImageCropper = forwardRef<HTMLDivElement, ImageCropperProps>(
             <button
               type="button"
               onClick={handleCrop}
-              className="px-4 py-2 bg-tide text-white rounded-lg hover:bg-surf transition-colors"
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-400 transition-colors"
             >
               Crop
             </button>

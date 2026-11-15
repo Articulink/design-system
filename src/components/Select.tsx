@@ -32,7 +32,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="block text-sm font-semibold text-abyss mb-1.5"
+            className="block text-sm font-semibold text-navy mb-1.5"
           >
             {label}
             {props.required && <span className="text-error ml-0.5">*</span>}
@@ -48,7 +48,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             }
             className={`
               w-full px-4 py-3 text-base
-              bg-white text-abyss
+              bg-white text-navy
               border-2 rounded-xl
               transition-all duration-150
               appearance-none cursor-pointer
@@ -56,9 +56,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               ${
                 hasError
                   ? 'border-error focus:border-error focus:shadow-[0_0_0_3px_rgba(239,68,68,0.12)]'
-                  : 'border-mist focus:border-tide focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
+                  : 'border-surface-tint focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
               }
-              disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-breeze
+              disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-surface-subtle
               ${className}
             `}
             {...props}
@@ -68,7 +68,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           {/* Dropdown arrow */}
           <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
             <svg
-              className="w-5 h-5 text-lagoon"
+              className="w-5 h-5 text-blue-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -89,7 +89,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           </p>
         )}
         {!error && hint && (
-          <p id={`${selectId}-hint`} className="mt-1.5 text-sm text-lagoon">
+          <p id={`${selectId}-hint`} className="mt-1.5 text-sm text-blue-800">
             {hint}
           </p>
         )}

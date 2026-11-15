@@ -72,19 +72,19 @@ export const StackableTable = forwardRef<HTMLDivElement, StackableTableProps>(
         {/* Desktop table */}
         <div className={bp.table}>
           <table className="min-w-full">
-            <thead className="bg-mist/50">
+            <thead className="bg-surface-tint/50">
               <tr>
                 {headers.map((header, i) => (
                   <th
                     key={i}
-                    className="px-4 py-3 text-left text-xs font-medium text-lagoon uppercase tracking-wider"
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-800 uppercase tracking-wider"
                   >
                     {header}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-mist">{children}</tbody>
+            <tbody className="divide-y divide-surface-tint">{children}</tbody>
           </table>
         </div>
 
@@ -138,7 +138,7 @@ export const MobileCard = forwardRef<HTMLDivElement, MobileCardProps>(
     return (
       <div
         ref={ref}
-        className={`bg-white rounded-xl border border-mist p-4 space-y-2 ${className}`}
+        className={`bg-white rounded-xl border border-surface-tint p-4 space-y-2 ${className}`}
         {...props}
       >
         {children}
@@ -165,10 +165,10 @@ export const MobileCardRow = forwardRef<HTMLDivElement, MobileCardRowProps>(
         className={`flex justify-between items-start gap-4 ${className}`}
         {...props}
       >
-        <span className="text-xs text-lagoon uppercase tracking-wide flex-shrink-0">
+        <span className="text-xs text-blue-800 uppercase tracking-wide flex-shrink-0">
           {label}
         </span>
-        <span className="text-sm text-abyss text-right">{children}</span>
+        <span className="text-sm text-navy text-right">{children}</span>
       </div>
     );
   }

@@ -68,7 +68,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
           <div className={`flex flex-col ${isOwn ? 'items-end' : 'items-start'}`}>
             {/* Sender name (only show for first message) */}
             {!isOwn && isFirst && senderName && (
-              <span className="text-xs text-lagoon mb-1 ml-3">{senderName}</span>
+              <span className="text-xs text-blue-800 mb-1 ml-3">{senderName}</span>
             )}
 
             {/* Message bubble */}
@@ -76,8 +76,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
               className={`
                 px-4 py-2 max-w-full
                 ${isOwn
-                  ? 'bg-tide text-white rounded-2xl rounded-br-md'
-                  : 'bg-mist text-abyss rounded-2xl rounded-bl-md'
+                  ? 'bg-blue-500 text-white rounded-2xl rounded-br-md'
+                  : 'bg-surface-tint text-navy rounded-2xl rounded-bl-md'
                 }
                 ${!isFirst && isOwn ? 'rounded-tr-md' : ''}
                 ${!isFirst && !isOwn ? 'rounded-tl-md' : ''}
@@ -91,7 +91,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
             {/* Timestamp and status (only show for last message) */}
             {isLast && (timestamp || status) && (
               <div className={`flex items-center gap-1 mt-1 ${isOwn ? 'mr-1' : 'ml-3'}`}>
-                {timestamp && <span className="text-xs text-lagoon">{timestamp}</span>}
+                {timestamp && <span className="text-xs text-blue-800">{timestamp}</span>}
                 {status && isOwn && <MessageStatus status={status} />}
               </div>
             )}
@@ -109,23 +109,23 @@ function MessageStatus({ status }: { status: string }) {
   switch (status) {
     case 'sending':
       return (
-        <div className="w-3 h-3 border border-lagoon/50 border-t-transparent rounded-full animate-spin" />
+        <div className="w-3 h-3 border border-blue-800/50 border-t-transparent rounded-full animate-spin" />
       );
     case 'sent':
       return (
-        <svg className="w-3 h-3 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-3 h-3 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
         </svg>
       );
     case 'delivered':
       return (
-        <svg className="w-4 h-3 text-lagoon" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-4 h-3 text-blue-800" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M2 8l4 4 8-8M10 12l4 4 8-8" />
         </svg>
       );
     case 'read':
       return (
-        <svg className="w-4 h-3 text-tide" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-4 h-3 text-blue-500" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M2 8l4 4 8-8M10 12l4 4 8-8" />
         </svg>
       );
@@ -188,7 +188,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
       <form
         ref={ref}
         onSubmit={handleSubmit}
-        className={`flex items-end gap-2 p-3 bg-white border-t border-mist ${className}`}
+        className={`flex items-end gap-2 p-3 bg-white border-t border-surface-tint ${className}`}
         {...props}
       >
         {actions && <div className="flex items-center gap-1">{actions}</div>}
@@ -203,10 +203,10 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
             maxLength={maxLength}
             rows={1}
             className="
-              w-full px-4 py-2 bg-mist rounded-2xl
-              text-sm text-abyss placeholder:text-lagoon/50
+              w-full px-4 py-2 bg-surface-tint rounded-2xl
+              text-sm text-navy placeholder:text-blue-800/50
               border-2 border-transparent
-              focus:outline-none focus:border-tide focus:bg-white
+              focus:outline-none focus:border-blue-500 focus:bg-white
               resize-none max-h-32
               disabled:opacity-50 disabled:cursor-not-allowed
             "
@@ -219,9 +219,9 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
           disabled={!value.trim() || disabled || sending}
           className="
             flex-shrink-0 w-10 h-10 rounded-full
-            bg-tide text-white
+            bg-blue-500 text-white
             flex items-center justify-center
-            hover:bg-surf transition-colors
+            hover:bg-blue-400 transition-colors
             disabled:opacity-50 disabled:cursor-not-allowed
           "
         >
@@ -250,7 +250,7 @@ export interface ConversationListProps extends React.HTMLAttributes<HTMLDivEleme
 export const ConversationList = forwardRef<HTMLDivElement, ConversationListProps>(
   ({ children, className = '', ...props }, ref) => {
     return (
-      <div ref={ref} className={`divide-y divide-mist ${className}`} {...props}>
+      <div ref={ref} className={`divide-y divide-surface-tint ${className}`} {...props}>
         {children}
       </div>
     );
@@ -297,7 +297,7 @@ export const ConversationItem = forwardRef<HTMLButtonElement, ConversationItemPr
         className={`
           w-full flex items-center gap-3 p-4 text-left
           transition-colors
-          ${isSelected ? 'bg-info-bg' : 'hover:bg-mist/50'}
+          ${isSelected ? 'bg-info-bg' : 'hover:bg-surface-tint/50'}
           ${className}
         `}
         {...props}
@@ -305,7 +305,7 @@ export const ConversationItem = forwardRef<HTMLButtonElement, ConversationItemPr
         {/* Avatar */}
         <div className="relative flex-shrink-0">
           {avatar || (
-            <div className="w-12 h-12 bg-mist rounded-full flex items-center justify-center text-lagoon font-medium">
+            <div className="w-12 h-12 bg-surface-tint rounded-full flex items-center justify-center text-blue-800 font-medium">
               {name.charAt(0).toUpperCase()}
             </div>
           )}
@@ -317,17 +317,17 @@ export const ConversationItem = forwardRef<HTMLButtonElement, ConversationItemPr
         {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between">
-            <span className={`font-medium truncate ${unreadCount > 0 ? 'text-abyss' : 'text-abyss/80'}`}>
+            <span className={`font-medium truncate ${unreadCount > 0 ? 'text-navy' : 'text-navy/80'}`}>
               {name}
             </span>
             {timestamp && (
-              <span className={`text-xs flex-shrink-0 ml-2 ${unreadCount > 0 ? 'text-tide font-medium' : 'text-lagoon'}`}>
+              <span className={`text-xs flex-shrink-0 ml-2 ${unreadCount > 0 ? 'text-blue-500 font-medium' : 'text-blue-800'}`}>
                 {timestamp}
               </span>
             )}
           </div>
           {lastMessage && (
-            <p className={`text-sm truncate mt-0.5 ${unreadCount > 0 ? 'text-abyss font-medium' : 'text-lagoon'}`}>
+            <p className={`text-sm truncate mt-0.5 ${unreadCount > 0 ? 'text-navy font-medium' : 'text-blue-800'}`}>
               {lastMessage}
             </p>
           )}
@@ -335,7 +335,7 @@ export const ConversationItem = forwardRef<HTMLButtonElement, ConversationItemPr
 
         {/* Unread badge */}
         {unreadCount > 0 && (
-          <span className="flex-shrink-0 min-w-[20px] h-5 px-1.5 bg-tide text-white text-xs font-medium rounded-full flex items-center justify-center">
+          <span className="flex-shrink-0 min-w-[20px] h-5 px-1.5 bg-blue-500 text-white text-xs font-medium rounded-full flex items-center justify-center">
             {unreadCount > 99 ? '99+' : unreadCount}
           </span>
         )}

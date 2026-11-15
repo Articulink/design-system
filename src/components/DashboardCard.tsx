@@ -38,7 +38,7 @@ export interface DashboardCardProps extends React.HTMLAttributes<HTMLDivElement>
 
 const gradientStyles: Record<DashboardCardGradient, { header: string; icon: string }> = {
   primary: {
-    header: 'bg-gradient-to-r from-tide to-surf',
+    header: 'bg-gradient-to-r from-blue-500 to-blue-400',
     icon: 'bg-white/20 text-white',
   },
   success: {
@@ -47,7 +47,7 @@ const gradientStyles: Record<DashboardCardGradient, { header: string; icon: stri
   },
   warning: {
     header: 'bg-gradient-to-r from-warning to-amber-400',
-    icon: 'bg-white/20 text-abyss',
+    icon: 'bg-white/20 text-navy',
   },
   info: {
     header: 'bg-gradient-to-r from-info to-sky-400',
@@ -58,7 +58,7 @@ const gradientStyles: Record<DashboardCardGradient, { header: string; icon: stri
     icon: 'bg-white/20 text-white',
   },
   neutral: {
-    header: 'bg-gradient-to-r from-lagoon to-abyss',
+    header: 'bg-gradient-to-r from-blue-800 to-navy',
     icon: 'bg-white/20 text-white',
   },
 };
@@ -84,10 +84,10 @@ export const DashboardCard = forwardRef<HTMLDivElement, DashboardCardProps>(
       if (!action) return null;
 
       const actionClasses = `
-        text-sm font-medium text-tide
-        hover:text-surf
+        text-sm font-medium text-blue-500
+        hover:text-blue-400
         transition-colors
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
         rounded
       `;
 
@@ -111,7 +111,7 @@ export const DashboardCard = forwardRef<HTMLDivElement, DashboardCardProps>(
         ref={ref}
         className={`
           bg-white rounded-2xl overflow-hidden
-          border border-mist
+          border border-surface-tint
           shadow-sm hover:shadow-md
           transition-shadow duration-200
           ${className}
@@ -143,8 +143,8 @@ export const DashboardCard = forwardRef<HTMLDivElement, DashboardCardProps>(
         <div className="p-5">
           {loading ? (
             <div className="space-y-3">
-              <div className="h-4 bg-mist rounded animate-pulse w-3/4" />
-              <div className="h-4 bg-mist rounded animate-pulse w-1/2" />
+              <div className="h-4 bg-surface-tint rounded animate-pulse w-3/4" />
+              <div className="h-4 bg-surface-tint rounded animate-pulse w-1/2" />
             </div>
           ) : (
             children

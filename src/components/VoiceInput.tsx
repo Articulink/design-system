@@ -252,10 +252,10 @@ export const VoiceInput = forwardRef<HTMLButtonElement, VoiceInputProps>(
             rounded-lg transition-all duration-200
             ${isListening
               ? 'bg-error/10 text-error hover:bg-error/20 animate-pulse'
-              : 'bg-mist text-lagoon hover:bg-mist/80 hover:text-abyss'
+              : 'bg-surface-tint text-blue-800 hover:bg-surface-tint/80 hover:text-navy'
             }
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-            focus:outline-none focus:ring-2 focus:ring-tide focus:ring-offset-1
+            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
           `}
           {...props}
         >
@@ -276,7 +276,7 @@ export const VoiceInput = forwardRef<HTMLButtonElement, VoiceInputProps>(
 
         {/* Interim transcript preview */}
         {showPreview && isListening && interimTranscript && (
-          <div className="absolute top-full left-0 mt-2 p-2 bg-abyss text-white text-sm rounded-lg shadow-lg max-w-xs z-50 whitespace-pre-wrap">
+          <div className="absolute top-full left-0 mt-2 p-2 bg-navy text-white text-sm rounded-lg shadow-lg max-w-xs z-50 whitespace-pre-wrap">
             <span className="opacity-70">{interimTranscript}</span>
           </div>
         )}

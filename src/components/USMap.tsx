@@ -167,15 +167,15 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
         <div ref={ref} className={`relative ${className}`} {...props}>
           {(title || subtitle) && (
             <div className="mb-4">
-              {title && <h3 className="font-semibold text-abyss">{title}</h3>}
-              {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+              {title && <h3 className="font-semibold text-navy">{title}</h3>}
+              {subtitle && <p className="text-sm text-blue-800">{subtitle}</p>}
             </div>
           )}
           <div
             className="flex items-center justify-center bg-slate-50 rounded-lg"
             style={{ minHeight }}
           >
-            <div className="animate-pulse text-lagoon">Loading map...</div>
+            <div className="animate-pulse text-blue-800">Loading map...</div>
           </div>
         </div>
       );
@@ -185,8 +185,8 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
       <div ref={ref} className={`relative ${className}`} {...props}>
         {(title || subtitle) && (
           <div className="mb-4">
-            {title && <h3 className="font-semibold text-abyss">{title}</h3>}
-            {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+            {title && <h3 className="font-semibold text-navy">{title}</h3>}
+            {subtitle && <p className="text-sm text-blue-800">{subtitle}</p>}
           </div>
         )}
 
@@ -245,14 +245,14 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
 
           {showLegend && (
             <div className="flex-shrink-0 lg:w-32">
-              <div className="text-sm font-medium text-abyss mb-3">Legend</div>
+              <div className="text-sm font-medium text-navy mb-3">Legend</div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <div
                     className="w-5 h-5 rounded border border-slate-300"
                     style={{ backgroundColor: emptyColor }}
                   />
-                  <span className="text-sm text-lagoon">No data</span>
+                  <span className="text-sm text-blue-800">No data</span>
                 </div>
                 {colors.slice(1).map((color, index) => {
                   const step = max > min ? (max - min) / (colors.length - 1) : 1;
@@ -269,7 +269,7 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
                         className="w-5 h-5 rounded border border-slate-300"
                         style={{ backgroundColor: color }}
                       />
-                      <span className="text-sm text-lagoon">{label}</span>
+                      <span className="text-sm text-blue-800">{label}</span>
                     </div>
                   );
                 })}
@@ -280,16 +280,16 @@ export const USMap = forwardRef<HTMLDivElement, USMapProps>(
 
         {showTooltip && hoveredState && (
           <div
-            className="fixed z-50 px-4 py-3 bg-white text-abyss text-sm rounded-xl border border-slate-200 pointer-events-none"
+            className="fixed z-50 px-4 py-3 bg-white text-navy text-sm rounded-xl border border-slate-200 pointer-events-none"
             style={{
               left: tooltipPos.x + 16,
               top: tooltipPos.y + 16,
               boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1)',
             }}
           >
-            <div className="font-semibold text-abyss">{STATE_NAMES[hoveredState] || hoveredState}</div>
+            <div className="font-semibold text-navy">{STATE_NAMES[hoveredState] || hoveredState}</div>
             {hoveredData ? (
-              <div className="text-lagoon font-medium">
+              <div className="text-blue-800 font-medium">
                 {hoveredData.label || `${hoveredData.value} ${hoveredData.value === 1 ? 'family' : 'families'}`}
               </div>
             ) : (

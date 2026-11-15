@@ -207,16 +207,16 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         >
           {/* Header */}
           {(title || description) && (
-            <div className="flex-shrink-0 px-6 py-4 border-b border-mist">
+            <div className="flex-shrink-0 px-6 py-4 border-b border-surface-tint">
               <div className="flex items-start justify-between">
                 <div>
                   {title && (
-                    <h2 id="drawer-title" className="text-lg font-semibold text-abyss">
+                    <h2 id="drawer-title" className="text-lg font-semibold text-navy">
                       {title}
                     </h2>
                   )}
                   {description && (
-                    <p id="drawer-description" className="text-sm text-lagoon mt-1">
+                    <p id="drawer-description" className="text-sm text-blue-800 mt-1">
                       {description}
                     </p>
                   )}
@@ -224,7 +224,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
                 <button
                   type="button"
                   onClick={onClose}
-                  className="p-2 -mr-2 text-lagoon hover:text-abyss hover:bg-mist rounded-lg transition-colors"
+                  className="p-2 -mr-2 text-blue-800 hover:text-navy hover:bg-surface-tint rounded-lg transition-colors"
                   aria-label="Close drawer"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -276,7 +276,7 @@ export const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(
     return (
       <div
         ref={ref}
-        className={`flex-shrink-0 px-6 py-4 border-t border-mist bg-breeze ${className}`}
+        className={`flex-shrink-0 px-6 py-4 border-t border-surface-tint bg-surface-subtle ${className}`}
         {...props}
       >
         {children}

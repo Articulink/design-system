@@ -180,7 +180,7 @@ export function ThemeToggle({ size = 'md', className = '', ...props }: ThemeTogg
       className={`
         ${sizeClasses[size]}
         flex items-center justify-center
-        rounded-lg bg-mist hover:bg-mist/80
+        rounded-lg bg-surface-tint hover:bg-surface-tint/80
         transition-colors
         ${className}
       `}
@@ -189,7 +189,7 @@ export function ThemeToggle({ size = 'md', className = '', ...props }: ThemeTogg
     >
       {resolvedTheme === 'light' ? (
         <svg
-          className={`${iconSizes[size]} text-abyss`}
+          className={`${iconSizes[size]} text-navy`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -203,7 +203,7 @@ export function ThemeToggle({ size = 'md', className = '', ...props }: ThemeTogg
         </svg>
       ) : (
         <svg
-          className={`${iconSizes[size]} text-sunshine`}
+          className={`${iconSizes[size]} text-yellow`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -241,9 +241,9 @@ export function ThemeSelect({ onChange, className = '', ...props }: ThemeSelectP
       value={theme}
       onChange={handleChange}
       className={`
-        px-3 py-2 rounded-lg border border-mist bg-white
-        text-abyss text-sm
-        focus:outline-none focus:ring-2 focus:ring-tide focus:border-transparent
+        px-3 py-2 rounded-lg border border-surface-tint bg-white
+        text-navy text-sm
+        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
         ${className}
       `}
       {...props}

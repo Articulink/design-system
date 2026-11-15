@@ -34,9 +34,9 @@ const sizeClasses: Record<CopyButtonSize, { button: string; icon: string }> = {
 };
 
 const variantClasses: Record<CopyButtonVariant, string> = {
-  default: 'bg-mist hover:bg-bubble text-abyss',
-  ghost: 'hover:bg-mist text-lagoon hover:text-abyss',
-  outline: 'border border-mist hover:border-bubble hover:bg-mist/50 text-abyss',
+  default: 'bg-surface-tint hover:bg-blue-100 text-navy',
+  ghost: 'hover:bg-surface-tint text-blue-800 hover:text-navy',
+  outline: 'border border-surface-tint hover:border-blue-100 hover:bg-surface-tint/50 text-navy',
 };
 
 export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
@@ -83,7 +83,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
         className={`
           inline-flex items-center justify-center rounded-lg
           font-medium transition-all duration-150
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-1
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1
           ${styles.button}
           ${variantClasses[variant]}
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}

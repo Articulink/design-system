@@ -39,10 +39,10 @@ describe('Button', () => {
 
   it('applies variant classes correctly', () => {
     const { rerender } = render(<Button variant="primary">Primary</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-tide');
+    expect(screen.getByRole('button')).toHaveClass('bg-blue-500');
 
     rerender(<Button variant="secondary">Secondary</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-mist');
+    expect(screen.getByRole('button')).toHaveClass('bg-surface-tint');
 
     rerender(<Button variant="danger">Danger</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-error');

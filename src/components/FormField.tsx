@@ -38,7 +38,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
         {label && (
           <label
             htmlFor={fieldId}
-            className="block text-sm font-semibold text-abyss mb-1.5"
+            className="block text-sm font-semibold text-navy mb-1.5"
           >
             {label}
             {required && <span className="text-error ml-0.5">*</span>}
@@ -57,7 +57,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
           </p>
         )}
         {!error && hint && (
-          <p id={`${fieldId}-hint`} className="mt-1.5 text-sm text-lagoon">
+          <p id={`${fieldId}-hint`} className="mt-1.5 text-sm text-blue-800">
             {hint}
           </p>
         )}
@@ -85,11 +85,11 @@ export const FormSection = forwardRef<HTMLFieldSetElement, FormSectionProps>(
         className={`border-0 p-0 m-0 ${className}`}
         {...props}
       >
-        <legend className="text-base font-semibold text-abyss mb-1">
+        <legend className="text-base font-semibold text-navy mb-1">
           {title}
         </legend>
         {description && (
-          <p className="text-sm text-lagoon mb-4">
+          <p className="text-sm text-blue-800 mb-4">
             {description}
           </p>
         )}
@@ -125,7 +125,7 @@ export const FormActions = forwardRef<HTMLDivElement, FormActionsProps>(
         ref={ref}
         className={`
           flex items-center gap-3 pt-4
-          border-t border-mist mt-6
+          border-t border-surface-tint mt-6
           ${alignStyles[align]}
           ${className}
         `}

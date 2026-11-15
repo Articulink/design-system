@@ -151,13 +151,13 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
     // Countdown state
     return (
       <div ref={ref} className={`text-center ${className}`} {...props}>
-        {label && <p className={`text-lagoon mb-2 ${styles.label}`}>{label}</p>}
+        {label && <p className={`text-blue-800 mb-2 ${styles.label}`}>{label}</p>}
 
         <div
           className={`
             inline-flex items-center gap-1 font-bold
             ${styles.container}
-            ${timeState.isUrgent ? 'text-tide' : 'text-abyss'}
+            ${timeState.isUrgent ? 'text-blue-500' : 'text-navy'}
           `}
         >
           {timeState.hours > 0 && (
@@ -165,19 +165,19 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
               <div
                 className={`
                   ${styles.digit} rounded-lg
-                  ${timeState.isUrgent ? 'bg-info-bg' : 'bg-mist'}
+                  ${timeState.isUrgent ? 'bg-info-bg' : 'bg-surface-tint'}
                 `}
               >
                 {formatTime(timeState.hours)}
               </div>
-              <span className="text-lagoon/40">:</span>
+              <span className="text-blue-800/40">:</span>
             </>
           )}
 
           <div
             className={`
               ${styles.digit} rounded-lg
-              ${timeState.isUrgent ? 'bg-info-bg' : 'bg-mist'}
+              ${timeState.isUrgent ? 'bg-info-bg' : 'bg-surface-tint'}
             `}
           >
             {formatTime(timeState.minutes)}
@@ -185,11 +185,11 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
 
           {showSeconds && (
             <>
-              <span className="text-lagoon/40">:</span>
+              <span className="text-blue-800/40">:</span>
               <div
                 className={`
                   ${styles.digit} rounded-lg
-                  ${timeState.isUrgent ? 'bg-info-bg' : 'bg-mist'}
+                  ${timeState.isUrgent ? 'bg-info-bg' : 'bg-surface-tint'}
                 `}
               >
                 {formatTime(timeState.seconds)}
@@ -198,7 +198,7 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
           )}
         </div>
 
-        <p className={`text-lagoon/60 mt-2 ${styles.label}`}>
+        <p className={`text-blue-800/60 mt-2 ${styles.label}`}>
           {timeState.hours > 0 ? 'hours' : showSeconds ? 'minutes : seconds' : 'minutes'}
         </p>
       </div>

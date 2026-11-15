@@ -36,9 +36,9 @@ export interface BadgeDisplayProps extends React.HTMLAttributes<HTMLDivElement> 
 
 const rarityConfig: Record<BadgeRarity, { bg: string; border: string; text: string; glow: string; indicator: string; symbol: string }> = {
   common: {
-    bg: 'bg-mist',
-    border: 'border-lagoon/30',
-    text: 'text-lagoon',
+    bg: 'bg-surface-tint',
+    border: 'border-blue-800/30',
+    text: 'text-blue-800',
     glow: '',
     indicator: '',
     symbol: '',
@@ -53,10 +53,10 @@ const rarityConfig: Record<BadgeRarity, { bg: string; border: string; text: stri
   },
   rare: {
     bg: 'bg-info-bg',
-    border: 'border-tide/30',
-    text: 'text-tide',
-    glow: 'shadow-tide/20 shadow-md',
-    indicator: 'bg-tide',
+    border: 'border-blue-500/30',
+    text: 'text-blue-500',
+    glow: 'shadow-blue-500/20 shadow-md',
+    indicator: 'bg-blue-500',
     symbol: '●',
   },
   epic: {
@@ -69,10 +69,10 @@ const rarityConfig: Record<BadgeRarity, { bg: string; border: string; text: stri
   },
   legendary: {
     bg: 'bg-warning-bg',
-    border: 'border-sunshine',
+    border: 'border-yellow',
     text: 'text-warning-text',
-    glow: 'shadow-sunshine/30 shadow-lg',
-    indicator: 'bg-sunshine',
+    glow: 'shadow-yellow/30 shadow-lg',
+    indicator: 'bg-yellow',
     symbol: '★',
   },
 };
@@ -114,7 +114,7 @@ export const BadgeDisplay = forwardRef<HTMLDivElement, BadgeDisplayProps>(
           <div
             className={`
               ${sizeStyles.badge}
-              ${locked ? 'bg-mist border-mist' : `${rarityStyles.bg} ${rarityStyles.border}`}
+              ${locked ? 'bg-surface-tint border-surface-tint' : `${rarityStyles.bg} ${rarityStyles.border}`}
               border-2 rounded-full flex items-center justify-center
               ${locked ? '' : rarityStyles.glow}
               transition-transform hover:scale-110
@@ -132,7 +132,7 @@ export const BadgeDisplay = forwardRef<HTMLDivElement, BadgeDisplayProps>(
                 cy="18"
                 r="16"
                 fill="none"
-                stroke="var(--tide)"
+                stroke="var(--blue-500)"
                 strokeWidth="2"
                 strokeDasharray={`${progress} 100`}
                 strokeLinecap="round"
@@ -155,10 +155,10 @@ export const BadgeDisplay = forwardRef<HTMLDivElement, BadgeDisplayProps>(
 
           {/* Tooltip on hover */}
           {!showDetails && (
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-abyss text-white text-xs rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap z-10 shadow-lg pointer-events-none">
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-navy text-white text-xs rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap z-10 shadow-lg pointer-events-none">
               <p className="font-semibold">{name}</p>
               {description && <p className="text-white/70 text-[10px]">{description}</p>}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-abyss" />
+              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-navy" />
             </div>
           )}
         </div>
@@ -166,17 +166,17 @@ export const BadgeDisplay = forwardRef<HTMLDivElement, BadgeDisplayProps>(
         {/* Badge details */}
         {showDetails && (
           <div className="text-center">
-            <p className={`font-semibold ${sizeStyles.text} ${locked ? 'text-lagoon/60' : rarityStyles.text}`}>
+            <p className={`font-semibold ${sizeStyles.text} ${locked ? 'text-blue-800/60' : rarityStyles.text}`}>
               {name}
             </p>
             {description && (
-              <p className={`text-lagoon ${sizeStyles.desc} max-w-[120px]`}>{description}</p>
+              <p className={`text-blue-800 ${sizeStyles.desc} max-w-[120px]`}>{description}</p>
             )}
             {locked && progress > 0 && (
-              <p className="text-tide text-xs mt-1">{Math.round(progress)}% complete</p>
+              <p className="text-blue-500 text-xs mt-1">{Math.round(progress)}% complete</p>
             )}
             {earnedAt && !locked && (
-              <p className="text-lagoon/70 text-[10px] mt-1">Earned {earnedAt}</p>
+              <p className="text-blue-800/70 text-[10px] mt-1">Earned {earnedAt}</p>
             )}
           </div>
         )}
@@ -232,7 +232,7 @@ export const BadgeRow = forwardRef<HTMLDivElement, BadgeRowProps>(
       <div ref={ref} className={`flex items-center gap-3 flex-wrap ${className}`} {...props}>
         <div className="flex flex-wrap gap-2">{displayChildren}</div>
         {remaining > 0 && (
-          <span className="text-sm font-medium text-lagoon bg-mist px-2 py-1 rounded-full">
+          <span className="text-sm font-medium text-blue-800 bg-surface-tint px-2 py-1 rounded-full">
             +{remaining} more
           </span>
         )}

@@ -137,7 +137,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     return (
       <div className={className}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">
+          <label className="block text-sm font-semibold text-navy mb-1.5">
             {label}
           </label>
         )}
@@ -150,10 +150,10 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             ${error
               ? 'border-error'
               : isFocused
-                ? 'border-tide shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
-                : 'border-mist hover:border-bubble'
+                ? 'border-blue-500 shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
+                : 'border-surface-tint hover:border-blue-100'
             }
-            ${disabled ? 'opacity-50 bg-breeze' : ''}
+            ${disabled ? 'opacity-50 bg-surface-subtle' : ''}
           `}
         >
           {/* Decrement button */}
@@ -166,7 +166,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
               className={`
                 ${styles.button} flex-shrink-0
                 flex items-center justify-center
-                text-lagoon hover:text-abyss hover:bg-mist
+                text-blue-800 hover:text-navy hover:bg-surface-tint
                 disabled:opacity-30 disabled:cursor-not-allowed
                 transition-colors rounded-l-lg
               `}
@@ -179,7 +179,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
           {/* Prefix */}
           {prefix && (
-            <span className="text-lagoon pl-2">{prefix}</span>
+            <span className="text-blue-800 pl-2">{prefix}</span>
           )}
 
           {/* Input */}
@@ -201,7 +201,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             className={`
               ${styles.input}
               flex-1 min-w-0 text-center
-              text-abyss placeholder:text-lagoon/50
+              text-navy placeholder:text-blue-800/50
               bg-transparent border-0
               focus:outline-none
             `}
@@ -210,7 +210,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
           {/* Suffix */}
           {suffix && (
-            <span className="text-lagoon pr-2">{suffix}</span>
+            <span className="text-blue-800 pr-2">{suffix}</span>
           )}
 
           {/* Increment button */}
@@ -223,7 +223,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
               className={`
                 ${styles.button} flex-shrink-0
                 flex items-center justify-center
-                text-lagoon hover:text-abyss hover:bg-mist
+                text-blue-800 hover:text-navy hover:bg-surface-tint
                 disabled:opacity-30 disabled:cursor-not-allowed
                 transition-colors rounded-r-lg
               `}
@@ -237,7 +237,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 
         {/* Hint or error message */}
         {(hint || error) && (
-          <p className={`text-sm mt-1.5 ${error ? 'text-error' : 'text-lagoon'}`}>
+          <p className={`text-sm mt-1.5 ${error ? 'text-error' : 'text-blue-800'}`}>
             {error || hint}
           </p>
         )}

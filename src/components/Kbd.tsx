@@ -34,8 +34,8 @@ export const Kbd = forwardRef<HTMLElement, KbdProps>(
         className={`
           inline-flex items-center justify-center
           font-sans font-medium
-          bg-mist text-lagoon
-          border border-mist/80 rounded
+          bg-surface-tint text-blue-800
+          border border-surface-tint/80 rounded
           shadow-[0_1px_0_1px_rgba(0,0,0,0.05)]
           ${sizeClasses[size]}
           ${className}
@@ -71,7 +71,7 @@ export const KbdShortcut = forwardRef<HTMLSpanElement, KbdShortcutProps>(
           <span key={index} className="inline-flex items-center gap-0.5">
             <Kbd size={size}>{key}</Kbd>
             {separator && index < keys.length - 1 && (
-              <span className="text-lagoon text-xs mx-0.5">{separator}</span>
+              <span className="text-blue-800 text-xs mx-0.5">{separator}</span>
             )}
           </span>
         ))}

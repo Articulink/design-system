@@ -47,13 +47,13 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-tide border-b-4 border-tide-deep text-white font-bold uppercase tracking-wide hover:bg-surf active:border-b-0 active:translate-y-[2px]',
+    'bg-blue-500 border-b-4 border-blue-600 text-white font-bold uppercase tracking-wide hover:bg-blue-400 active:border-b-0 active:translate-y-[2px]',
   secondary:
-    'bg-white border-2 border-mist border-b-4 text-tide font-bold uppercase tracking-wide hover:bg-breeze active:border-b-2 active:translate-y-[2px]',
+    'bg-white border-2 border-surface-tint border-b-4 text-blue-500 font-bold uppercase tracking-wide hover:bg-surface-subtle active:border-b-2 active:translate-y-[2px]',
   accent:
-    'bg-sunshine border-b-4 border-sunshine-deep text-abyss font-bold uppercase tracking-wide hover:brightness-105 active:border-b-0 active:translate-y-[2px]',
+    'bg-yellow border-b-4 border-yellow-deep text-navy font-bold uppercase tracking-wide hover:brightness-105 active:border-b-0 active:translate-y-[2px]',
   ghost:
-    'bg-transparent border-2 border-mist border-b-4 text-tide font-bold uppercase tracking-wide hover:bg-breeze hover:border-bubble active:border-b-2 active:translate-y-[2px]',
+    'bg-transparent border-2 border-surface-tint border-b-4 text-blue-500 font-bold uppercase tracking-wide hover:bg-surface-subtle hover:border-blue-100 active:border-b-2 active:translate-y-[2px]',
   danger:
     'bg-error border-b-4 border-[#dc2626] text-white font-bold uppercase tracking-wide hover:bg-[#dc2626] active:border-b-0 active:translate-y-[2px]',
 };
@@ -98,7 +98,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     const combinedClassName = `
       inline-flex items-center justify-center gap-2
       transition-all duration-100
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
       ${variantStyles[variant]}
       ${sizeStyles[size]}
       ${fullWidth ? 'w-full' : ''}

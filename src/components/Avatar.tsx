@@ -41,14 +41,14 @@ function getInitials(name: string): string {
 // Generate consistent color based on name
 function getColorFromName(name: string): string {
   const colors = [
-    'bg-tide text-white',
-    'bg-surf text-white',
-    'bg-lagoon text-white',
+    'bg-blue-500 text-white',
+    'bg-blue-400 text-white',
+    'bg-blue-800 text-white',
     'bg-success text-white',
-    'bg-warning text-abyss',
+    'bg-warning text-navy',
     'bg-info text-white',
-    'bg-coral text-white',
-    'bg-seafoam text-abyss',
+    'bg-pink text-white',
+    'bg-cyan text-navy',
   ];
 
   let hash = 0;
@@ -64,7 +64,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     const [imageError, setImageError] = useState(false);
     const showImage = src && !imageError;
     const initials = name ? getInitials(name) : '?';
-    const colorClass = name ? getColorFromName(name) : 'bg-mist text-lagoon';
+    const colorClass = name ? getColorFromName(name) : 'bg-surface-tint text-blue-800';
 
     return (
       <div

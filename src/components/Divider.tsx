@@ -70,9 +70,9 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
           aria-orientation={orientation}
           {...props}
         >
-          <div className={`flex-1 border-t border-mist ${variantClasses[variant]}`} />
-          <span className="text-sm text-lagoon font-medium px-2">{label}</span>
-          <div className={`flex-1 border-t border-mist ${variantClasses[variant]}`} />
+          <div className={`flex-1 border-t border-surface-tint ${variantClasses[variant]}`} />
+          <span className="text-sm text-blue-800 font-medium px-2">{label}</span>
+          <div className={`flex-1 border-t border-surface-tint ${variantClasses[variant]}`} />
         </div>
       );
     }
@@ -82,7 +82,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
         <div
           ref={ref}
           className={`
-            border-t border-mist
+            border-t border-surface-tint
             ${variantClasses[variant]}
             ${spacingClasses[spacing]}
             ${className}
@@ -99,7 +99,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
       <div
         ref={ref}
         className={`
-          border-l border-mist h-full self-stretch
+          border-l border-surface-tint h-full self-stretch
           ${variantClasses[variant]}
           ${verticalSpacingClasses[spacing]}
           ${className}

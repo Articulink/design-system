@@ -119,7 +119,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-1.5">{label}</label>
         )}
 
         <div ref={containerRef} className="relative">
@@ -132,20 +132,20 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               w-full flex items-center gap-2 px-4 py-2.5
               bg-white border-2 rounded-xl text-left
               transition-all duration-150
-              ${error ? 'border-error' : isOpen ? 'border-tide' : 'border-mist'}
-              ${disabled ? 'opacity-50 cursor-not-allowed bg-breeze' : 'cursor-pointer hover:border-bubble'}
-              focus:outline-none focus:border-tide focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
+              ${error ? 'border-error' : isOpen ? 'border-blue-500' : 'border-surface-tint'}
+              ${disabled ? 'opacity-50 cursor-not-allowed bg-surface-subtle' : 'cursor-pointer hover:border-blue-100'}
+              focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(3,125,228,0.12)]
             `}
           >
             {/* Calendar icon */}
-            <svg className="w-5 h-5 text-lagoon flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-5 h-5 text-blue-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
 
             {displayValue ? (
-              <span className="flex-1 truncate text-abyss">{displayValue}</span>
+              <span className="flex-1 truncate text-navy">{displayValue}</span>
             ) : (
-              <span className="flex-1 text-lagoon/50">{placeholder}</span>
+              <span className="flex-1 text-blue-800/50">{placeholder}</span>
             )}
 
             {/* Clear button */}
@@ -153,9 +153,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
               <button
                 type="button"
                 onClick={handleClear}
-                className="p-1 hover:bg-mist rounded transition-colors"
+                className="p-1 hover:bg-surface-tint rounded transition-colors"
               >
-                <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -163,7 +163,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
             {/* Chevron */}
             <svg
-              className={`w-5 h-5 text-lagoon transition-transform ${isOpen ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-blue-800 transition-transform ${isOpen ? 'rotate-180' : ''}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

@@ -124,7 +124,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
       const half = allowHalf && displayValue === index + 0.5;
       const iconClassName = `${styles.icon} transition-transform ${!readonly && !disabled ? 'hover:scale-110' : ''}`;
 
-      const colorClass = filled || half ? 'text-sunshine' : 'text-mist';
+      const colorClass = filled || half ? 'text-yellow' : 'text-surface-tint';
 
       switch (icon) {
         case 'heart':
@@ -139,7 +139,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">
+          <label className="block text-sm font-semibold text-navy mb-1.5">
             {label}
           </label>
         )}
@@ -162,7 +162,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
                 disabled={disabled || readonly}
                 className={`
                   p-0 bg-transparent border-0
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-1 rounded
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 rounded
                   ${disabled ? 'opacity-50 cursor-not-allowed' : readonly ? 'cursor-default' : 'cursor-pointer'}
                 `}
               >
@@ -172,7 +172,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
           </div>
 
           {showValue && (
-            <span className="text-sm text-lagoon font-medium">
+            <span className="text-sm text-blue-800 font-medium">
               {value.toFixed(allowHalf ? 1 : 0)} / {max}
             </span>
           )}

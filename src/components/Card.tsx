@@ -38,7 +38,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={`
-          bg-white rounded-2xl border border-mist
+          bg-white rounded-2xl border border-surface-tint
           ${depth ? 'card-depth' : ''}
           ${hover ? 'card-depth-hover transition-all duration-200' : ''}
           ${paddingStyles[padding]}

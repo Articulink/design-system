@@ -103,7 +103,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 
     return (
       <AccordionContext.Provider value={{ type, value, onValueChange: handleValueChange }}>
-        <div ref={ref} className={`divide-y divide-mist ${className}`} {...props}>
+        <div ref={ref} className={`divide-y divide-surface-tint ${className}`} {...props}>
           {children}
         </div>
       </AccordionContext.Provider>
@@ -172,10 +172,10 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerPr
         onClick={() => onValueChange(value)}
         className={`
           flex w-full items-center justify-between py-4
-          text-left text-base font-medium text-abyss
-          hover:text-tide
+          text-left text-base font-medium text-navy
+          hover:text-blue-500
           transition-colors
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-tide focus-visible:ring-offset-2
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
           ${className}
         `}
         {...props}
@@ -183,7 +183,7 @@ export const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerPr
         {children}
         <svg
           className={`
-            w-5 h-5 text-lagoon flex-shrink-0 ml-2
+            w-5 h-5 text-blue-800 flex-shrink-0 ml-2
             transition-transform duration-200
             ${isOpen ? 'rotate-180' : ''}
           `}
@@ -224,7 +224,7 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps
         `}
         {...props}
       >
-        <div className="text-sm text-lagoon leading-relaxed">
+        <div className="text-sm text-blue-800 leading-relaxed">
           {children}
         </div>
       </div>

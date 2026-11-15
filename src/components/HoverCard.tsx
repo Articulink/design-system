@@ -221,7 +221,7 @@ export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps
           absolute z-50
           ${sidePositionClasses[side]}
           ${alignClasses[side][align]}
-          bg-white rounded-xl border border-mist shadow-lg
+          bg-white rounded-xl border border-surface-tint shadow-lg
           animate-in fade-in-0 zoom-in-95
           ${className}
         `}

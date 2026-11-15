@@ -184,13 +184,13 @@ export const SignaturePad = forwardRef<HTMLDivElement, SignaturePadProps>(
     return (
       <div ref={ref} className={className} {...props}>
         {label && (
-          <label className="block text-sm font-semibold text-abyss mb-1.5">{label}</label>
+          <label className="block text-sm font-semibold text-navy mb-1.5">{label}</label>
         )}
 
         <div
           className={`
             relative rounded-xl border-2 overflow-hidden
-            ${error ? 'border-error' : 'border-mist'}
+            ${error ? 'border-error' : 'border-surface-tint'}
             ${disabled ? 'opacity-50' : ''}
           `}
           style={{ width: '100%', maxWidth: width }}
@@ -214,21 +214,21 @@ export const SignaturePad = forwardRef<HTMLDivElement, SignaturePadProps>(
           {/* Placeholder */}
           {!hasSignature && !disabled && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <span className="text-lagoon/40 text-lg">{placeholder}</span>
+              <span className="text-blue-800/40 text-lg">{placeholder}</span>
             </div>
           )}
 
           {/* Signature line */}
-          <div className="absolute bottom-8 left-8 right-8 border-b border-dashed border-lagoon/30" />
+          <div className="absolute bottom-8 left-8 right-8 border-b border-dashed border-blue-800/30" />
 
           {/* Clear button */}
           {hasSignature && !disabled && (
             <button
               type="button"
               onClick={clear}
-              className="absolute top-2 right-2 p-1.5 bg-white/90 hover:bg-mist rounded-lg transition-colors shadow-sm"
+              className="absolute top-2 right-2 p-1.5 bg-white/90 hover:bg-surface-tint rounded-lg transition-colors shadow-sm"
             >
-              <svg className="w-4 h-4 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-4 h-4 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>
             </button>
@@ -237,7 +237,7 @@ export const SignaturePad = forwardRef<HTMLDivElement, SignaturePadProps>(
 
         {error && <p className="text-error text-sm mt-1.5">{error}</p>}
 
-        <p className="text-lagoon text-xs mt-2">
+        <p className="text-blue-800 text-xs mt-2">
           {disabled ? 'Signature locked' : 'Draw your signature above'}
         </p>
       </div>

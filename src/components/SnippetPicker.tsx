@@ -111,18 +111,18 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
     return (
       <div
         ref={ref}
-        className={`bg-white rounded-xl border border-mist overflow-hidden ${className}`}
+        className={`bg-white rounded-xl border border-surface-tint overflow-hidden ${className}`}
         {...props}
       >
         {/* Header */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full px-4 py-3 flex items-center justify-between hover:bg-mist/50 transition-colors"
+          className="w-full px-4 py-3 flex items-center justify-between hover:bg-surface-tint/50 transition-colors"
         >
           <div className="flex items-center gap-2">
             {icon || (
               <svg
-                className="w-5 h-5 text-tide"
+                className="w-5 h-5 text-blue-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
@@ -135,10 +135,10 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                 />
               </svg>
             )}
-            <span className="font-medium text-abyss">{title}</span>
+            <span className="font-medium text-navy">{title}</span>
           </div>
           <svg
-            className={`w-5 h-5 text-lagoon transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+            className={`w-5 h-5 text-blue-800 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
@@ -150,9 +150,9 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
 
         {/* Content */}
         {isExpanded && (
-          <div className="border-t border-mist">
+          <div className="border-t border-surface-tint">
             {/* Category tabs */}
-            <div className="flex items-center gap-1 p-2 bg-mist/50 overflow-x-auto">
+            <div className="flex items-center gap-1 p-2 bg-surface-tint/50 overflow-x-auto">
               {categories.map((cat) => (
                 <button
                   key={cat.key}
@@ -160,8 +160,8 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                   className={`
                     px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-colors
                     ${activeCategory === cat.key
-                      ? cat.color || 'bg-info-bg text-tide'
-                      : 'text-lagoon hover:bg-mist'
+                      ? cat.color || 'bg-info-bg text-blue-500'
+                      : 'text-blue-800 hover:bg-surface-tint'
                     }
                   `}
                 >
@@ -175,7 +175,7 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                     setAddCategory(activeCategory);
                     setShowAddModal(true);
                   }}
-                  className="ml-auto px-2 py-1.5 text-xs text-tide hover:bg-info-bg rounded-lg flex items-center gap-1"
+                  className="ml-auto px-2 py-1.5 text-xs text-blue-500 hover:bg-info-bg rounded-lg flex items-center gap-1"
                 >
                   <svg
                     className="w-4 h-4"
@@ -200,7 +200,7 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                     <div key={index} className="group flex items-start gap-1">
                       <button
                         onClick={() => onInsert(snippet, activeCategory)}
-                        className="flex-1 text-left px-3 py-2 text-sm text-lagoon hover:bg-info-bg hover:text-abyss rounded-lg transition-colors"
+                        className="flex-1 text-left px-3 py-2 text-sm text-blue-800 hover:bg-info-bg hover:text-navy rounded-lg transition-colors"
                       >
                         {snippet}
                       </button>
@@ -209,7 +209,7 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                           onClick={() =>
                             handleRemoveCustomSnippet(activeCategory, index - defaultSnippets.length)
                           }
-                          className="p-2 text-lagoon/30 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="p-2 text-blue-800/30 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"
                           title="Remove snippet"
                           aria-label="Remove snippet"
                         >
@@ -228,13 +228,13 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                   );
                 })
               ) : (
-                <p className="text-sm text-lagoon text-center py-4">No snippets in this category</p>
+                <p className="text-sm text-blue-800 text-center py-4">No snippets in this category</p>
               )}
             </div>
 
             {/* Hint */}
-            <div className="px-3 py-2 bg-mist/50 border-t border-mist">
-              <p className="text-xs text-lagoon">Click a snippet to insert it</p>
+            <div className="px-3 py-2 bg-surface-tint/50 border-t border-surface-tint">
+              <p className="text-xs text-blue-800">Click a snippet to insert it</p>
             </div>
           </div>
         )}
@@ -243,15 +243,15 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
         {showAddModal && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-xl w-full max-w-md p-5">
-              <h3 className="text-lg font-semibold text-abyss mb-4">Add Custom Snippet</h3>
+              <h3 className="text-lg font-semibold text-navy mb-4">Add Custom Snippet</h3>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-lagoon mb-1">Category</label>
+                  <label className="block text-sm font-medium text-blue-800 mb-1">Category</label>
                   <select
                     value={addCategory}
                     onChange={(e) => setAddCategory(e.target.value)}
-                    className="w-full px-3 py-2 border border-mist rounded-lg focus:ring-2 focus:ring-tide focus:border-tide"
+                    className="w-full px-3 py-2 border border-surface-tint rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     {categories.map((cat) => (
                       <option key={cat.key} value={cat.key}>
@@ -262,13 +262,13 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-lagoon mb-1">Snippet</label>
+                  <label className="block text-sm font-medium text-blue-800 mb-1">Snippet</label>
                   <textarea
                     value={newSnippet}
                     onChange={(e) => setNewSnippet(e.target.value)}
                     placeholder="Enter your custom snippet..."
                     rows={3}
-                    className="w-full px-3 py-2 border border-mist rounded-lg focus:ring-2 focus:ring-tide focus:border-tide"
+                    className="w-full px-3 py-2 border border-surface-tint rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
               </div>
@@ -279,14 +279,14 @@ export const SnippetPicker = forwardRef<HTMLDivElement, SnippetPickerProps>(
                     setShowAddModal(false);
                     setNewSnippet('');
                   }}
-                  className="flex-1 py-2 px-4 border border-mist text-lagoon font-medium rounded-lg hover:bg-mist/50"
+                  className="flex-1 py-2 px-4 border border-surface-tint text-blue-800 font-medium rounded-lg hover:bg-surface-tint/50"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleAddSnippet}
                   disabled={!newSnippet.trim()}
-                  className="flex-1 py-2 px-4 bg-tide text-white font-medium rounded-lg hover:bg-surf disabled:opacity-50"
+                  className="flex-1 py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 disabled:opacity-50"
                 >
                   Add Snippet
                 </button>

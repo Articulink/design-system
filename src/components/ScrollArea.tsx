@@ -217,9 +217,9 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
             style={{ width: scrollbarWidth }}
             onClick={handleVerticalTrackClick}
           >
-            <div className="absolute inset-0 bg-mist/50 rounded-full" />
+            <div className="absolute inset-0 bg-surface-tint/50 rounded-full" />
             <div
-              className="absolute right-0 left-0 bg-lagoon/60 hover:bg-lagoon rounded-full cursor-pointer transition-colors"
+              className="absolute right-0 left-0 bg-blue-800/60 hover:bg-blue-800 rounded-full cursor-pointer transition-colors"
               style={{
                 height: verticalThumbHeight,
                 top: verticalThumbTop,
@@ -239,9 +239,9 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
             style={{ height: scrollbarWidth }}
             onClick={handleHorizontalTrackClick}
           >
-            <div className="absolute inset-0 bg-mist/50 rounded-full" />
+            <div className="absolute inset-0 bg-surface-tint/50 rounded-full" />
             <div
-              className="absolute top-0 bottom-0 bg-lagoon/60 hover:bg-lagoon rounded-full cursor-pointer transition-colors"
+              className="absolute top-0 bottom-0 bg-blue-800/60 hover:bg-blue-800 rounded-full cursor-pointer transition-colors"
               style={{
                 width: horizontalThumbWidth,
                 left: horizontalThumbLeft,

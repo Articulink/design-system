@@ -61,14 +61,14 @@ export interface DataTableProps<T> {
 function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center h-64">
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-tide"></div>
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
     </div>
   );
 }
 
 function EmptyState({ message }: { message: string }) {
   return (
-    <div className="flex flex-col items-center justify-center h-64 text-abyss/50">
+    <div className="flex flex-col items-center justify-center h-64 text-navy/50">
       <svg className="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
       </svg>
@@ -80,7 +80,7 @@ function EmptyState({ message }: { message: string }) {
 function SortIcon({ active, direction }: { active: boolean; direction: 'asc' | 'desc' }) {
   return (
     <svg
-      className={`w-4 h-4 ml-1 inline-block transition-colors ${active ? 'text-tide' : 'text-gray-400'}`}
+      className={`w-4 h-4 ml-1 inline-block transition-colors ${active ? 'text-blue-500' : 'text-gray-400'}`}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -171,7 +171,7 @@ export function DataTable<T>({
                       if (el) el.indeterminate = someSelected;
                     }}
                     onChange={handleSelectAll}
-                    className="w-4 h-4 text-tide rounded border-gray-300 focus:ring-tide"
+                    className="w-4 h-4 text-blue-500 rounded border-gray-300 focus:ring-blue-500"
                   />
                 </th>
               )}
@@ -216,7 +216,7 @@ export function DataTable<T>({
                     key={key}
                     className={`
                       hover:bg-gray-50 transition-colors
-                      ${isSelected ? 'bg-tide/5' : ''}
+                      ${isSelected ? 'bg-blue-500/5' : ''}
                       ${onRowClick ? 'cursor-pointer' : ''}
                       ${rowClassName ? rowClassName(item) : ''}
                     `}
@@ -228,7 +228,7 @@ export function DataTable<T>({
                           type="checkbox"
                           checked={isSelected}
                           onChange={() => handleSelectRow(key)}
-                          className="w-4 h-4 text-tide rounded border-gray-300 focus:ring-tide"
+                          className="w-4 h-4 text-blue-500 rounded border-gray-300 focus:ring-blue-500"
                         />
                       </td>
                     )}
@@ -289,7 +289,7 @@ export function DataTable<T>({
                     className={`
                       w-8 h-8 text-sm font-medium rounded-lg
                       ${page === pageNum
-                        ? 'bg-tide text-white'
+                        ? 'bg-blue-500 text-white'
                         : 'text-gray-700 hover:bg-gray-100'
                       }
                     `}

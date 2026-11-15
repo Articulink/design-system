@@ -30,7 +30,7 @@ export const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
     return (
       <div ref={ref} className={`relative pl-4 ${className}`} {...props}>
         {/* Vertical line */}
-        <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-mist" />
+        <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-surface-tint" />
         <div className="space-y-4">{children}</div>
       </div>
     );
@@ -55,8 +55,8 @@ export interface TimelineItemProps extends React.HTMLAttributes<HTMLDivElement> 
 
 const variantStyles: Record<TimelineItemVariant, { dot: string; connector: string; badge?: string }> = {
   default: {
-    dot: 'bg-lagoon',
-    connector: 'bg-lagoon',
+    dot: 'bg-blue-800',
+    connector: 'bg-blue-800',
   },
   success: {
     dot: 'bg-success',
@@ -74,13 +74,13 @@ const variantStyles: Record<TimelineItemVariant, { dot: string; connector: strin
     badge: 'bg-error-bg text-error-text',
   },
   info: {
-    dot: 'bg-tide',
-    connector: 'bg-tide',
+    dot: 'bg-blue-500',
+    connector: 'bg-blue-500',
     badge: 'bg-info-bg text-info-text',
   },
   milestone: {
-    dot: 'bg-sunshine',
-    connector: 'bg-sunshine',
+    dot: 'bg-yellow',
+    connector: 'bg-yellow',
     badge: 'bg-warning-bg text-warning-text',
   },
 };
@@ -126,10 +126,10 @@ export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(
                   {subtitle}
                 </span>
               )}
-              {date && <span className="text-xs text-lagoon">{date}</span>}
+              {date && <span className="text-xs text-blue-800">{date}</span>}
             </div>
-            <p className="font-medium text-abyss mt-1 truncate">{title}</p>
-            {children && <div className="mt-2 text-sm text-lagoon">{children}</div>}
+            <p className="font-medium text-navy mt-1 truncate">{title}</p>
+            {children && <div className="mt-2 text-sm text-blue-800">{children}</div>}
           </div>
 
           {icon && (
@@ -137,7 +137,7 @@ export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(
               className={`
                 flex-shrink-0 w-10 h-10 rounded-lg
                 flex items-center justify-center
-                ${styles.badge || 'bg-mist text-lagoon'}
+                ${styles.badge || 'bg-surface-tint text-blue-800'}
               `}
             >
               {icon}
@@ -148,7 +148,7 @@ export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(
         {/* Milestone star */}
         {variant === 'milestone' && (
           <div className="absolute -left-5 top-1">
-            <svg className="w-4 h-4 text-sunshine" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-yellow" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
           </div>
@@ -158,8 +158,8 @@ export const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(
 
     const baseClasses = `
       relative p-3 rounded-lg border transition-all duration-200
-      ${isSelected ? 'bg-info-bg border-tide shadow-sm' : 'bg-breeze border-mist'}
-      ${isClickable ? 'hover:bg-white hover:border-mist cursor-pointer' : ''}
+      ${isSelected ? 'bg-info-bg border-blue-500 shadow-sm' : 'bg-surface-subtle border-surface-tint'}
+      ${isClickable ? 'hover:bg-white hover:border-surface-tint cursor-pointer' : ''}
       ${className}
     `;
 
@@ -201,8 +201,8 @@ export const TimelineGroup = forwardRef<HTMLDivElement, TimelineGroupProps>(
       <div ref={ref} className={className} {...props}>
         {/* Group header */}
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-3.5 h-3.5 rounded-full bg-abyss z-10" />
-          <h4 className="font-semibold text-abyss">{label}</h4>
+          <div className="w-3.5 h-3.5 rounded-full bg-navy z-10" />
+          <h4 className="font-semibold text-navy">{label}</h4>
         </div>
 
         {/* Group items */}

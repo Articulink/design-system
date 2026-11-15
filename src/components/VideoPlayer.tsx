@@ -224,14 +224,14 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
       return (
         <div
           ref={ref}
-          className={`relative aspect-video bg-mist rounded-xl flex items-center justify-center ${className}`}
+          className={`relative aspect-video bg-surface-tint rounded-xl flex items-center justify-center ${className}`}
           {...props}
         >
           <div className="text-center">
             <svg className="w-12 h-12 text-error/50 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
             </svg>
-            <p className="text-sm text-lagoon">{error}</p>
+            <p className="text-sm text-blue-800">{error}</p>
           </div>
         </div>
       );
@@ -244,7 +244,7 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
           if (typeof ref === 'function') ref(node);
           else if (ref) ref.current = node;
         }}
-        className={`relative aspect-video bg-abyss rounded-xl overflow-hidden group ${className}`}
+        className={`relative aspect-video bg-navy rounded-xl overflow-hidden group ${className}`}
         onMouseMove={showControlsTemporarily}
         onMouseLeave={() => isPlaying && setShowControls(false)}
         tabIndex={0}
@@ -265,7 +265,7 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
 
         {/* Loading spinner */}
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-abyss/50">
+          <div className="absolute inset-0 flex items-center justify-center bg-navy/50">
             <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin" />
           </div>
         )}
@@ -274,10 +274,10 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
         {!isPlaying && !isLoading && (
           <button
             onClick={togglePlay}
-            className="absolute inset-0 flex items-center justify-center bg-abyss/30 transition-opacity"
+            className="absolute inset-0 flex items-center justify-center bg-navy/30 transition-opacity"
           >
             <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-              <svg className="w-8 h-8 text-tide ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 text-blue-500 ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
@@ -288,7 +288,7 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
         <div
           className={`
             absolute bottom-0 left-0 right-0 p-4
-            bg-gradient-to-t from-abyss/80 to-transparent
+            bg-gradient-to-t from-navy/80 to-transparent
             transition-opacity duration-300
             ${showControls ? 'opacity-100' : 'opacity-0'}
           `}
@@ -300,7 +300,7 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
             onClick={handleProgressClick}
           >
             <div
-              className="h-full bg-tide rounded-full relative"
+              className="h-full bg-blue-500 rounded-full relative"
               style={{ width: `${progress}%` }}
             >
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover/progress:opacity-100 transition-opacity" />
@@ -313,7 +313,7 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
               {/* Play/Pause */}
               <button
                 onClick={togglePlay}
-                className="text-white hover:text-tide transition-colors"
+                className="text-white hover:text-blue-500 transition-colors"
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
                 {isPlaying ? (

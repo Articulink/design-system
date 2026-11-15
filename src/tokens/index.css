@@ -209,33 +209,6 @@
   --text-button-lg: 600 16px/1.2 var(--font-body); /* Large buttons and child-facing buttons. */
 }
 
-/*
- * Legacy ocean names (retired in v6). They point at the new tokens so older
- * code keeps rendering in the new palette. Do not use them in new code.
- */
-:root {
-  --tide: var(--blue-500);
-  --surf: var(--blue-400);
-  --tide-deep: var(--blue-600);
-  --tide-dark: var(--blue-700);
-  --tide-shadow: var(--action-shadow);
-  --abyss: var(--navy);
-  --cloud: var(--white);
-  --lagoon: var(--blue-800);
-  --depths: var(--blue-850);
-  --trench: var(--blue-950);
-  --breeze: var(--surface-subtle);
-  --mist: var(--surface-tint);
-  --bubble: var(--blue-100);
-  --mist-deep: var(--slate-100);
-  --sunshine: var(--yellow);
-  --sunshine-deep: var(--yellow-deep);
-  --coral: var(--pink);
-  --seafoam: var(--cyan);
-  --sunset: var(--orange);
-  --kelp: var(--green);
-  --jellyfish: var(--violet);
-}
 
 /* ─── Tailwind v4 Theme Integration ────────────────────────── */
 
@@ -319,28 +292,6 @@
   --color-chart-target: var(--chart-target);
   --color-shadow-card: var(--shadow-card);
 
-  /* Legacy ocean names (deprecated) */
-  --color-tide: var(--tide);
-  --color-surf: var(--surf);
-  --color-tide-deep: var(--tide-deep);
-  --color-tide-dark: var(--tide-dark);
-  --color-tide-shadow: var(--tide-shadow);
-  --color-abyss: var(--abyss);
-  --color-cloud: var(--cloud);
-  --color-lagoon: var(--lagoon);
-  --color-depths: var(--depths);
-  --color-trench: var(--trench);
-  --color-breeze: var(--breeze);
-  --color-mist: var(--mist);
-  --color-bubble: var(--bubble);
-  --color-mist-deep: var(--mist-deep);
-  --color-sunshine: var(--sunshine);
-  --color-sunshine-deep: var(--sunshine-deep);
-  --color-coral: var(--coral);
-  --color-seafoam: var(--seafoam);
-  --color-sunset: var(--sunset);
-  --color-kelp: var(--kelp);
-  --color-jellyfish: var(--jellyfish);
   --color-brand-blue: var(--blue-400);
   --color-brand-yellow: var(--yellow);
   --color-brand-navy: var(--navy);

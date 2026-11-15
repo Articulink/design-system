@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.4.0 · November 15, 2026
+
+- **Breaking: the ocean colour names are gone.** The aliases retired in v6
+  (`--tide`, `bg-abyss`, `text-mist`…) no longer resolve. The package's own
+  components now use the tokens, with no visual change. Old name → token:
+  tide → `blue-500`, surf → `blue-400`, tide-deep → `blue-600`, tide-dark →
+  `blue-700`, tide-shadow → `action-shadow`, abyss → `navy`, cloud →
+  `white`, lagoon → `blue-800`, depths → `blue-850`, trench → `blue-950`,
+  breeze → `surface-subtle`, mist → `surface-tint`, mist-deep →
+  `slate-100`, bubble → `blue-100`, sunshine → `yellow`, sunshine-deep →
+  `yellow-deep`, coral → `pink`, seafoam → `cyan`, sunset → `orange`,
+  kelp → `green`, jellyfish → `violet`. For anything that means "the
+  brand", use `primary` rather than `blue-500`.
+
 ## 0.3.0 · November 15, 2026
 
 - **Brand colour (design system v14).** `--primary` is `blue-600`

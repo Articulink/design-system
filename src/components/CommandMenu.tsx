@@ -174,7 +174,7 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
       <>
         {/* Backdrop */}
         <div
-          className="fixed inset-0 bg-abyss/50 z-50"
+          className="fixed inset-0 bg-navy/50 z-50"
           onClick={() => onOpenChange(false)}
         />
 
@@ -183,11 +183,11 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
           ref={ref}
           className="fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-lg z-50"
         >
-          <div className="bg-white rounded-xl shadow-2xl border border-mist overflow-hidden">
+          <div className="bg-white rounded-xl shadow-2xl border border-surface-tint overflow-hidden">
             {/* Search input */}
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-mist">
+            <div className="flex items-center gap-3 px-4 py-3 border-b border-surface-tint">
               <svg
-                className="w-5 h-5 text-lagoon flex-shrink-0"
+                className="w-5 h-5 text-blue-800 flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -206,9 +206,9 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
-                className="flex-1 text-abyss placeholder:text-lagoon/50 focus:outline-none"
+                className="flex-1 text-navy placeholder:text-blue-800/50 focus:outline-none"
               />
-              <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-lagoon bg-mist rounded">
+              <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-blue-800 bg-surface-tint rounded">
                 ESC
               </kbd>
             </div>
@@ -216,13 +216,13 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
             {/* Results */}
             <div ref={listRef} className="max-h-80 overflow-y-auto py-2">
               {flatList.length === 0 ? (
-                <div className="px-4 py-8 text-center text-lagoon">
+                <div className="px-4 py-8 text-center text-blue-800">
                   {emptyMessage}
                 </div>
               ) : (
                 Object.entries(groupedCommands).map(([group, items]) => (
                   <div key={group}>
-                    <div className="px-4 py-2 text-xs font-semibold text-lagoon uppercase tracking-wider">
+                    <div className="px-4 py-2 text-xs font-semibold text-blue-800 uppercase tracking-wider">
                       {group}
                     </div>
                     {items.map((cmd) => {
@@ -240,21 +240,21 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
                           className={`
                             w-full flex items-center gap-3 px-4 py-2.5 text-left
                             transition-colors
-                            ${isSelected ? 'bg-info-bg' : 'hover:bg-mist/50'}
+                            ${isSelected ? 'bg-info-bg' : 'hover:bg-surface-tint/50'}
                             ${cmd.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                           `}
                         >
                           {cmd.icon && (
-                            <span className={`flex-shrink-0 ${isSelected ? 'text-tide' : 'text-lagoon'}`}>
+                            <span className={`flex-shrink-0 ${isSelected ? 'text-blue-500' : 'text-blue-800'}`}>
                               {cmd.icon}
                             </span>
                           )}
                           <div className="flex-1 min-w-0">
-                            <p className={`truncate ${isSelected ? 'text-tide font-medium' : 'text-abyss'}`}>
+                            <p className={`truncate ${isSelected ? 'text-blue-500 font-medium' : 'text-navy'}`}>
                               {cmd.label}
                             </p>
                             {cmd.description && (
-                              <p className="text-sm text-lagoon truncate">{cmd.description}</p>
+                              <p className="text-sm text-blue-800 truncate">{cmd.description}</p>
                             )}
                           </div>
                           {cmd.shortcut && (
@@ -262,7 +262,7 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
                               {cmd.shortcut.map((key, i) => (
                                 <kbd
                                   key={i}
-                                  className="px-1.5 py-0.5 text-xs text-lagoon bg-mist rounded"
+                                  className="px-1.5 py-0.5 text-xs text-blue-800 bg-surface-tint rounded"
                                 >
                                   {key}
                                 </kbd>
@@ -278,20 +278,20 @@ export const CommandMenu = forwardRef<HTMLDivElement, CommandMenuProps>(
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between px-4 py-2 border-t border-mist bg-breeze text-xs text-lagoon">
+            <div className="flex items-center justify-between px-4 py-2 border-t border-surface-tint bg-surface-subtle text-xs text-blue-800">
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1 py-0.5 bg-white rounded border border-mist">↑</kbd>
-                  <kbd className="px-1 py-0.5 bg-white rounded border border-mist">↓</kbd>
+                  <kbd className="px-1 py-0.5 bg-white rounded border border-surface-tint">↑</kbd>
+                  <kbd className="px-1 py-0.5 bg-white rounded border border-surface-tint">↓</kbd>
                   <span>navigate</span>
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1 py-0.5 bg-white rounded border border-mist">↵</kbd>
+                  <kbd className="px-1 py-0.5 bg-white rounded border border-surface-tint">↵</kbd>
                   <span>select</span>
                 </span>
               </div>
               <span className="flex items-center gap-1">
-                <kbd className="px-1 py-0.5 bg-white rounded border border-mist">esc</kbd>
+                <kbd className="px-1 py-0.5 bg-white rounded border border-surface-tint">esc</kbd>
                 <span>close</span>
               </span>
             </div>

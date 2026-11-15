@@ -66,7 +66,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
               <li key={index} className="flex items-center gap-1">
                 {isValidElement(child) && cloneElement(child as React.ReactElement<{ isLast?: boolean }>, { isLast })}
                 {!isLast && (
-                  <span className="text-lagoon/50 mx-1" aria-hidden="true">
+                  <span className="text-blue-800/50 mx-1" aria-hidden="true">
                     {separator || <DefaultSeparator />}
                   </span>
                 )}
@@ -105,7 +105,7 @@ export const BreadcrumbItem = forwardRef<HTMLSpanElement, BreadcrumbItemProps>(
         <span ref={ref} className={className} {...props}>
           <Link
             href={href}
-            className="text-sm text-lagoon hover:text-tide transition-colors flex items-center"
+            className="text-sm text-blue-800 hover:text-blue-500 transition-colors flex items-center"
           >
             {content}
           </Link>
@@ -116,7 +116,7 @@ export const BreadcrumbItem = forwardRef<HTMLSpanElement, BreadcrumbItemProps>(
     return (
       <span
         ref={ref}
-        className={`text-sm ${isLast ? 'text-abyss font-medium' : 'text-lagoon'} flex items-center ${className}`}
+        className={`text-sm ${isLast ? 'text-navy font-medium' : 'text-blue-800'} flex items-center ${className}`}
         aria-current={isLast ? 'page' : undefined}
         {...props}
       >
@@ -138,7 +138,7 @@ export const BreadcrumbEllipsis = forwardRef<HTMLSpanElement, BreadcrumbEllipsis
     return (
       <span
         ref={ref}
-        className={`text-lagoon/50 px-1 ${className}`}
+        className={`text-blue-800/50 px-1 ${className}`}
         role="presentation"
         {...props}
       >
@@ -164,7 +164,7 @@ export const BreadcrumbSeparator = forwardRef<HTMLSpanElement, BreadcrumbSeparat
     return (
       <span
         ref={ref}
-        className={`text-lagoon/50 ${className}`}
+        className={`text-blue-800/50 ${className}`}
         role="presentation"
         aria-hidden="true"
         {...props}

@@ -355,7 +355,7 @@ export const ResizableHandle = forwardRef<HTMLDivElement, ResizableHandleProps>(
         className={`
           relative flex items-center justify-center
           ${isHorizontal ? 'w-1 cursor-col-resize' : 'h-1 cursor-row-resize'}
-          ${isDragging ? 'bg-tide' : 'bg-mist hover:bg-bubble'}
+          ${isDragging ? 'bg-blue-500' : 'bg-surface-tint hover:bg-blue-100'}
           transition-colors
           ${className}
         `}
@@ -366,9 +366,9 @@ export const ResizableHandle = forwardRef<HTMLDivElement, ResizableHandleProps>(
           <div
             className={`
               absolute z-10 flex items-center justify-center
-              bg-mist border border-mist rounded
+              bg-surface-tint border border-surface-tint rounded
               ${isHorizontal ? 'w-3 h-6' : 'w-6 h-3'}
-              ${isDragging ? 'bg-tide border-tide' : 'hover:bg-bubble hover:border-bubble'}
+              ${isDragging ? 'bg-blue-500 border-blue-500' : 'hover:bg-blue-100 hover:border-blue-100'}
               transition-colors
             `}
           >
@@ -378,9 +378,9 @@ export const ResizableHandle = forwardRef<HTMLDivElement, ResizableHandleProps>(
                 ${isHorizontal ? 'flex-col' : 'flex-row'}
               `}
             >
-              <div className="w-0.5 h-0.5 rounded-full bg-lagoon" />
-              <div className="w-0.5 h-0.5 rounded-full bg-lagoon" />
-              <div className="w-0.5 h-0.5 rounded-full bg-lagoon" />
+              <div className="w-0.5 h-0.5 rounded-full bg-blue-800" />
+              <div className="w-0.5 h-0.5 rounded-full bg-blue-800" />
+              <div className="w-0.5 h-0.5 rounded-full bg-blue-800" />
             </div>
           </div>
         )}

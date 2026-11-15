@@ -60,8 +60,8 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
         <div ref={ref} className={className} {...props}>
           {(title || subtitle) && (
             <div className="mb-4">
-              {title && <h3 className="font-semibold text-abyss">{title}</h3>}
-              {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+              {title && <h3 className="font-semibold text-navy">{title}</h3>}
+              {subtitle && <p className="text-sm text-blue-800">{subtitle}</p>}
             </div>
           )}
 
@@ -74,11 +74,11 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
                 <div key={index}>
                   {showLabels && (
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-abyss">{item.label}</span>
-                      {showValues && <span className="text-lagoon">{formatValue(item.value)}</span>}
+                      <span className="text-navy">{item.label}</span>
+                      {showValues && <span className="text-blue-800">{formatValue(item.value)}</span>}
                     </div>
                   )}
-                  <div className="h-6 bg-mist rounded-lg overflow-hidden">
+                  <div className="h-6 bg-surface-tint rounded-lg overflow-hidden">
                     <div
                       className="h-full rounded-lg transition-all duration-500"
                       style={{
@@ -103,8 +103,8 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
       <div ref={ref} className={className} {...props}>
         {(title || subtitle) && (
           <div className="mb-4">
-            {title && <h3 className="font-semibold text-abyss">{title}</h3>}
-            {subtitle && <p className="text-sm text-lagoon">{subtitle}</p>}
+            {title && <h3 className="font-semibold text-navy">{title}</h3>}
+            {subtitle && <p className="text-sm text-blue-800">{subtitle}</p>}
           </div>
         )}
 
@@ -131,7 +131,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
                     x={padding.left - 8}
                     y={y + 4}
                     textAnchor="end"
-                    className="fill-lagoon text-xs"
+                    className="fill-blue-800 text-xs"
                   >
                     {formatValue(maxValue * tick)}
                   </text>
@@ -163,7 +163,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
                     x={x + barWidth / 2}
                     y={height - padding.bottom + 20}
                     textAnchor="middle"
-                    className="fill-lagoon text-xs"
+                    className="fill-blue-800 text-xs"
                     transform={`rotate(-45, ${x + barWidth / 2}, ${height - padding.bottom + 20})`}
                   >
                     {item.label}
@@ -174,7 +174,7 @@ export const BarChart = forwardRef<HTMLDivElement, BarChartProps>(
                     x={x + barWidth / 2}
                     y={y - 8}
                     textAnchor="middle"
-                    className="fill-abyss text-xs font-medium"
+                    className="fill-navy text-xs font-medium"
                   >
                     {formatValue(item.value)}
                   </text>

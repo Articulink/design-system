@@ -103,12 +103,12 @@ export const NotificationBell = forwardRef<HTMLDivElement, NotificationBellProps
             onClick={() => setIsOpen(!isOpen)}
             className={`
               relative p-2 rounded-lg transition-colors
-              hover:bg-mist focus:outline-none focus-visible:ring-2 focus-visible:ring-tide
-              ${isOpen ? 'bg-mist' : ''}
+              hover:bg-surface-tint focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+              ${isOpen ? 'bg-surface-tint' : ''}
             `}
           >
             <svg
-              className="w-6 h-6 text-lagoon"
+              className="w-6 h-6 text-blue-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -131,15 +131,15 @@ export const NotificationBell = forwardRef<HTMLDivElement, NotificationBellProps
 
           {/* Dropdown */}
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-80 max-h-96 bg-white rounded-xl border border-mist shadow-lg overflow-hidden z-50">
+            <div className="absolute right-0 mt-2 w-80 max-h-96 bg-white rounded-xl border border-surface-tint shadow-lg overflow-hidden z-50">
               {/* Header */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-mist">
-                <h3 className="font-semibold text-abyss">Notifications</h3>
+              <div className="flex items-center justify-between px-4 py-3 border-b border-surface-tint">
+                <h3 className="font-semibold text-navy">Notifications</h3>
                 {unreadCount > 0 && onMarkAllRead && (
                   <button
                     type="button"
                     onClick={onMarkAllRead}
-                    className="text-sm text-tide hover:underline"
+                    className="text-sm text-blue-500 hover:underline"
                   >
                     Mark all read
                   </button>
@@ -149,7 +149,7 @@ export const NotificationBell = forwardRef<HTMLDivElement, NotificationBellProps
               {/* Notification list */}
               <div className="max-h-72 overflow-y-auto">
                 {notifications.length === 0 ? (
-                  <div className="px-4 py-8 text-center text-lagoon">{emptyMessage}</div>
+                  <div className="px-4 py-8 text-center text-blue-800">{emptyMessage}</div>
                 ) : (
                   notifications.map((notification) => (
                     <button
@@ -158,7 +158,7 @@ export const NotificationBell = forwardRef<HTMLDivElement, NotificationBellProps
                       onClick={() => handleNotificationClick(notification)}
                       className={`
                         w-full flex items-start gap-3 px-4 py-3 text-left
-                        hover:bg-mist/50 transition-colors
+                        hover:bg-surface-tint/50 transition-colors
                         ${!notification.read ? 'bg-info-bg/30' : ''}
                       `}
                     >
@@ -170,31 +170,31 @@ export const NotificationBell = forwardRef<HTMLDivElement, NotificationBellProps
                           className={`flex-shrink-0 w-2 h-2 mt-2 rounded-full ${typeColors[notification.type]}`}
                         />
                       ) : (
-                        <span className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-tide" />
+                        <span className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-blue-500" />
                       )}
 
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <p
                           className={`text-sm truncate ${
-                            notification.read ? 'text-lagoon' : 'text-abyss font-medium'
+                            notification.read ? 'text-blue-800' : 'text-navy font-medium'
                           }`}
                         >
                           {notification.title}
                         </p>
                         {notification.message && (
-                          <p className="text-sm text-lagoon truncate mt-0.5">
+                          <p className="text-sm text-blue-800 truncate mt-0.5">
                             {notification.message}
                           </p>
                         )}
-                        <p className="text-xs text-lagoon/70 mt-1">
+                        <p className="text-xs text-blue-800/70 mt-1">
                           {formatTimestamp(notification.timestamp)}
                         </p>
                       </div>
 
                       {/* Unread indicator */}
                       {!notification.read && (
-                        <span className="flex-shrink-0 w-2 h-2 rounded-full bg-tide" />
+                        <span className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500" />
                       )}
                     </button>
                   ))
@@ -203,14 +203,14 @@ export const NotificationBell = forwardRef<HTMLDivElement, NotificationBellProps
 
               {/* Footer */}
               {onViewAll && notifications.length > 0 && (
-                <div className="border-t border-mist">
+                <div className="border-t border-surface-tint">
                   <button
                     type="button"
                     onClick={() => {
                       onViewAll();
                       setIsOpen(false);
                     }}
-                    className="w-full px-4 py-3 text-sm text-tide hover:bg-mist/50 transition-colors"
+                    className="w-full px-4 py-3 text-sm text-blue-500 hover:bg-surface-tint/50 transition-colors"
                   >
                     View all notifications
                   </button>

@@ -68,7 +68,7 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(
         {/* Mobile overlay */}
         {isMobileOpen && (
           <div
-            className="fixed inset-0 bg-abyss/50 z-40 lg:hidden"
+            className="fixed inset-0 bg-navy/50 z-40 lg:hidden"
             onClick={() => setIsMobileOpen(false)}
           />
         )}
@@ -78,7 +78,7 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(
           ref={ref}
           className={`
             fixed top-0 left-0 z-50 h-full
-            bg-white border-r border-mist
+            bg-white border-r border-surface-tint
             flex flex-col
             transition-all duration-200
             lg:relative lg:z-auto
@@ -95,10 +95,10 @@ export const Sidebar = forwardRef<HTMLElement, SidebarProps>(
             <button
               type="button"
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className="hidden lg:flex absolute -right-3 top-20 w-6 h-6 items-center justify-center bg-white border border-mist rounded-full shadow-sm hover:bg-mist transition-colors"
+              className="hidden lg:flex absolute -right-3 top-20 w-6 h-6 items-center justify-center bg-white border border-surface-tint rounded-full shadow-sm hover:bg-surface-tint transition-colors"
             >
               <svg
-                className={`w-4 h-4 text-lagoon transition-transform ${isCollapsed ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 text-blue-800 transition-transform ${isCollapsed ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -130,7 +130,7 @@ export const SidebarHeader = forwardRef<HTMLDivElement, SidebarHeaderProps>(
     return (
       <div
         ref={ref}
-        className={`flex-shrink-0 p-4 border-b border-mist ${className}`}
+        className={`flex-shrink-0 p-4 border-b border-surface-tint ${className}`}
         {...props}
       >
         <div className={`${isCollapsed ? 'flex justify-center' : ''}`}>{children}</div>
@@ -178,7 +178,7 @@ export const SidebarFooter = forwardRef<HTMLDivElement, SidebarFooterProps>(
     return (
       <div
         ref={ref}
-        className={`flex-shrink-0 p-4 border-t border-mist ${className}`}
+        className={`flex-shrink-0 p-4 border-t border-surface-tint ${className}`}
         {...props}
       >
         <div className={`${isCollapsed ? 'flex justify-center' : ''}`}>{children}</div>
@@ -204,7 +204,7 @@ export const SidebarGroup = forwardRef<HTMLDivElement, SidebarGroupProps>(
     return (
       <div ref={ref} className={`mb-4 ${className}`} {...props}>
         {title && !isCollapsed && (
-          <h3 className="px-4 mb-2 text-xs font-semibold text-lagoon uppercase tracking-wider">
+          <h3 className="px-4 mb-2 text-xs font-semibold text-blue-800 uppercase tracking-wider">
             {title}
           </h3>
         )}
@@ -244,7 +244,7 @@ export const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
     const content = (
       <>
         {icon && (
-          <span className={`flex-shrink-0 ${active ? 'text-tide' : 'text-lagoon'}`}>{icon}</span>
+          <span className={`flex-shrink-0 ${active ? 'text-blue-500' : 'text-blue-800'}`}>{icon}</span>
         )}
         {!isCollapsed && (
           <>
@@ -258,7 +258,7 @@ export const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
     const itemClasses = `
       flex items-center gap-3 px-4 py-2.5 mx-2 rounded-lg
       transition-colors
-      ${active ? 'bg-info-bg text-tide font-medium' : 'text-abyss hover:bg-mist'}
+      ${active ? 'bg-info-bg text-blue-500 font-medium' : 'text-navy hover:bg-surface-tint'}
       ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
       ${isCollapsed ? 'justify-center' : ''}
       ${className}
@@ -309,10 +309,10 @@ export const SidebarTrigger = forwardRef<HTMLButtonElement, SidebarTriggerProps>
         ref={ref}
         type="button"
         onClick={() => setIsMobileOpen(true)}
-        className={`lg:hidden p-2 hover:bg-mist rounded-lg transition-colors ${className}`}
+        className={`lg:hidden p-2 hover:bg-surface-tint rounded-lg transition-colors ${className}`}
         {...props}
       >
-        <svg className="w-6 h-6 text-lagoon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-6 h-6 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>

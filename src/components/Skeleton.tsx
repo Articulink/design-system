@@ -23,7 +23,7 @@ export function Skeleton({
   className = '',
   ...props
 }: SkeletonProps) {
-  const baseStyles = 'bg-mist';
+  const baseStyles = 'bg-surface-tint';
 
   const variantStyles = {
     text: 'h-4 rounded',
@@ -33,7 +33,7 @@ export function Skeleton({
 
   const animationStyles = {
     pulse: 'animate-pulse',
-    wave: 'animate-shimmer bg-gradient-to-r from-mist via-breeze to-mist bg-[length:200%_100%]',
+    wave: 'animate-shimmer bg-gradient-to-r from-surface-tint via-surface-subtle to-surface-tint bg-[length:200%_100%]',
     none: '',
   };
 
@@ -76,7 +76,7 @@ export interface SkeletonCardProps {
 
 export function SkeletonCard({ className = '' }: SkeletonCardProps) {
   return (
-    <div className={`bg-white rounded-2xl border border-mist p-6 ${className}`}>
+    <div className={`bg-white rounded-2xl border border-surface-tint p-6 ${className}`}>
       <div className="flex items-center gap-4 mb-4">
         <Skeleton variant="circular" className="w-12 h-12" />
         <div className="flex-1 space-y-2">

@@ -172,7 +172,7 @@ export const InputOTP = forwardRef<HTMLDivElement, InputOTPProps>(
         slots.push(
           <div
             key={`sep-${i}`}
-            className="flex items-center justify-center w-4 text-lagoon"
+            className="flex items-center justify-center w-4 text-blue-800"
           >
             -
           </div>
@@ -206,18 +206,18 @@ export const InputOTP = forwardRef<HTMLDivElement, InputOTPProps>(
               ${error
                 ? 'border-error text-error'
                 : isFocused
-                  ? 'border-tide shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
+                  ? 'border-blue-500 shadow-[0_0_0_3px_rgba(3,125,228,0.12)]'
                   : hasValue
-                    ? 'border-tide/50'
-                    : 'border-mist'
+                    ? 'border-blue-500/50'
+                    : 'border-surface-tint'
               }
-              ${disabled ? 'opacity-50 cursor-not-allowed bg-breeze' : ''}
+              ${disabled ? 'opacity-50 cursor-not-allowed bg-surface-subtle' : ''}
             `}
           />
           {/* Cursor animation when focused and empty */}
           {isFocused && !hasValue && !disabled && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-0.5 h-6 bg-tide animate-pulse" />
+              <div className="w-0.5 h-6 bg-blue-500 animate-pulse" />
             </div>
           )}
         </div>
