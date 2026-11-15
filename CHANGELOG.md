@@ -6,6 +6,10 @@
   pull request and push to `main` (`.github/workflows/ci.yml`), from a
   committed `package-lock.json` (`npm ci`). The lockfile is for this repo's
   own tests; consumers still pin the package by commit.
+- **Type check clean, and in CI** (`npm run typecheck`). Timer refs use
+  `ReturnType<typeof setTimeout>` (browser timers, not `NodeJS.Timeout`);
+  `@types/node` and the TipTap packages are dev dependencies, and TipTap is
+  declared as an optional peer for `RichTextEditor`.
 
 ## 0.4.1 · November 15, 2026
 
