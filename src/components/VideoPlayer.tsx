@@ -49,7 +49,7 @@ export const VideoPlayer = forwardRef<HTMLDivElement, VideoPlayerProps>(
     const videoRef = useRef<HTMLVideoElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const progressRef = useRef<HTMLDivElement>(null);
-    const hideControlsTimeout = useRef<NodeJS.Timeout | null>(null);
+    const hideControlsTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
