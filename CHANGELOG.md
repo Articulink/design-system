@@ -16,8 +16,8 @@
   the Articulink Brand design system v13: every shape the same size
   (mixed sizes read as fake depth), balanced so each kind paints the same
   area, spread evenly, 83 shapes. It is the same tile as articulink.com's
-  `public/images/confetti-tile.svg` and `@articulink/brand` v2, from the
-  same seeded generator (`scripts/generate-confetti-tile.mjs` in those repos).
+  `public/images/confetti-tile.svg`, from its seeded generator
+  (`scripts/generate-confetti-tile.mjs` in the website repo).
 
 ## 0.2.0 · October 31, 2026
 
