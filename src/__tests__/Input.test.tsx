@@ -46,6 +46,7 @@ describe('Input', () => {
       />
     );
     expect(screen.getByTestId('test-icon')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('With icon')).not.toHaveAttribute('icon');
   });
 
   it('applies error styles when error is present', () => {
@@ -73,7 +74,6 @@ describe('Input', () => {
 
   it('accepts custom className', () => {
     render(<Input className="custom-input" placeholder="Custom" />);
-    const wrapper = screen.getByPlaceholderText('Custom').closest('div');
-    expect(wrapper?.parentElement).toHaveClass('custom-input');
+    expect(screen.getByPlaceholderText('Custom')).toHaveClass('custom-input');
   });
 });

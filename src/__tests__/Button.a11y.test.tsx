@@ -1,9 +1,9 @@
+// @vitest-environment jsdom
+// axe-core needs an iterable classList, which happy-dom 13 lacks.
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'vitest-axe';
+import { axe } from './a11y-setup';
 import { Button } from '../components/Button';
-
-expect.extend(toHaveNoViolations);
 
 describe('Button Accessibility', () => {
   it('should have no accessibility violations with default props', async () => {

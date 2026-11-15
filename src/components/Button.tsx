@@ -47,13 +47,13 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-blue-500 border-b-4 border-blue-600 text-white font-bold uppercase tracking-wide hover:bg-blue-400 active:border-b-0 active:translate-y-[2px]',
+    'bg-action border-b-4 border-action-shadow text-white font-bold uppercase tracking-wide hover:bg-action-hover active:border-b-0 active:translate-y-[2px]',
   secondary:
-    'bg-white border-2 border-surface-tint border-b-4 text-blue-500 font-bold uppercase tracking-wide hover:bg-surface-subtle active:border-b-2 active:translate-y-[2px]',
+    'bg-white border-2 border-surface-tint border-b-4 text-action font-bold uppercase tracking-wide hover:bg-surface-subtle active:border-b-2 active:translate-y-[2px]',
   accent:
     'bg-yellow border-b-4 border-yellow-deep text-navy font-bold uppercase tracking-wide hover:brightness-105 active:border-b-0 active:translate-y-[2px]',
   ghost:
-    'bg-transparent border-2 border-surface-tint border-b-4 text-blue-500 font-bold uppercase tracking-wide hover:bg-surface-subtle hover:border-blue-100 active:border-b-2 active:translate-y-[2px]',
+    'bg-transparent border-2 border-surface-tint border-b-4 text-action font-bold uppercase tracking-wide hover:bg-surface-subtle hover:border-blue-100 active:border-b-2 active:translate-y-[2px]',
   danger:
     'bg-error border-b-4 border-[#dc2626] text-white font-bold uppercase tracking-wide hover:bg-[#dc2626] active:border-b-0 active:translate-y-[2px]',
 };
